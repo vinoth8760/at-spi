@@ -1,3 +1,18 @@
+2004-03-24  Bill Haneman <billh@gnome.org>
+
+	* configure.in: Revved to 1.4.2.  This is the 
+	gnome-2.6.1 release of at-spi.
+
+	* registryd/deviceeventcontroller.c:
+	(spi_keystroke_from_x_key_event):
+	We now initialize the 'string' field for non-text
+	key events [i.e. when is_text == FALSE].
+	Fixes bug #114771.
+
+	* registryd/ucs2keysym.c:
+	(keysym2ucs): New, converts from Keysym to
+	UCS-2 when possible.
+	
 2004-04-08  Adam Weinberger  <adamw@gnome.org>
 
 	* configure.in: Added en_CA to ALL_LINGUAS.
