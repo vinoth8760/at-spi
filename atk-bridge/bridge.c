@@ -158,15 +158,26 @@ bridge_exit_func (void)
   FIXME: this may be incorrect for apps that do their own bonobo shutdown,
   until we can explicitly shutdown to get the ordering right. */
 
-  bonobo_init (0, NULL);
-  registry = bonobo_activation_activate_from_id (
+  if (!bonobo_is_initialized ())
+    {
+      g_warning ("Re-initializing bonobo\n");
+      g_assert (bonobo_init (0, NULL));
+      g_assert (bonobo_activate ());
+      registry = bonobo_activation_activate_from_id (
 	  "OAFIID:Accessibility_Registry:proto0.1", 0, NULL, &ev);
-
+      g_assert (registry);
+      g_assert (this_app);
+    }
+  
   Accessibility_Registry_deregisterApplication (registry,
 						BONOBO_OBJREF (this_app),
 						&ev);
   
+  bonobo_object_release_unref (BONOBO_OBJREF (this_app), &ev);
+  
   fprintf (stderr, "bridge exit func complete.\n");
+
+  bonobo_debug_shutdown ();
 }
 
 static void
