@@ -29,34 +29,32 @@
 #include "registry.h"
 
 int
-main (int argc,
-      char **argv)
+main (int argc, char **argv)
 {
-        SpiRegistry *registry;
-	GSource *keyevent_source;
-        char *obj_id;
+  char        *obj_id;
+  SpiRegistry *registry;
 
-        if (!bonobo_init (&argc, argv))
-          {
-            g_error ("Could not initialize oaf / Bonobo");
-          }
+  if (!bonobo_init (&argc, argv))
+    {
+      g_error ("Could not initialize oaf / Bonobo");
+    }
 
-        obj_id = "OAFIID:Accessibility_Registry:proto0.1";
+  obj_id = "OAFIID:Accessibility_Registry:proto0.1";
 
-        registry = spi_registry_new ();
+  registry = spi_registry_new ();
 
-        bonobo_activation_active_server_register (
-                obj_id,
-                bonobo_object_corba_objref (bonobo_object (registry)));
+  bonobo_activation_active_server_register (
+	  obj_id,
+	  bonobo_object_corba_objref (bonobo_object (registry)));
 
 #ifdef AT_SPI_DEBUG
-        fprintf (stderr, "SpiRegistry Message: SpiRegistry daemon is running.\n");
+  fprintf (stderr, "SpiRegistry Message: SpiRegistry daemon is running.\n");
 #endif
   
-        g_timeout_add_full (G_PRIORITY_HIGH_IDLE, 200, registry->kbd_event_hook, registry, NULL);
-        bonobo_main ();
+  g_timeout_add_full (G_PRIORITY_HIGH_IDLE, 200, registry->kbd_event_hook, registry, NULL);
+  bonobo_main ();
 
-        return 0;
+  return 0;
 }
 
 

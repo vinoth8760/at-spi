@@ -166,9 +166,9 @@ impl_getObject (PortableServer_Servant _servant,
   SpiHyperlink *link = SPI_HYPERLINK(bonobo_object_from_servant(_servant));
   AtkObject *atk_object;
   Accessibility_Accessible rv;
-  atk_object = atk_hyperlink_get_object (ATK_HYPERLINK(link->hyperlink), (gint) i);
-  rv = bonobo_object_corba_objref (BONOBO_OBJECT(spi_accessible_new(atk_object)));
-  return rv;
+  atk_object = atk_hyperlink_get_object (ATK_HYPERLINK (link->hyperlink), (gint) i);
+  rv = BONOBO_OBJREF (BONOBO_OBJECT (spi_accessible_new (atk_object)));
+  return CORBA_Object_duplicate (rv, ev);
 }
 
 
@@ -177,6 +177,6 @@ static CORBA_boolean
 impl_isValid (PortableServer_Servant _servant,
 	      CORBA_Environment * ev)
 {
-  SpiHyperlink *link = SPI_HYPERLINK(bonobo_object_from_servant(_servant));
-  return (CORBA_boolean) atk_hyperlink_is_valid (ATK_HYPERLINK(link->hyperlink));
+  SpiHyperlink *link = SPI_HYPERLINK (bonobo_object_from_servant (_servant));
+  return (CORBA_boolean) atk_hyperlink_is_valid (ATK_HYPERLINK (link->hyperlink));
 }

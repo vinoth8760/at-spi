@@ -29,8 +29,8 @@ G_BEGIN_DECLS
 #define SPI_HYPERLINK_TYPE        (spi_hyperlink_get_type ())
 #define SPI_HYPERLINK(obj)          (G_TYPE_CHECK_INSTANCE_CAST ((obj), SPI_HYPERLINK_TYPE, SpiHyperlink))
 #define SPI_HYPERLINK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), SPI_HYPERLINK_TYPE, SpiHyperlinkClass))
-#define IS_SPI_HYPERLINK(obj)       (G_TYPE_CHECK__INSTANCE_TYPE ((obj), SPI_HYPERLINK_TYPE))
-#define IS_SPI_HYPERLINK_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SPI_HYPERLINK_TYPE))
+#define SPI_IS_HYPERLINK(obj)       (G_TYPE_CHECK__INSTANCE_TYPE ((obj), SPI_HYPERLINK_TYPE))
+#define SPI_IS_HYPERLINK_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SPI_HYPERLINK_TYPE))
 
 typedef struct _Hyperlink SpiHyperlink;
 typedef struct _HyperlinkClass SpiHyperlinkClass;

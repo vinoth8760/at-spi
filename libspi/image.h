@@ -26,11 +26,11 @@
 
 G_BEGIN_DECLS
 
-#define SPI_IMAGE_TYPE        (spi_image_get_type ())
-#define SPI_IMAGE(obj)          (G_TYPE_CHECK_INSTANCE_CAST ((obj), SPI_IMAGE_TYPE, SpiImage))
+#define SPI_IMAGE_TYPE            (spi_image_get_type ())
+#define SPI_IMAGE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), SPI_IMAGE_TYPE, SpiImage))
 #define SPI_IMAGE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), SPI_IMAGE_TYPE, SpiImageClass))
-#define IS_SPI_IMAGE(obj)       (G_TYPE_CHECK__INSTANCE_TYPE ((obj), SPI_IMAGE_TYPE))
-#define IS_SPI_IMAGE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SPI_IMAGE_TYPE))
+#define SPI_IS_IMAGE(obj)         (G_TYPE_CHECK__INSTANCE_TYPE ((obj), SPI_IMAGE_TYPE))
+#define SPI_IS_IMAGE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SPI_IMAGE_TYPE))
 
 typedef struct _Image SpiImage;
 typedef struct _ImageClass SpiImageClass;

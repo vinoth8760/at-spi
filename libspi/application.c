@@ -42,6 +42,7 @@ static SpiApplication *the_app;
 /* static methods */
 
 static void notify_listeners (GList *listeners,
+			      SpiAccessible *source,
 			      Accessibility_Event *e,
 			      CORBA_Environment *ev);
 
@@ -69,7 +70,22 @@ lookup_toolkit_event_for_name (const char *generic_name)
 static void
 spi_accessible_application_finalize (GObject *object)
 {
-  /* TODO: any necessary cleanup */
+  GList *l;
+  SpiApplication *application = (SpiApplication *) object;
+  CORBA_Environment ev;
+
+  CORBA_exception_init (&ev);
+
+  for (l = application->toolkit_listeners; l; l = l->next)
+    {
+      CORBA_Object_release ((CORBA_Object) l->data, &ev);
+    }
+
+  CORBA_exception_free (&ev);
+
+  g_list_free (application->toolkit_listeners);
+  application->toolkit_listeners = NULL;
+
   g_print ("application finalize called\n");
   (G_OBJECT_CLASS (spi_application_parent_class))->finalize (object);
 }
@@ -157,16 +173,15 @@ spi_application_object_event_listener (GSignalInvocationHint *signal_hint,
     {
         source = spi_accessible_new (aobject);
 	e->type = CORBA_string_dup (generic_name);
-	e->source = BONOBO_OBJREF (source);
-        /*
-	 * no need to dup this ref, since it's inprocess               
-	 * and will be dup'ed by (inprocess) notify_listeners() call below
-	 */
+	e->source = CORBA_OBJECT_NIL;
 	e->detail1 = 0;
 	e->detail2 = 0;
-	if (the_app) notify_listeners (the_app->toolkit_listeners, e, &ev);
+	if (the_app)
+          {
+            notify_listeners (the_app->toolkit_listeners, source, e, &ev);
+	  }
         /* unref because the in-process notify has called b_o_dup_ref (e->source) */
-        bonobo_object_release_unref (e->source, &ev); 
+        bonobo_object_unref (BONOBO_OBJECT (source));
     }
   /* and, decrement the refcount on atkobject, incremented moments ago:
    *  the call to spi_accessible_new() above should have added an extra ref */
@@ -205,10 +220,13 @@ spi_application_toolkit_event_listener (GSignalInvocationHint *signal_hint,
       aobject = atk_implementor_ref_accessible (ATK_IMPLEMENTOR (gobject));
       source = spi_accessible_new (aobject);
       e->type = CORBA_string_dup (sbuf);
-      e->source = BONOBO_OBJREF (source);
+      e->source = CORBA_OBJECT_NIL;
       e->detail1 = 0;
       e->detail2 = 0;
-      if (the_app) notify_listeners (the_app->toolkit_listeners, e, &ev);
+      if (the_app)
+        {
+          notify_listeners (the_app->toolkit_listeners, source, e, &ev);
+        }
       bonobo_object_unref (BONOBO_OBJECT (source));
       g_object_unref (G_OBJECT (aobject));
     }
@@ -223,7 +241,7 @@ impl_accessibility_application_register_toolkit_event_listener (PortableServer_S
 {
   guint spi_listener_id;
   spi_listener_id =
-     atk_add_global_event_listener (spi_application_toolkit_event_listener, (char *) event_name);
+     atk_add_global_event_listener (spi_application_toolkit_event_listener, event_name);
   the_app->toolkit_listeners = g_list_append (the_app->toolkit_listeners,
 					      CORBA_Object_duplicate (listener, ev));
 #ifdef SPI_DEBUG
@@ -246,7 +264,7 @@ impl_accessibility_application_register_object_event_listener (PortableServer_Se
   {
     spi_listener_id =
        atk_add_global_event_listener (spi_application_object_event_listener,
-				      CORBA_string_dup (toolkit_specific_event_name));
+				      toolkit_specific_event_name);
     the_app->toolkit_listeners = g_list_append (the_app->toolkit_listeners,
 					      CORBA_Object_duplicate (listener, ev));
   }
@@ -258,21 +276,21 @@ impl_accessibility_application_register_object_event_listener (PortableServer_Se
 }
 
 static void
-notify_listeners (GList *listeners, Accessibility_Event *e, CORBA_Environment *ev)
+notify_listeners (GList *listeners, SpiAccessible *source, Accessibility_Event *e, CORBA_Environment *ev)
 {
-    int n_listeners=0;
-    int i;
-    if (listeners) n_listeners = g_list_length (listeners);
+  GList *l;
 
-    for (i=0; i<n_listeners; ++i) {
-        Accessibility_EventListener listener;
-	e->source = bonobo_object_dup_ref (e->source, ev); 
-	listener = (Accessibility_EventListener) g_list_nth_data (listeners, i);
-	Accessibility_EventListener_notifyEvent (listener, e, ev);
-	/*
-	 * when this (oneway) call completes, the CORBA refcount and
-	 * Bonobo_Unknown refcount will be decremented by the recipient
-	 */
+  for (l = listeners; l; l = l->next)
+    {
+      Accessibility_EventListener listener = l->data;
+
+      e->source = bonobo_object_dup_ref (BONOBO_OBJREF (source), ev); 
+
+      Accessibility_EventListener_notifyEvent (listener, e, ev);
+      /*
+       * when this (oneway) call completes, the CORBA refcount and
+       * Bonobo_Unknown refcount will be decremented by the recipient
+       */
     }
 }
 

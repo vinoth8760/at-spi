@@ -59,7 +59,7 @@ impl__get_caption (PortableServer_Servant _servant,
   Accessibility_Accessible rv;
 
   atk_object = atk_table_get_caption (ATK_TABLE(table-> atko));
-  rv = bonobo_object_corba_objref (BONOBO_OBJECT(spi_accessible_new(atk_object)));
+  rv = BONOBO_OBJREF (spi_accessible_new (atk_object));
   return CORBA_Object_duplicate (rv, ev);
 }
 
@@ -74,7 +74,7 @@ impl__get_summary (PortableServer_Servant _servant,
   Accessibility_Accessible rv;
 
   atk_object = atk_table_get_summary (ATK_TABLE(table->atko));
-  rv = bonobo_object_corba_objref (BONOBO_OBJECT(spi_accessible_new(atk_object)));
+  rv = BONOBO_OBJREF (spi_accessible_new (atk_object));
   return CORBA_Object_duplicate (rv, ev);
 }
 
@@ -112,9 +112,9 @@ impl_getAccessibleAt (PortableServer_Servant _servant,
   AtkObject *atk_object;
   Accessibility_Accessible rv;
 
-  atk_object = atk_table_ref_at (ATK_TABLE(table->atko),
+  atk_object = atk_table_ref_at (ATK_TABLE (table->atko),
 					     (gint) row, (gint) column);
-  rv = bonobo_object_corba_objref (BONOBO_OBJECT(spi_accessible_new(atk_object)));
+  rv = BONOBO_OBJREF (spi_accessible_new (atk_object));
   return CORBA_Object_duplicate (rv, ev);
 }
 
@@ -235,13 +235,13 @@ impl_getRowHeader (PortableServer_Servant _servant,
   Accessibility_Table rv;
 
   header = atk_table_get_row_header (ATK_TABLE(table->atko), (gint) row);
-  rv = bonobo_object_corba_objref (BONOBO_OBJECT(spi_accessible_new(header)));
+  rv = BONOBO_OBJREF (spi_accessible_new (header));
   return CORBA_Object_duplicate (rv, ev);
 }
 
 
 
-static        Accessibility_Table
+static Accessibility_Table
 impl_getColumnHeader (PortableServer_Servant _servant,
 		      const CORBA_long column,
 		      CORBA_Environment * ev)
@@ -251,7 +251,7 @@ impl_getColumnHeader (PortableServer_Servant _servant,
   Accessibility_Table rv;
 
   header = atk_table_get_column_header (ATK_TABLE(table->atko), (gint) column);
-  rv = bonobo_object_corba_objref (BONOBO_OBJECT(spi_accessible_new(header)));
+  rv = BONOBO_OBJREF (spi_accessible_new (header));
   return CORBA_Object_duplicate (rv, ev);
 }
 

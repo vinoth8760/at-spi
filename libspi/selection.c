@@ -59,7 +59,7 @@ impl__get_nSelectedChildren (PortableServer_Servant _servant,
 #ifdef SPI_DEBUG
   fprintf (stderr, "calling impl__get_nSelectedChildren\n");
 #endif
-  g_return_val_if_fail (IS_SPI_SELECTION (obj), 0);
+  g_return_val_if_fail (SPI_IS_SELECTION (obj), 0);
   selection = SPI_SELECTION (obj);
   g_return_val_if_fail (ATK_IS_SELECTION (selection->atko), 0);
   return (CORBA_long)
@@ -80,7 +80,7 @@ impl_getSelectedChild (PortableServer_Servant _servant,
 #ifdef SPI_DEBUG
   fprintf (stderr, "calling impl_getSelectedChild\n");
 #endif
-  g_return_val_if_fail (IS_SPI_SELECTION (obj), 0);
+  g_return_val_if_fail (SPI_IS_SELECTION (obj), 0);
   selection = SPI_SELECTION (obj);
   g_return_val_if_fail (ATK_IS_SELECTION (selection->atko), 0);
 
@@ -90,7 +90,7 @@ impl_getSelectedChild (PortableServer_Servant _servant,
 #ifdef SPI_DEBUG
   fprintf (stderr, "child type is %s\n", g_type_name (G_OBJECT_TYPE (atk_object)));
 #endif
-  rv = bonobo_object_corba_objref (bonobo_object (spi_accessible_new (atk_object)));
+  rv = BONOBO_OBJREF (spi_accessible_new (atk_object));
   g_object_unref (atk_object);
   return CORBA_Object_duplicate (rv, ev);
 }

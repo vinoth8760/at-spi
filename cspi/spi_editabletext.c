@@ -86,7 +86,7 @@ AccessibleEditableText_setTextContents (AccessibleEditableText *obj,
 {
   Accessibility_EditableText_setTextContents (CSPI_OBJREF (obj),
 					      (CORBA_char *) newContents, cspi_ev ());
-  return TRUE; /* TODO: make bonobo method return a boolean */
+  return TRUE; /* TODO: make bonobo method return a SPIBoolean */
 }
 
 

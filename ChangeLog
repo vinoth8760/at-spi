@@ -1,3 +1,276 @@
+2001-12-04  Michael Meeks  <michael@ximian.com>
+
+	* cspi/spi-util.h: remove.
+
+	* cspi/spi.h: move SPI_freeString here
+
+	* libspi/component.c (impl_accessibility_component_get_layer): 
+	warning fixage.
+	(impl_accessibility_component_get_mdi_z_order): ditto,
+	return -1 on error - is this ok ?
+
+	* test/test-simple.c (test_application): impl.
+
+	* cspi/spi_accessible.c (Accessible_getApplication),
+	(Accessible_isApplication): impl.
+
+	* libspi/registry.c (spi_listener_struct_free): release
+	the CORBA reference too.
+
+	* libspi/accessible.c
+	(impl_accessibility_accessible_get_parent): fix ref leak.
+
+	* libspi/registry.c (spi_registry_new): make the registry
+	immortal - we don't want it to go away ever.
+
+	* libspi/application.c
+	(spi_accessible_application_finalize): impl. cleanup.
+
+	* cspi/spi_registry.c
+	(deregisterGlobalEventListenerAll),
+	(deregisterGlobalEventListener),
+	(deregisterAccessibleKeystrokeListener): fix ref leak.
+
+	* cspi/spi_main.c (SPI_init): remove redundant ref.
+
+	* test/test-simple.c (unutterable_horror): impl. to force a
+	clean shutdown.
+	(main): use it.
+
+	* libspi/registry.c
+	(impl_accessibility_registry_deregister_application): release
+	the application when we de-register it.
+
+	* at-bridge/bridge.c (bridge_exit_func): comment out shutdown
+	until we have the infastructure to get it right.
+
+2001-12-03  Michael Meeks  <michael@ximian.com>
+
+	* libspi/Makefile.am: only build eventlistener.[ch]
+
+	* libspi/accessible.c
+	(impl_accessibility_accessible_get_child_at_index): don't leak.
+
+	* at-bridge/bridge.c (bridge_exit_func): cope with an exit
+	before we hit the idle handler.
+
+	* cspi/spi-util.c (cspi_check_ev): g_error is far nicer for
+	debugging than exit.
+
+	* at-bridge/bridge.c (bridge_focus_tracker): fix ref issue.
+
+	* libspi/listener.c (impl_notify_event): check source
+	not NIL before unref.
+
+	* libspi/registry.c (impl_registry_notify_event): ditto.
+
+	* libspi/eventlistener.c
+	(impl_accessible_event_notify_event): unref the source.
+
+	* libspi/accessibleeventlistener.c
+	(impl_accessible_event_notify_event): unref the source.
+
+	* idl/Event.idl: remove 'hash_id' attribute - of no
+	concievable use.
+
+	* libspi/application.c (notify_listeners): upd list
+	iteration & sig.
+	(spi_application_object_event_listener), 
+	(spi_application_toolkit_event_listener): upd to do correct
+	CORBA ref counting.
+
+	* libspi/registry.c
+	(_registry_notify_listeners): update.
+	(parse_event_type): this method also leaks like a sieve.
+	(impl_accessibility_registry_deregister_global_event_listener): 
+	fix ETYPE_WINDOW case.
+
+	* libspi/application.c
+	(impl_accessibility_application_register_object_event_listener): 
+	kill leak.
+
+	* libspi/hyperlink.c (impl_getObject): fix ref mistake.
+
+	* libspi/hypertext.c (impl_getLink): ditto.
+
+	* cspi/spi_main.c (cspi_object_add): remove
+	bogus CORBA_Object_duplicate.
+
+	* cspi/spi-listener-impl.c (cspi_event): dup/ref
+	on the object_add.
+
+	* cspi/spi_accessible.c
+	(Accessible_getRelationSet): fix leak / referencing issue.
+
+	* cspi/spi_main.c (spi_object_hash, spi_object_equal): impl.
+	(cspi_object_add, cspi_object_unref): upd.
+	(spi_object_release, get_live_refs): impl.
+	(cspi_cleanup): simplify.
+
+	* *.[ch]: s/boolean/SpiBoolean/
+
+	* cspi/spi_accessible.c (role_names): actualy order so it
+	corresponds with the enum !
+
+	* test/test-simple.c (test_roles): check some role strings
+	vs. enums to detect offset errors.
+
+2001-12-01  Michael Meeks  <michael@ximian.com>
+
+	* cspi/spi_main.c (cspi_object_add_check): impl. helper.
+
+	* cspi/spi_accessible.c (Accessible_getChildAtIndex):
+	check ev before 
+	(Accessible_getChildAtIndex): use cspi_add_check so we
+	check the ev before using a (possibly) invalid value.
+
+	* libspi/accessible.c
+	(impl_accessibility_accessible_get_parent): don't segv
+	on a NULL parent.
+
+	* at-bridge/bridge.c (gtk_module_init): upd.
+	(bridge_property_event_listener): don't leak strings
+	and events !
+	(bridge_state_event_listener),
+	(bridge_property_event_listener): don't use a static
+	buffer in case of recursive event emission &
+	re-enterancy - split out the swathe of cut and paste
+	into:
+	(emit_eventv): and fix 2 ref leaks here & comply to the
+	coding style.
+	(bridge_register_app): rename to 
+	(bridge_idle_init): this and kill arg parsing, split
+	various inits & bonobo-activation registration to module
+	init time, kill referencing error.
+	(bridge_exit_func): fix the same leak.
+	(bridge_focus_tracker): don't leak event structures
+	and strings.
+	(bridge_signal_listener): more leakage and cut & paste
+	fixage.
+	(bridge_key_listener): return the result - FIXME is
+	this polarity correct ?
+	(accessibility_keystroke_from_atk_key_event): rename
+	(accessibility_init_keystroke_from_atk_key_event): and stop
+	leakage.
+	(gtk_module_init): return a value - not that it is checked by
+	Gtk - but hey.
+	(bridge_key_listener): register my horror at casting between
+	IDL defined structs.
+	(bridge_get_registry): kill - not used.
+
+	* cspi/spi_accessible.c (Accessible_getRole): make return const.
+
+	* test/test-simple.c (test_roles): impl.
+	(test_desktop, validate_accessible, validate_tree): impl.
+
+	* cspi/spi_accessible.c (role_names): fixup bogus
+	MAX_ROLES setup, make constants const for efficient linkage
+	(AccessibleRole_getName): conform to coding style, make
+	return 'const'
+
+2001-11-30  Michael Meeks  <michael@ximian.com>
+
+	* cspi/spi.h: add missing prototype.
+
+	* libspi/registry.c (spi_listener_struct_new): fix sig.
+
+	* test/Makefile.am: add test-simple
+
+	* test/test-simple.c: add
+
+	* test/test.sh: add.
+
+	* cspi/spi_main.c (SPI_init): make SPI_inited module global,
+
+	* at-bridge/bridge.c (gtk_module_init): don't do an idle init,
+	do it straight - since otherwise we often get an activation race.
+
+[ work before Bill duplicated a chunk of it ... ]
+2001-11-30  Michael Meeks  <michael@ximian.com>
+
+	* libspi/keystrokelistener.c
+	(spi_keystroke_listener_class_init): fixup arg
+	count (doh).
+
+	* libspi/eventlistener.c
+	(spi_event_listener_class_init): ditto.
+
+	* tests/test.sh: add.
+
+	* cspi/spi-listener-impl.h: update macros.
+
+	* cspi/spi-listener-impl.c
+	(cspi_event_listener_remove_callback): add
+	correct pre-conditions.
+
+	* cspi/spi_main.c (SPI_exit): guard vs. double
+	exits, exit the mainloop nicely.
+	(SPI_event_main): make more sense.
+	(SPI_init): move the atexit evilness here so we
+	always do it (yuck).
+	(SPI_event_main): upd.
+
+	* test/simple-at.c: update for listener changes.
+
+	* registryd/registryd.c (main): prune kruft.
+
+	* libspi/libspi.h: upd.
+
+	* libspi/eventlistener.[ch]: rename broken macros.
+
+	* libspi/accessibleeventlistener.[ch]: remove.
+
+	* libspi/*.[ch]: IS_SPI_... -> SPI_IS_...
+
+	* test/test-simple.c: Add - automated tests.
+
+	* cspi/spi-listener-impl.c (cspi_event),
+	(cspi_key_event): add user_data to invoke.
+	(cspi_keystroke_listener_finalize): impl.
+	(cspi_keystroke_listener_class_init): upd.
+
+	* cspi/spi_event.c
+	(createAccessibleEventListener),
+	(AccessibleEventListener_addCallback),
+	(createAccessibleKeystrokeListener),
+	(AccessibleKeystrokeListener_addCallback): upd.
+
+	* libspi/deviceeventcontroller.c
+	(spi_device_event_controller_check_key_event): add public proto.
+
+	* libspi/registry.c
+	(impl_accessibility_registry_deregister_global_event_listener): 
+	always init listeners.
+	(_registry_notify_listeners): yes it is.
+
+	* cspi/spi-listener-impl.c (cspi_key_event): 
+	move debug to here.
+	(cspi_event_listener_finalize): impl.
+	(cspi_event_listener_class_init): hook up.
+	(event_handler_new, event_handler_free),
+	(event_list_remove_by_callback): impl.
+	(cspi_event_listener_remove_callback),
+	(cspi_keystroke_listener_remove_callback),
+	(cspi_keystroke_listener_add_callback),
+	(cspi_event_listener_add_callback): upd.
+
+	* libspi/keystrokelistener.c
+	(keystroke_listener_object_finalize): kill
+	(spi_keystroke_listener_class_init): upd.
+	(spi_keystroke_listener_add_callback),
+	(spi_keystroke_listener_remove_callback): kill,
+	use signals.
+	(impl_key_event): prune drasticaly.
+
+	* libspi/eventlistener.c
+	(spi_event_listener_add_callback),
+	(spi_event_listener_remove_callback): kill, use
+	signals.
+	(impl_accessible_event_notify_event): upd.
+	(spi_event_listener_object_finalize): remove.
+
+	* libspi/Makefile.am: use eventlistener.[ch]
+
 2001-12-03  Bill Haneman  <bill.haneman@sun.com>
 
 	* idl/Component.idl:

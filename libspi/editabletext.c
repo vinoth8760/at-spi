@@ -125,7 +125,7 @@ impl_setAttributes (PortableServer_Servant _servant,
   SpiEditableText *editable;
   BonoboObject *obj;
   obj = (bonobo_object_from_servant (_servant));
-  g_return_val_if_fail (IS_SPI_EDITABLE_TEXT (obj), FALSE);
+  g_return_val_if_fail (SPI_IS_EDITABLE_TEXT (obj), FALSE);
   editable = SPI_EDITABLE_TEXT(bonobo_object_from_servant (_servant));
   g_return_val_if_fail (ATK_IS_EDITABLE_TEXT ( (SPI_TEXT (obj))->atko), FALSE);
 
@@ -142,7 +142,7 @@ impl_setTextContents (PortableServer_Servant _servant,
   SpiEditableText *editable;
   BonoboObject *obj;
   obj = (bonobo_object_from_servant (_servant));
-  g_return_if_fail (IS_SPI_EDITABLE_TEXT (obj));
+  g_return_if_fail (SPI_IS_EDITABLE_TEXT (obj));
   editable = SPI_EDITABLE_TEXT(bonobo_object_from_servant (_servant));
   g_return_if_fail (ATK_IS_EDITABLE_TEXT ( (SPI_TEXT (obj))->atko));
   
@@ -162,7 +162,7 @@ impl_insertText (PortableServer_Servant _servant,
   SpiEditableText *editable;
   BonoboObject *obj;
   obj = (bonobo_object_from_servant (_servant));
-  g_return_if_fail (IS_SPI_EDITABLE_TEXT (obj));
+  g_return_if_fail (SPI_IS_EDITABLE_TEXT (obj));
   editable = SPI_EDITABLE_TEXT(bonobo_object_from_servant (_servant));
   g_return_if_fail (ATK_IS_EDITABLE_TEXT ( (SPI_TEXT (obj))->atko));
 
@@ -181,7 +181,7 @@ impl_copyText (PortableServer_Servant _servant,
   SpiEditableText *editable;
   BonoboObject *obj;
   obj = (bonobo_object_from_servant (_servant));
-  g_return_if_fail (IS_SPI_EDITABLE_TEXT (obj));
+  g_return_if_fail (SPI_IS_EDITABLE_TEXT (obj));
   editable = SPI_EDITABLE_TEXT(bonobo_object_from_servant (_servant));
   g_return_if_fail (ATK_IS_EDITABLE_TEXT ( (SPI_TEXT (obj))->atko));
 
@@ -199,7 +199,7 @@ impl_cutText (PortableServer_Servant _servant,
   SpiEditableText *editable;
   BonoboObject *obj;
   obj = (bonobo_object_from_servant (_servant));
-  g_return_if_fail (IS_SPI_EDITABLE_TEXT (obj));
+  g_return_if_fail (SPI_IS_EDITABLE_TEXT (obj));
   editable = SPI_EDITABLE_TEXT(bonobo_object_from_servant (_servant));
   g_return_if_fail (ATK_IS_EDITABLE_TEXT ( (SPI_TEXT (obj))->atko));
 
@@ -218,7 +218,7 @@ impl_deleteText (PortableServer_Servant _servant,
   SpiEditableText *editable;
   BonoboObject *obj;
   obj = (bonobo_object_from_servant (_servant));
-  g_return_if_fail (IS_SPI_EDITABLE_TEXT (obj));
+  g_return_if_fail (SPI_IS_EDITABLE_TEXT (obj));
   editable = SPI_EDITABLE_TEXT(bonobo_object_from_servant (_servant));
   g_return_if_fail (ATK_IS_EDITABLE_TEXT ( (SPI_TEXT (obj))->atko));
 
@@ -234,7 +234,7 @@ impl_pasteText (PortableServer_Servant _servant,
   SpiEditableText *editable;
   BonoboObject *obj;
   obj = (bonobo_object_from_servant (_servant));
-  g_return_if_fail (IS_SPI_EDITABLE_TEXT (obj));
+  g_return_if_fail (SPI_IS_EDITABLE_TEXT (obj));
   editable = SPI_EDITABLE_TEXT(bonobo_object_from_servant (_servant));
   g_return_if_fail (ATK_IS_EDITABLE_TEXT ( (SPI_TEXT (obj))->atko));
 

@@ -186,7 +186,6 @@ SPI_nextEvent (SPIBoolean waitForEvent);
  * SPI_exit:
  *
  * Disconnects from the Accessibility Registry and releases resources.
- * Not Yet Implemented.
  *
  **/
 void
@@ -206,7 +205,8 @@ SPI_exit (void);
  *
  **/
 AccessibleEventListener *
-createAccessibleEventListener (AccessibleEventListenerCB callback);
+createAccessibleEventListener (AccessibleEventListenerCB callback,
+			       void                     *user_data);
 
 /**
  * AccessibleEventListener_addCallback:
@@ -219,8 +219,9 @@ createAccessibleEventListener (AccessibleEventListenerCB callback);
  *
  **/
 SPIBoolean
-AccessibleEventListener_addCallback (AccessibleEventListener *listener,
-				     AccessibleEventListenerCB callback);
+AccessibleEventListener_addCallback (AccessibleEventListener  *listener,
+				     AccessibleEventListenerCB callback,
+				     void                     *user_data);
 
 /**
  * AccessibleEventListener_removeCallback:
@@ -233,7 +234,7 @@ AccessibleEventListener_addCallback (AccessibleEventListener *listener,
  *
  **/
 SPIBoolean
-AccessibleEventListener_removeCallback (AccessibleEventListener *listener,
+AccessibleEventListener_removeCallback (AccessibleEventListener  *listener,
 					AccessibleEventListenerCB callback);
 
 /**
@@ -246,7 +247,8 @@ AccessibleEventListener_removeCallback (AccessibleEventListener *listener,
  *
  **/
 AccessibleKeystrokeListener *
-createAccessibleKeystrokeListener (AccessibleKeystrokeListenerCB callback);
+createAccessibleKeystrokeListener (AccessibleKeystrokeListenerCB callback,
+				   void                         *user_data);
 
 /**
  * KeystrokeListener_addCallback:
@@ -259,8 +261,9 @@ createAccessibleKeystrokeListener (AccessibleKeystrokeListenerCB callback);
  *
  **/
 SPIBoolean
-AccessibleKeystrokeListener_addCallback (AccessibleKeystrokeListener *listener,
-					 AccessibleKeystrokeListenerCB callback);
+AccessibleKeystrokeListener_addCallback (AccessibleKeystrokeListener  *listener,
+					 AccessibleKeystrokeListenerCB callback,
+					 void                         *user_data);
 
 /**
  * AccessibleKeystrokeListener_removeCallback:
@@ -275,6 +278,8 @@ AccessibleKeystrokeListener_addCallback (AccessibleKeystrokeListener *listener,
 SPIBoolean
 AccessibleKeystrokeListener_removeCallback (AccessibleKeystrokeListener *listener,
 					    AccessibleKeystrokeListenerCB callback);
+
+void AccessibleKeystrokeListener_unref (AccessibleKeystrokeListener *listener);
 
 /*
  *
@@ -538,7 +543,7 @@ Accessible_getRelationSet (Accessible *obj);
  * Returns: a UTF-8 string indicating the UI role of the #Accessible object.
  *
  **/
-char *
+const char *
 Accessible_getRole (Accessible *obj);
 
 /**
@@ -566,6 +571,18 @@ Accessible_getStateSet (Accessible *obj);
  **/
 SPIBoolean
 Accessible_isAction (Accessible *obj);
+
+/**
+ * Accessible_isApplication:
+ * @obj: a pointer to the #Accessible instance to query.
+ *
+ * Query whether the specified #Accessible implements #AccessibleApplication.
+ *
+ * Returns: #TRUE if @obj implements the #AccessibleApplication interface,
+ *          #FALSE otherwise.
+ **/
+SPIBoolean
+Accessible_isApplication (Accessible *obj);
 
 /**
  * Accessible_isComponent:
@@ -651,8 +668,29 @@ Accessible_isTable (Accessible *obj);
 SPIBoolean
 Accessible_isText (Accessible *obj);
 
+/**
+ * Accessible_getAction:
+ * @obj: a pointer to the #Accessible instance to query.
+ *
+ * Get the #AccessibleAction interface for an #Accessible.
+ *
+ * Returns: a pointer to an #AccessibleAction interface instance, or
+ *          NULL if @obj does not implement #AccessibleAction.
+ **/
 AccessibleAction *
 Accessible_getAction (Accessible *obj);
+
+/**
+ * Accessible_getApplication:
+ * @obj: a pointer to the #Accessible instance to query.
+ *
+ * Get the #AccessibleApplication interface for an #Accessible.
+ *
+ * Returns: a pointer to an #AccessibleApplication interface instance, or
+ *          NULL if @obj does not implement #AccessibleApplication.
+ **/
+AccessibleApplication *
+Accessible_getApplication (Accessible *obj);
 
 /**
  * Accessible_getComponent:
@@ -1415,6 +1453,9 @@ AccessibleValue_getMaximumValue (AccessibleValue *obj);
 SPIBoolean
 AccessibleValue_setCurrentValue (AccessibleValue *obj,
                                  float newValue);
+
+void
+SPI_freeString (char *s);
 
 G_END_DECLS
 

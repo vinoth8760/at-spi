@@ -30,8 +30,8 @@ G_BEGIN_DECLS
 #define SPI_EDITABLE_TEXT_TYPE        (spi_editable_text_get_type ())
 #define SPI_EDITABLE_TEXT(obj)          (G_TYPE_CHECK_INSTANCE_CAST ((obj), SPI_EDITABLE_TEXT_TYPE, SpiEditableText))
 #define SPI_EDITABLE_TEXT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), SPI_EDITABLE_TEXT_TYPE, SpiEditableText))
-#define IS_SPI_EDITABLE_TEXT(obj)       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), SPI_EDITABLE_TEXT_TYPE))
-#define IS_SPI_EDITABLE_TEXT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SPI_EDITABLE_TEXT_TYPE))
+#define SPI_IS_EDITABLE_TEXT(obj)       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), SPI_EDITABLE_TEXT_TYPE))
+#define SPI_IS_EDITABLE_TEXT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SPI_EDITABLE_TEXT_TYPE))
 
 typedef struct _EditableText SpiEditableText;
 typedef struct _EditableTextClass SpiEditableTextClass;

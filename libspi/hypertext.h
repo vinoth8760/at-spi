@@ -27,11 +27,11 @@
 
 G_BEGIN_DECLS
 
-#define SPI_HYPERTEXT_TYPE        (spi_hypertext_get_type ())
-#define SPI_HYPERTEXT(obj)          (G_TYPE_CHECK_INSTANCE_CAST ((obj), SPI_HYPERTEXT_TYPE, SpiHypertext))
+#define SPI_HYPERTEXT_TYPE            (spi_hypertext_get_type ())
+#define SPI_HYPERTEXT(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), SPI_HYPERTEXT_TYPE, SpiHypertext))
 #define SPI_HYPERTEXT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), SPI_HYPERTEXT_TYPE, SpiHypertextClass))
-#define IS_SPI_HYPERTEXT(obj)       (G_TYPE_CHECK__INSTANCE_TYPE ((obj), SPI_HYPERTEXT_TYPE))
-#define IS_HYPESPI_TEXT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SPI_HYPERTEXT_TYPE))
+#define SPI_IS_HYPERTEXT(obj)         (G_TYPE_CHECK__INSTANCE_TYPE ((obj), SPI_HYPERTEXT_TYPE))
+#define SPI_IS_HYPERTEXT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SPI_HYPERTEXT_TYPE))
 
 typedef struct _Hypertext SpiHypertext;
 typedef struct _HypertextClass SpiHypertextClass;
@@ -41,7 +41,7 @@ struct _Hypertext {
 };
 
 struct _HypertextClass {
-  BonoboObjectClass parent_class;
+  SpiTextClass parent_class;
   POA_Accessibility_Hypertext__epv epv;
 };
 

@@ -73,10 +73,10 @@ impl_getLink (PortableServer_Servant servant,
   link = atk_hypertext_get_link (
 	  ATK_HYPERTEXT ((SPI_TEXT (hypertext))->atko), linkIndex);
 
-  rv = bonobo_object_corba_objref (BONOBO_OBJECT (
+  rv = BONOBO_OBJREF (BONOBO_OBJECT (
 	  spi_hyperlink_new (ATK_OBJECT (link))));
 
-  return rv;
+  return CORBA_Object_duplicate (rv, ev);
 }
 
 

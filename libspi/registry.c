@@ -23,6 +23,9 @@
 /* registry.c: the main accessibility service registry implementation */
 
 #include <config.h>
+
+#define SPI_DEBUG
+
 #ifdef SPI_DEBUG
 #  include <stdio.h>
 #endif
@@ -80,7 +83,7 @@ static long _get_unique_id();
 static gboolean _device_event_controller_hook (gpointer source);
 
 SpiListenerStruct *
-spi_listener_struct_new (Accessibility_EventListener *listener, CORBA_Environment *ev)
+spi_listener_struct_new (Accessibility_EventListener listener, CORBA_Environment *ev)
 {
   SpiListenerStruct *retval = g_malloc (sizeof (SpiListenerStruct));
   retval->listener = bonobo_object_dup_ref (listener, ev);
@@ -90,8 +93,7 @@ spi_listener_struct_new (Accessibility_EventListener *listener, CORBA_Environmen
 void
 spi_listener_struct_free (SpiListenerStruct *ls, CORBA_Environment *ev)
 {
-  /* TODO: sanity check for ls */
-  Accessibility_EventListener_unref (ls->listener, ev);
+  bonobo_object_release_unref (ls->listener, ev);
   g_free (ls);
 }
 
@@ -128,7 +130,7 @@ impl_accessibility_registry_register_application (PortableServer_Servant servant
                                                    bonobo_object_dup_ref (application, ev));
 
   /* TODO: create unique string here (with libuuid call ?) and hash ? */
-  Accessibility_Application__set_id (application, _get_unique_id(), ev);
+  Accessibility_Application__set_id (application, _get_unique_id (), ev);
 
   /*
    * TODO: change the implementation below to a WM-aware one;
@@ -279,10 +281,12 @@ impl_accessibility_registry_deregister_application (PortableServer_Servant serva
 
   if (list)
     {
+      Bonobo_Unknown app = list->data;
 #ifdef SPI_DEBUG
       fprintf (stderr, "deregistering application %p\n", application);
 #endif
       registry->desktop->applications = g_list_delete_link (registry->desktop->applications, list);
+      bonobo_object_release_unref (app, ev);
 #ifdef SPI_DEBUG
       fprintf (stderr, "there are now %d apps registered.\n", g_list_length (registry->desktop->applications));
       for (i = 0; i < g_list_length (registry->desktop->applications); ++i)
@@ -353,7 +357,7 @@ impl_accessibility_registry_deregister_global_event_listener_all (
                                                     CORBA_Environment      *ev)
 {
   SpiRegistry *registry = SPI_REGISTRY (bonobo_object_from_servant (servant));
-  SpiListenerStruct *spi_listener_struct, *ls = spi_listener_struct_new (listener, ev);
+  SpiListenerStruct *ls = spi_listener_struct_new (listener, ev);
   GList *list;
   list = g_list_find_custom (registry->object_listeners, ls,
 			     compare_listener_corbaref);
@@ -390,7 +394,7 @@ impl_accessibility_registry_deregister_global_event_listener (
                                                     CORBA_Environment      *ev)
 {
   SpiRegistry *registry = SPI_REGISTRY (bonobo_object_from_servant (servant));
-  SpiListenerStruct ls, *spi_listener_struct;
+  SpiListenerStruct ls;
   EventTypeStruct etype;
   GList *list;
   GList **listeners;
@@ -405,6 +409,7 @@ impl_accessibility_registry_deregister_global_event_listener (
       break;
     case (ETYPE_WINDOW) :
       /* Support for Window Manager Events is not yet implemented */
+      listeners = NULL;
       break;
     case (ETYPE_TOOLKIT) :
       listeners = &registry->toolkit_listeners;
@@ -528,7 +533,11 @@ impl_registry_notify_event (PortableServer_Servant servant,
     default:
       break;
     }
-  /* Accessibility_Accessible_unref (e->source, ev);*/ /* This should be here! */
+
+  if (e->source != CORBA_OBJECT_NIL)
+    {
+      Accessibility_Accessible_unref (e->source, ev);
+    }
 }
 
 static long
@@ -545,42 +554,40 @@ _registry_notify_listeners (GList *listeners,
                             const Accessibility_Event *e_in,
                             CORBA_Environment *ev)
 {
-  int n;
-  int len;
-  SpiListenerStruct *ls;
-  EventTypeStruct etype;
-  Accessibility_Event *e_out;
-  guint minor_hash;
+  GList              *l;
+  Accessibility_Event e_out;
+  SpiListenerStruct  *ls;
+  EventTypeStruct     etype;
+  guint               minor_hash;
+
+  e_out = *e_in;
   parse_event_type (&etype, e_in->type);
   minor_hash = g_str_hash (g_strconcat (etype.major, etype.minor, NULL));
-  len = g_list_length (listeners);
 
-  for (n=0; n<len; ++n)
+  for (l = listeners; l; l = l->next)
     {
-      ls =  (SpiListenerStruct *) g_list_nth_data (listeners, n);
+      ls = (SpiListenerStruct *) l->data;
+
 #ifdef SPI_SPI_LISTENER_DEBUG
-      fprintf(stderr, "event hashes: %lx %lx %lx\n", ls->event_type_hash, etype.hash, minor_hash);
-      fprintf(stderr, "event name: %s\n", etype.event_name);
+      fprintf (stderr, "event hashes: %lx %lx %lx\n", ls->event_type_hash, etype.hash, minor_hash);
+      fprintf (stderr, "event name: %s\n", etype.event_name);
 #endif
+
       if ((ls->event_type_hash == etype.hash) || (ls->event_type_hash == minor_hash))
         {
 #ifdef SPI_DEBUG
-          fprintf(stderr, "notifying listener #%d\n", n);
-          fprintf(stderr, "event source name %s\n", Accessibility_Accessible__get_name(e_in->source, ev));
+          fprintf (stderr, "notifying listener %d\n", g_list_index (listeners, l->data));
+          fprintf (stderr, "event source name %s\n", Accessibility_Accessible__get_name (e_in->source, ev));
 #endif
-	  e_out = ORBit_copy_value (e_in, TC_Accessibility_Event);
-	  e_out->source = bonobo_object_dup_ref (e_in->source, ev);
+	  e_out.source = bonobo_object_dup_ref (e_in->source, ev);
           Accessibility_EventListener_notifyEvent ((Accessibility_EventListener) ls->listener,
-                                                   e_out,
+                                                   &e_out,
                                                    ev);
-	  /* is it safe to free e_out now ? notifyEvent is a oneway... */
-	  CORBA_free (e_out);
-          if (ev->_major != CORBA_NO_EXCEPTION) {
-                fprintf(stderr,
-                ("Accessibility app error: exception during event notification: %s\n"),
-                        CORBA_exception_id(ev));
-                exit(-1);
-          }
+          if (ev->_major != CORBA_NO_EXCEPTION)
+            {
+              g_error ("Accessibility app error: exception during event notification: %s\n",
+		       CORBA_exception_id (ev));
+	    }
         }
     }
 }
@@ -639,5 +646,6 @@ SpiRegistry *
 spi_registry_new (void)
 {
     SpiRegistry *retval = g_object_new (SPI_REGISTRY_TYPE, NULL);
+    bonobo_object_set_immortal (BONOBO_OBJECT (retval), TRUE);
     return retval;
 }

@@ -100,7 +100,7 @@ registerGlobalEventListener (AccessibleEventListener *listener,
   Accessibility_Registry_registerGlobalEventListener (
                          cspi_registry (),
                          (Accessibility_EventListener)
-                            bonobo_object_corba_objref (bonobo_object (listener)),
+                            BONOBO_OBJREF (bonobo_object (listener)),
                          eventType,
                          cspi_ev ());
 
@@ -126,15 +126,11 @@ deregisterGlobalEventListenerAll (AccessibleEventListener *listener)
 {
   Accessibility_Registry_deregisterGlobalEventListenerAll (
                          cspi_registry (),
-                         (Accessibility_EventListener)
-                            CORBA_Object_duplicate (
-				    bonobo_object_corba_objref (
-					    bonobo_object (listener)), cspi_ev ()),
-                         cspi_ev ());
+			 (Accessibility_EventListener) BONOBO_OBJREF (listener),
+			 cspi_ev ());
   if (!cspi_exception ())
     {
       bonobo_object_unref (BONOBO_OBJECT (listener));	    
-      /* Would prefer that this were not a bonobo object: g_object_unref (listener);*/
     }
 
   return !cspi_exception ();
@@ -157,9 +153,7 @@ deregisterGlobalEventListener (AccessibleEventListener *listener,
 {
   Accessibility_Registry_deregisterGlobalEventListener (
 	  cspi_registry (),
-	  (Accessibility_EventListener)
-	  CORBA_Object_duplicate (
-		  bonobo_object_corba_objref (bonobo_object (listener)), cspi_ev ()),
+	  (Accessibility_EventListener) BONOBO_OBJREF (listener),
 	  (CORBA_char *) eventType,
 	  cspi_ev ());
 
@@ -196,9 +190,9 @@ getDesktopCount ()
 Accessible*
 getDesktop (int i)
 {
-  return cspi_object_add (Accessibility_Registry_getDesktop (cspi_registry (),
-							     (CORBA_short) i,
-							     cspi_ev ()));
+  return cspi_object_add_check (Accessibility_Registry_getDesktop (cspi_registry (),
+								   (CORBA_short) i,
+								   cspi_ev ()));
 }
 
 /**
@@ -338,8 +332,7 @@ deregisterAccessibleKeystrokeListener (AccessibleKeystrokeListener *listener,
   controller_event_mask->value = (CORBA_unsigned_long) modmask;
   controller_event_mask->refcount = (CORBA_unsigned_short) 1;
 
-  cspi_listener_corba_ref = (Accessibility_KeystrokeListener)
-	  CORBA_Object_duplicate (BONOBO_OBJREF(listener), cspi_ev ());
+  cspi_listener_corba_ref = (Accessibility_KeystrokeListener) BONOBO_OBJREF (listener);
   
   Accessibility_DeviceEventController_deregisterKeystrokeListener (
 	  device_event_controller,
