@@ -1,3 +1,43 @@
+2001-12-05  Bill Haneman <bill.haneman@sun.com>
+
+	* at-bridge/bridge.c:
+	Reorder the bridge initialization into the bridge gtk_module_init,
+	an immediate call to bridge_register_app, and an idle_add for
+	register_atk_event_listeners (the only code that *must* wait until
+	GTK+ is initialized) via bridge_idle_add. Bridge_register_app does
+	the activation, creates the application's Accessible object, and
+	queues the bridge_idle_init function.  Restored call to
+	Accessibility_Registry_deregisterApplication().  
+	Prior to making this call we obtain a new reference to the
+	registry, which is a temporary hack that helps us handle apps that
+	shut down the bonobo mainloop before we get there.
+
+	* libspi/registry.c:
+	Fix string leakage in debug block, and don't segv if a an app
+	dies before its event notifications have been propagated.
+
+	* cpi/spi_util.c:
+	Modify cspi_check_ev() to call g_warning() rather than g_error(),
+	as stopgap measure until we get proper exception handling when 
+	objects die during or before interrogation.  
+
+	* cspi/spi_main.c:
+	* cspi/spi.h:
+	Moved use of isGNOMEApp flag from SPI_event_main to SPI_init.
+	Also changed default value of is_gnome_app to TRUE.
+
+	* test/simple-at.c:
+	* test/keysynth-demo.c:
+	Changed use of SPI_init and SPI_event_main to reflect API change above.
+
+	* test/simple-at.c:
+	Made report_focus_event check the warning value from getName
+	before reporting on focussed accessible; simplifies handling of
+	notifications from dead objects.
+
+	* test/test-simple.c: (Changes not in this patch since source is
+	not in CVS ?)
+	
 2001-12-05  Michael Meeks  <michael@ximian.com>
 
 	* libspi/editabletext.c

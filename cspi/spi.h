@@ -131,20 +131,11 @@ typedef unsigned long AccessibleKeyMaskType;
  *
  */
 
-/**
- * SPI_init:
- *
- * Connects to the accessibility registry and initializes the SPI.
- *
- * Returns: 0 on success, otherwise an integer error code.
- **/
 int
-SPI_init (void);
+SPI_init (SPIBoolean isGNOMEApp);
 
 /**
  * SPI_event_main:
- * @isGNOMEApp: a #SPIBoolean indicating whether the client of the SPI
- *              will use the Gnome event loop or not.
  *
  * Starts/enters the main event loop for the SPI services.
  *
@@ -153,7 +144,7 @@ SPI_init (void);
  *
  **/
 void
-SPI_event_main (SPIBoolean isGNOMEApp);
+SPI_event_main (void);
 
 /**
  * SPI_event_is_ready:

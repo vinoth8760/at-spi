@@ -558,6 +558,7 @@ _registry_notify_listeners (GList *listeners,
   SpiListenerStruct  *ls;
   EventTypeStruct     etype;
   guint               minor_hash;
+  CORBA_string s;
 
   e_out = *e_in;
   parse_event_type (&etype, e_in->type);
@@ -576,7 +577,12 @@ _registry_notify_listeners (GList *listeners,
         {
 #ifdef SPI_DEBUG
           fprintf (stderr, "notifying listener %d\n", g_list_index (listeners, l->data));
-          fprintf (stderr, "event source name %s\n", Accessibility_Accessible__get_name (e_in->source, ev));
+          s = Accessibility_Accessible__get_name (e_in->source, ev);
+          if (s)
+	    {
+	      fprintf (stderr, "event source name %s\n", s);
+	      CORBA_free (s);
+	    }
 #endif
 	  e_out.source = bonobo_object_dup_ref (e_in->source, ev);
           Accessibility_EventListener_notifyEvent ((Accessibility_EventListener) ls->listener,

@@ -468,7 +468,7 @@ main(int argc, char **argv)
 
   gtk_init (&argc, &argv); /* must call, because this program uses GTK+ */
 
-  SPI_init ();
+  SPI_init (TRUE);
 
   key_listener = createAccessibleKeystrokeListener (is_command_key, NULL);
   /* will listen only to Alt-key combinations */
@@ -497,7 +497,7 @@ main(int argc, char **argv)
 				       (unsigned long) ( KeyPress | KeyRelease),
 				       SPI_KEYLISTENER_CANCONSUME);
   
-  SPI_event_main (TRUE);
+  SPI_event_main ();
 
   return 0;
 }

@@ -45,7 +45,14 @@ cspi_check_ev (CORBA_Environment *ev, const char *error_string)
 {
   if (ev->_major != CORBA_NO_EXCEPTION)
     {
-      g_error ("AT-SPI error: %s: %s\n", error_string,
-	       bonobo_exception_get_text (ev));
+      char *err;
+
+      err = bonobo_exception_get_text (ev);
+
+      g_warning ("AT-SPI error: %s: %s\n", error_string, err);
+
+      g_free (err);
+
+      CORBA_exception_free (ev);
     }
 }

@@ -11,7 +11,7 @@
 
 static CORBA_Environment ev = { 0 };
 static Accessibility_Registry registry = CORBA_OBJECT_NIL;
-static SPIBoolean is_gnome_app = FALSE;
+static SPIBoolean is_gnome_app = TRUE;
 static GHashTable *live_refs = NULL;
 
 static guint
@@ -226,16 +226,21 @@ static gboolean SPI_inited = FALSE;
 
 /**
  * SPI_init:
+ * @isGNOMEApp: a #SPIBoolean indicating whether the client of the SPI
+ *              will use the Gnome event loop or not.  Clients that have
+ *              their own GUIS will usually specify #TRUE here, and must
+ *              do so if they use Gnome GUI components.
  *
  * Connects to the accessibility registry and initializes the SPI.
  *
  * Returns: 0 on success, otherwise an integer error code.
  **/
 int
-SPI_init (void)
+SPI_init (SPIBoolean isGNOMEApp)
 {
   int argc = 0;
   char *obj_id;
+  is_gnome_app = isGNOMEApp;
 
   if (SPI_inited)
     {
@@ -274,10 +279,6 @@ SPI_init (void)
 
 /**
  * SPI_event_main:
- * @isGNOMEApp: a #SPIBoolean indicating whether the client of the SPI
- *              will use the Gnome event loop or not.  Clients that have
- *              their own GUIS will usually specify #TRUE here, and must
- *              do so if they use Gnome GUI components.
  *
  * Starts/enters the main event loop for the SPI services.
  *
@@ -286,10 +287,9 @@ SPI_init (void)
  *
  **/
 void
-SPI_event_main (SPIBoolean isGNOMEApp)
+SPI_event_main ()
 {
-  is_gnome_app = isGNOMEApp;
-  if (isGNOMEApp)
+  if (cspi_is_gnome_app ())
     {
       g_atexit (cspi_cleanup);
       bonobo_main ();

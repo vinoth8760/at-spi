@@ -61,7 +61,13 @@ static gint bridge_key_listener (AtkKeyEventStruct *event,
 int
 gtk_module_init (gint *argc, gchar **argv[])
 {
-  char *obj_id;
+  bridge_register_app (argc, argv);
+  g_atexit (bridge_exit_func);
+}
+
+static void
+bridge_register_app (gint *argc, gchar **argv[])
+{
   CORBA_Environment ev;
 
   if (!bonobo_init (argc, *argv))
@@ -69,33 +75,29 @@ gtk_module_init (gint *argc, gchar **argv[])
       g_error ("Could not initialize Bonobo");
     }
 
-  obj_id = "OAFIID:Accessibility_Registry:proto0.1";
-
   CORBA_exception_init(&ev);
 
-  registry = bonobo_activation_activate_from_id (obj_id, 0, NULL, &ev);
-
-  if (ev._major != CORBA_NO_EXCEPTION || registry == CORBA_OBJECT_NIL)
+  registry = bonobo_activation_activate_from_id (
+	  "OAFIID:Accessibility_Registry:proto0.1", 0, NULL, &ev);
+  
+  if (ev._major != CORBA_NO_EXCEPTION)
     {
-      g_error ("Could not locate the registry with exception '%s'",
-	       bonobo_exception_get_text (&ev));
+      fprintf(stderr,
+            ("Accessibility app error: exception during registry activation from id: %s\n"),
+            CORBA_exception_id(&ev));
+      CORBA_exception_free(&ev);
     }
 
-  CORBA_exception_free (&ev);
+  if (CORBA_Object_is_nil (registry, &ev))
+    {
+      g_error ("Could not locate registry");
+    }
+
+  fprintf(stderr, "About to register application\n");
 
   bonobo_activate ();
 
-  g_idle_add (bridge_idle_init, NULL);
-
-  g_atexit (bridge_exit_func);
-
-  return 0;
-}
-
-static gboolean
-bridge_idle_init (gpointer user_data)
-{
-  /* Create the accesssible application server object */
+  /* Create the accessible application server object */
   this_app = spi_application_new (atk_get_root ());
 
   fprintf (stderr, "About to register application\n");
@@ -103,8 +105,15 @@ bridge_idle_init (gpointer user_data)
   Accessibility_Registry_registerApplication (registry,
                                               BONOBO_OBJREF (this_app),
                                               &ev);
-  register_atk_event_listeners ();
 
+  g_idle_add (bridge_idle_init, NULL);
+
+}
+
+static gboolean
+bridge_idle_init (gpointer user_data)
+{
+  register_atk_event_listeners ();
   fprintf (stderr, "Application registered & listening\n");
 
   return FALSE;
@@ -119,7 +128,7 @@ register_atk_event_listeners (void)
    */
 
   AtkObject *o = atk_no_op_object_new (g_object_new (ATK_TYPE_OBJECT, NULL));
-
+  
   /* Register for focus event notifications, and register app with central registry  */
 
   atk_add_focus_tracker (bridge_focus_tracker);
@@ -138,6 +147,8 @@ register_atk_event_listeners (void)
   atk_add_global_event_listener (bridge_signal_listener, "Gtk:AtkTable:column-deleted");
   atk_add_global_event_listener (bridge_signal_listener, "Gtk:AtkTable:model-changed");
   atk_add_key_event_listener    (bridge_key_listener, NULL);
+
+  g_object_unref (o);
 }
 
 static void
@@ -146,15 +157,16 @@ bridge_exit_func (void)
   fprintf (stderr, "exiting bridge\n");
 
 /*
-  FIXME: we can't do this until we can explicitely shutdown
-         to get the ordering right.
-  if (this_app)
-    {
-      Accessibility_Registry_deregisterApplication (registry,
-						    BONOBO_OBJREF (this_app),
-						    &ev);
-    }
-  bonobo_object_release_unref (registry, &ev);*/
+  FIXME: this may be incorrect for apps that do their own bonobo shutdown,
+  until we can explicitly shutdown to get the ordering right. */
+
+  bonobo_init (0, NULL);
+  registry = bonobo_activation_activate_from_id (
+	  "OAFIID:Accessibility_Registry:proto0.1", 0, NULL, &ev);
+
+  Accessibility_Registry_deregisterApplication (registry,
+						BONOBO_OBJREF (this_app),
+						&ev);
   
   fprintf (stderr, "bridge exit func complete.\n");
 }

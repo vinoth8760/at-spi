@@ -66,7 +66,7 @@ main (int argc, char **argv)
     exit(0);
   }
 
-  SPI_init();
+  SPI_init(TRUE);
 
   focus_listener = createAccessibleEventListener (report_focus_event, NULL);
   property_listener = createAccessibleEventListener (check_property_change, NULL); 
@@ -121,7 +121,7 @@ main (int argc, char **argv)
 
   get_environment_vars();
 
-  SPI_event_main(TRUE);
+  SPI_event_main();
 }
 
 static void
@@ -197,9 +197,12 @@ void
 report_focus_event (AccessibleEvent *event, void *user_data)
 {
   char *s = Accessible_getName (event->source);
-  fprintf (stderr, "%s event from %s\n", event->type, s);
-  SPI_freeString (s);
-  report_focussed_accessible (event->source, TRUE);
+  if (!cspi_warn_ev (cspi_ev ()))
+    { fprintf (stderr, "%s event from %s\n", event->type, s);
+      SPI_freeString (s);
+      report_focussed_accessible (event->source, TRUE);
+    }
+  Accessible_getParent (event->source);
 }
 
 void
