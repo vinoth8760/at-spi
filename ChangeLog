@@ -1,5 +1,9 @@
 2001-11-27  Michael Meeks  <michael@ximian.com>
 
+	* cspi/spi-listener.h: fixup enum.
+
+2001-11-27  Michael Meeks  <michael@ximian.com>
+
 	* cspi/spi-listener-impl.c (cspi_event_listener_new),
 	(cspi_keystroke_listener_new): Use the cspi variants.
 

@@ -15,10 +15,9 @@ typedef struct {
 	long         detail2;
 } AccessibleEvent;
 
-/* XXX: must be single bits since they are used as masks in keylistener API */
 typedef enum {
-  SPI_KEY_PRESSED  = 1,
-  SPI_KEY_RELEASED = 2
+	SPI_KEY_PRESSED  = 1<<0,
+	SPI_KEY_RELEASED = 1<<1
 } AccessibleKeyEventType;
 
 typedef struct {
