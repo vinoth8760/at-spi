@@ -1,3 +1,7 @@
+2003-07-15  Padraig O'Briain <padraig.obriain@sun.com>
+
+	* cspi/spi_main.c: Add include of <stdio.h>
+ 
 2003-04-17  Bill Haneman <bill.haneman@sun.com>
 
 	* configure.in: Revved to 1.2.0, tagged and
