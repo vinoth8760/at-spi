@@ -24,6 +24,7 @@
 
 #include <config.h>
 #include <stdio.h>
+#include <atk/atkhypertext.h>
 #include <libspi/hyperlink.h>
 #include <libspi/hypertext.h>
 

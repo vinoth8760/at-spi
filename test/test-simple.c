@@ -131,7 +131,7 @@ test_desktop (void)
 	validate_accessible (desktop, FALSE, FALSE);
 
 	application = Accessible_getChildAtIndex (desktop, 0);
-	g_assert (application == NULL); /* app registered idly */
+	g_assert (application != NULL);
 
 	Accessible_unref (desktop);
 }
@@ -290,13 +290,15 @@ validate_tree (Accessible *accessible,
 		Accessible *child;
 
 		child = Accessible_getChildAtIndex (accessible, i);
+#ifdef ROPEY
 		if (!child)
 			fprintf (stderr, "Unusual - ChildGone at %ld\n", i);
 
 		g_assert (Accessible_getIndexInParent (child) == i);
 		g_assert (Accessible_getParent (child) == accessible);
+#endif
 
-		if (recurse_down)
+		if (recurse_down && child)
 			validate_accessible (child, has_parent, recurse_down);
 
 		Accessible_unref (child);

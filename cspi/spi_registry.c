@@ -246,65 +246,74 @@ registerAccessibleKeystrokeListener (AccessibleKeystrokeListener *listener,
 				     AccessibleKeyEventMask eventmask,
 				     AccessibleKeyListenerSyncType sync_type)
 {
-  Accessibility_ControllerEventMask *controller_event_mask =
-	  Accessibility_ControllerEventMask__alloc();
-  Accessibility_DeviceEventController device_event_controller = 
-	  Accessibility_Registry_getDeviceEventController (cspi_registry (), cspi_ev ());
-  Accessibility_KeySet *key_set = Accessibility_KeySet__alloc();
-  Accessibility_KeyEventTypeSeq *key_events = Accessibility_KeyEventTypeSeq__alloc();
-  Accessibility_KeystrokeListener cspi_listener_corba_ref;
-  gint i, mask;
-  Accessibility_DeviceEventController_ref (device_event_controller, cspi_ev ());
+  gint                                i, mask;
+  Accessibility_KeySet                key_set;
+  Accessibility_KeyEventTypeSeq       key_events;
+  Accessibility_ControllerEventMask   controller_event_mask;
+  Accessibility_DeviceEventController device_event_controller;
+
+  device_event_controller = 
+    Accessibility_Registry_getDeviceEventController (cspi_registry (), cspi_ev ());
+
+  g_return_if_fail (cspi_warn_ev (cspi_ev (), "getting event controller"));
 
   /* copy the keyval filter values from the C api into the CORBA KeySet */
   if (keys)
     {
-      key_set->_buffer = Accessibility_KeySet_allocbuf (
- 	                                            (unsigned long) keys->len);
-      key_set->_length = (unsigned long) keys->len;
-      for (i=0; i < key_set->_length; ++i)
+      key_set._length = keys->len;
+      key_set._buffer = Accessibility_KeySet_allocbuf (keys->len);
+      for (i = 0; i < key_set._length; ++i)
         {
           /* we overload the keyset long w/keycodes, the - bit acts as a flag */
-          key_set->_buffer[i] = (keys->keysyms[i]) ? keys->keysyms[i] :
+          key_set._buffer[i] = (keys->keysyms[i]) ? keys->keysyms[i] :
 	                                         -keys->keycodes[i];
 	  /* g_print ("key-set %d = %d\n", i, (int) key_set->_buffer[i]); */
         }
     }
+  else
+    {
+      key_set._length = 0;
+      key_set._buffer = NULL;
+    }
+	
   /* copy the event filter values from the C api into the CORBA KeyEventTypeSeq */
-  mask=1;
-  i=0;
+  mask = 1;
+  i = 0;
   do
     {
-      if (mask & eventmask) ++i; 
+      if (mask & eventmask)
+        {
+          ++i; 
+	}
       mask <<= 1;
-    } while (mask & 0xFFFF);
+    }
+  while (mask & 0xFFFF);
   
-  key_events->_buffer = Accessibility_KeyEventTypeSeq_allocbuf (i);
-  i=0;
+  key_events._buffer = Accessibility_KeyEventTypeSeq_allocbuf (i);
+  i = 0;
   if (eventmask & SPI_KEY_PRESSED)
     {
-      key_events->_buffer[i++] = Accessibility_KEY_PRESSED;
+      key_events._buffer[i++] = Accessibility_KEY_PRESSED;
     }
   if (eventmask & SPI_KEY_RELEASED)
     {
-      key_events->_buffer[i++] = Accessibility_KEY_RELEASED;
+      key_events._buffer[i++] = Accessibility_KEY_RELEASED;
     }
-  key_events->_length = i;
+  key_events._length = i;
   
-  controller_event_mask->value = (CORBA_unsigned_long) modmask;
-  controller_event_mask->refcount = (CORBA_unsigned_short) 1;
+  controller_event_mask.value = (CORBA_unsigned_long) modmask;
+  controller_event_mask.refcount = (CORBA_unsigned_short) 1;
 
-  cspi_listener_corba_ref = (Accessibility_KeystrokeListener)
-	  CORBA_Object_duplicate (bonobo_object_corba_objref (bonobo_object (listener)), cspi_ev ());
-  
-	  Accessibility_DeviceEventController_registerKeystrokeListener (
+  Accessibility_DeviceEventController_registerKeystrokeListener (
 	  device_event_controller,
-	  cspi_listener_corba_ref,
-	  key_set,
-	  controller_event_mask,
-	  key_events,
+	  BONOBO_OBJREF (listener),
+	  &key_set,
+	  &controller_event_mask,
+	  &key_events,
 	  (CORBA_boolean) ((sync_type & SPI_KEYLISTENER_ALL_WINDOWS)!=0),
 	  cspi_ev ());
+
+  bonobo_object_release_unref (device_event_controller, cspi_ev ());
 }
 
 /**
@@ -321,27 +330,35 @@ void
 deregisterAccessibleKeystrokeListener (AccessibleKeystrokeListener *listener,
 				       AccessibleKeyMaskType modmask)
 {
-  Accessibility_ControllerEventMask *controller_event_mask =
-	  Accessibility_ControllerEventMask__alloc();
-  Accessibility_DeviceEventController device_event_controller = 
-	  Accessibility_Registry_getDeviceEventController (cspi_registry (), cspi_ev ());
-  Accessibility_KeySet *all_keys = Accessibility_KeySet__alloc();
-  Accessibility_KeyEventTypeSeq *key_events = Accessibility_KeyEventTypeSeq__alloc();
-  Accessibility_KeystrokeListener cspi_listener_corba_ref;
-  Accessibility_DeviceEventController_unref (device_event_controller, cspi_ev ());
-  controller_event_mask->value = (CORBA_unsigned_long) modmask;
-  controller_event_mask->refcount = (CORBA_unsigned_short) 1;
+  Accessibility_ControllerEventMask   controller_event_mask;
+  Accessibility_KeySet                key_set;
+  Accessibility_KeyEventTypeSeq       key_events;
+  Accessibility_DeviceEventController device_event_controller;
 
-  cspi_listener_corba_ref = (Accessibility_KeystrokeListener) BONOBO_OBJREF (listener);
-  
+  device_event_controller = 
+    Accessibility_Registry_getDeviceEventController (cspi_registry (), cspi_ev ());
+
+  g_return_if_fail (cspi_warn_ev (cspi_ev (), "getting event controller"));
+
+  controller_event_mask.value = (CORBA_unsigned_long) modmask;
+  controller_event_mask.refcount = (CORBA_unsigned_short) 1;
+
+  key_events._buffer = NULL;
+  key_events._length = 0;
+
+  key_set._buffer = NULL;
+  key_set._length = 0;
+
   Accessibility_DeviceEventController_deregisterKeystrokeListener (
 	  device_event_controller,
-	  cspi_listener_corba_ref,
-	  all_keys,
-	  controller_event_mask,
-	  key_events,
+	  BONOBO_OBJREF (listener),
+	  &key_set,
+	  &controller_event_mask,
+	  &key_events,
 	  (CORBA_boolean) TRUE,
 	  cspi_ev ());
+
+  bonobo_object_release_unref (device_event_controller, NULL);
 }
 
 /**
@@ -365,10 +382,15 @@ generateKeyEvent (long int keyval, AccessibleKeySynthType synth_type)
  */
   Accessibility_DeviceEventController device_event_controller = 
 	  Accessibility_Registry_getDeviceEventController (cspi_registry (), cspi_ev ());
+
+  g_return_if_fail (cspi_warn_ev (cspi_ev (), "getting event controller"));
+
   Accessibility_DeviceEventController_generateKeyEvent (device_event_controller,
 							keyval,
 							(unsigned long) synth_type,
 							cspi_ev ());
+
+  bonobo_object_release_unref (device_event_controller, NULL);
 }
 
 /**

@@ -234,7 +234,10 @@ cspi_cleanup (void)
 
   refs = live_refs;
   live_refs = NULL;
-  g_hash_table_destroy (refs);
+  if (refs)
+    {
+      g_hash_table_destroy (refs);
+    }
 
   if (registry != CORBA_OBJECT_NIL)
     {
@@ -294,6 +297,11 @@ SPI_init (SPIBoolean isGNOMEApp)
     }
 
   bonobo_activate ();
+
+  if (isGNOMEApp)
+    {
+      g_atexit (cspi_cleanup);
+    }
   
   return 0;
 }
@@ -312,7 +320,6 @@ SPI_event_main ()
 {
   if (cspi_is_gnome_app ())
     {
-      g_atexit (cspi_cleanup);
       bonobo_main ();
     }
   else

@@ -1,3 +1,63 @@
+2001-12-07  Michael Meeks  <michael@ximian.com>
+
+	* test/test-simple.c (validate_tree): comment out some checks.
+	(test_desktop): app now not registered idly - horay.
+
+2001-12-07  Michael Meeks  <michael@ximian.com>
+
+	* cspi/spi_registry.c
+	(registerAccessibleKeystrokeListener): clean, stop it leaking
+	great swathes of memory, and device event controller references.
+	ensure we always pass valid sequences.
+	(deregisterAccessibleKeystrokeListener): ditto.
+	(generateKeyEvent): upd.
+
+	* at-bridge/bridge.c (bridge_key_listener): handle
+	registry dead exception gracefully.
+	(bridge_focus_tracker, emit_eventv): free ev.
+
+	* test/simple-at.c (report_focus_event): fix polarity.
+
+	* libspi/application.c (notify_listeners): kill the ev
+	argument, and make sure we init the ev we use.
+	(spi_application_object_event_listener): split out a chunk
+	(get_atk_object_ref): here & fixup.
+	(reverse_lookup_name_for_toolkit_event): make const.
+	(spi_application_toolkit_event_listener): fixup, kill leaks
+	ref problems etc.
+
+	* at-bridge/bridge.c (register_atk_event_listeners):
+	don't unref the noop object - causes grief.
+
+	* libspi/registry.c: remove the X headers.
+	turn off the debug churn.
+
+	* libspi/accessible.c (spi_accessible_new_return): only
+	release the ref if we are supposed to [doh]
+
+	* test/simple-at.c (report_button_press, report_focus_event):
+	guard vs. unexpected exit.
+
+	* at-bridge/bridge.c (gtk_module_init): prune printf.
+	(bridge_exit_func): fix app unref.
+
+	* libspi/Makefile.am: don't install registry or desktop.h
+
+	* libspi/*.h: update includes.
+
+	* libspi/application.h: don't include ourself, or
+	other redundant headers.
+
+2001-12-06  Michael Meeks  <michael@ximian.com>
+
+	* libspi/accessible.c
+	(get_accessible_from_servant): impl.
+	Upd. all CORBA impl.s to use it killing cut and paste.
+
+	* cspi/spi_main.c (cspi_cleanup): guard vs. double
+	invokes.
+	(SPI_init): register atexit cleanup handler here.
+
 2001-12-06  Michael Meeks  <michael@ximian.com>
 
 	* at-bridge/bridge.c (gtk_module_init): g_error on

@@ -20,9 +20,8 @@
 #ifndef SPI_COMPONENT_H_
 #define SPI_COMPONENT_H_
 
-#include <bonobo/bonobo-object.h>
-#include <atk/atk.h>
-#include <libspi/Accessibility.h>
+#include <libspi/base.h>
+#include <atk/atkcomponent.h>
 
 G_BEGIN_DECLS
 

@@ -27,6 +27,7 @@
 #include <sys/un.h>
 #include <cspi/spi.h>
 #include "../util/mag_client.h"
+#include "../cspi/spi-private.h" /* A hack for now */
 
 static void report_focus_event    (AccessibleEvent *event, void *user_data);
 static void report_button_press   (AccessibleEvent *event, void *user_data);
@@ -125,20 +126,22 @@ main (int argc, char **argv)
 }
 
 static void
-get_environment_vars()
+get_environment_vars (void)
 {
-  if (getenv ("FESTIVAL"))
-  {
-    use_festival = TRUE;
-    if (getenv ("FESTIVAL_CHATTY"))
+  if (g_getenv ("FESTIVAL"))
     {
-      festival_chatty = TRUE;
+      fprintf (stderr, "Using festival\n");
+      use_festival = TRUE;
+      if (g_getenv ("FESTIVAL_CHATTY"))
+        {
+          festival_chatty = TRUE;
+	}
     }
-  }
-  if (getenv("MAGNIFIER"))
-  {
-    use_magnifier = TRUE;
-  }  
+  if (g_getenv ("MAGNIFIER"))
+    {
+      fprintf (stderr, "Using magnifier\n");
+      use_magnifier = TRUE;
+    }  
 }
 
 void
@@ -146,6 +149,9 @@ report_focussed_accessible (Accessible *obj, SPIBoolean shutup_previous_speech)
 {
   char *s;
   int len;
+
+  g_warning ("Report focused !");
+
   if (use_festival)
     {
     if (festival_chatty) 	    
@@ -196,9 +202,16 @@ report_focussed_accessible (Accessible *obj, SPIBoolean shutup_previous_speech)
 void
 report_focus_event (AccessibleEvent *event, void *user_data)
 {
-  char *s = Accessible_getName (event->source);
-  if (!cspi_warn_ev (cspi_ev ()))
-    { fprintf (stderr, "%s event from %s\n", event->type, s);
+  char *s;
+
+  g_warning ("report focus event");
+
+  g_return_if_fail (event->source != NULL);
+
+  s = Accessible_getName (event->source);
+  if (cspi_warn_ev (cspi_ev (), "Foobar"))
+    {
+      fprintf (stderr, "%s event from %s\n", event->type, s);
       SPI_freeString (s);
       report_focussed_accessible (event->source, TRUE);
     }
@@ -208,14 +221,18 @@ report_focus_event (AccessibleEvent *event, void *user_data)
 void
 report_button_press (AccessibleEvent *event, void *user_data)
 {
-  char *s = Accessible_getName (event->source);
+  char *s;
+
+  g_return_if_fail (event->source != NULL);
+
+  s = Accessible_getName (event->source);
+
   fprintf (stderr, "%s event from %s\n", event->type, s);
   SPI_freeString (s);
   s = Accessible_getDescription (event->source);
   fprintf (stderr, "Object description %s\n", s);
   SPI_freeString (s);
 }
-
 
 void
 check_property_change (AccessibleEvent *event, void *user_data)

@@ -24,13 +24,25 @@
 
 #include <config.h>
 #include <stdio.h>
+#include <bonobo/bonobo-exception.h>
+#include <atk/atk.h>
 #include <libspi/libspi.h>
 
 /* Our parent Gtk object type  */
 #define PARENT_TYPE SPI_TYPE_BASE
 
-/* A pointer to our parent object class */
-static GObjectClass *spi_accessible_parent_class;
+static AtkObject *
+get_accessible_from_servant (PortableServer_Servant servant)
+{
+  SpiBase *object = SPI_BASE (bonobo_object_from_servant (servant));
+
+  if (!object)
+    {
+      return NULL;
+    }
+
+  return object->atko;
+}
 
 /*
  * CORBA Accessibility::Accessible::get_name method implementation
@@ -39,13 +51,22 @@ static CORBA_char *
 impl_accessibility_accessible_get_name (PortableServer_Servant servant,
                                         CORBA_Environment     *ev)
 {
-  CORBA_char * retval;
-  SpiBase *object = SPI_BASE (bonobo_object_from_servant (servant));
-  retval = (CORBA_char *) atk_object_get_name (object->atko);
-  if (retval )
-    retval = CORBA_string_dup (retval);
+  const gchar *name;
+  CORBA_char  *retval;
+  AtkObject   *object = get_accessible_from_servant (servant);
+
+  g_return_val_if_fail (object != NULL, CORBA_string_dup (""));
+
+  name = atk_object_get_name (object);
+
+  if (name)
+    {
+      retval = CORBA_string_dup (name);
+    }
   else
-    retval = CORBA_string_dup ("");
+    {
+      retval = CORBA_string_dup ("");
+    }
 
   return retval;
 }
@@ -58,9 +79,11 @@ impl_accessibility_accessible_set_name (PortableServer_Servant servant,
                                         const CORBA_char      *name,
                                         CORBA_Environment     *ev)
 {
-  SpiBase *object = SPI_BASE (bonobo_object_from_servant (servant));
-  atk_object_set_name (object->atko, name);
-  printf ("SpiAccessible set_name called: %s\n", name);
+  AtkObject *object = get_accessible_from_servant (servant);
+
+  g_return_if_fail (object != NULL);
+
+  atk_object_set_name (object, name);
 }
 
 /*
@@ -70,13 +93,22 @@ static CORBA_char *
 impl_accessibility_accessible_get_description (PortableServer_Servant servant,
                                                CORBA_Environment     *ev)
 {
-  CORBA_char * retval;
-  SpiBase *object = SPI_BASE (bonobo_object_from_servant (servant));
-  retval = CORBA_string_dup (atk_object_get_description (object->atko));
-  if (retval )
-    retval = CORBA_string_dup (retval);
+  const gchar *descr;
+  CORBA_char  *retval;
+  AtkObject   *object = get_accessible_from_servant (servant);
+
+  g_return_val_if_fail (object != NULL, CORBA_string_dup (""));
+
+  descr = atk_object_get_description (object);
+
+  if (descr)
+    {
+      retval = CORBA_string_dup (descr);
+    }
   else
-    retval = CORBA_string_dup ("");
+    {
+      retval = CORBA_string_dup ("");
+    }
 
   return retval;
 }
@@ -86,12 +118,14 @@ impl_accessibility_accessible_get_description (PortableServer_Servant servant,
  */
 static void
 impl_accessibility_accessible_set_description (PortableServer_Servant servant,
-                                               const CORBA_char      *name,
+                                               const CORBA_char      *descr,
                                                CORBA_Environment     *ev)
 {
-  SpiBase *object = SPI_BASE (bonobo_object_from_servant (servant));
-  atk_object_set_description (object->atko, name);
-  printf ("SpiAccessible set_description called: %s\n", name);
+  AtkObject *object = get_accessible_from_servant (servant);
+
+  g_return_if_fail (object != NULL);
+
+  atk_object_set_description (object, descr);
 }
 
 /*
@@ -101,23 +135,14 @@ static Accessibility_Accessible
 impl_accessibility_accessible_get_parent (PortableServer_Servant servant,
                                           CORBA_Environment     *ev)
 {
-  Accessibility_Accessible retval;
-  SpiBase *object = SPI_BASE (bonobo_object_from_servant (servant));
-  AtkObject     *parent;
+  AtkObject *parent;
+  AtkObject *object = get_accessible_from_servant (servant);
 
-  parent = atk_object_get_parent (object->atko);
+  g_return_val_if_fail (object != NULL, CORBA_OBJECT_NIL);
 
-  if (parent) 
-    {
-      retval = CORBA_Object_duplicate (BONOBO_OBJREF (spi_accessible_new (parent)),
-				       ev);
-    }
-  else
-    {
-      retval = CORBA_OBJECT_NIL;
-    }
+  parent = atk_object_get_parent (object);
 
-  return retval;
+  return spi_accessible_new_return (parent, FALSE, ev);
 }
 
 /*
@@ -127,10 +152,11 @@ static CORBA_long
 impl_accessibility_accessible_get_index_in_parent (PortableServer_Servant servant,
                                                    CORBA_Environment     *ev)
 {
-  CORBA_long retval;
-  SpiBase *object = SPI_BASE (bonobo_object_from_servant (servant));
-  retval = (CORBA_long) atk_object_get_index_in_parent (object->atko);
-  return retval;
+  AtkObject *object = get_accessible_from_servant (servant);
+
+  g_return_val_if_fail (object != NULL, -1);
+
+  return atk_object_get_index_in_parent (object);
 }
 
 /*
@@ -140,10 +166,11 @@ static CORBA_long
 impl_accessibility_accessible_get_child_count (PortableServer_Servant servant,
                                                CORBA_Environment     *ev)
 {
-  CORBA_long retval;
-  SpiBase *object = SPI_BASE (bonobo_object_from_servant (servant));
-  retval = (CORBA_long) atk_object_get_n_accessible_children (object->atko);
-  return retval;
+  AtkObject *object = get_accessible_from_servant (servant);
+
+  g_return_val_if_fail (object != NULL, 0);
+
+  return atk_object_get_n_accessible_children (object);
 }
 
 /*
@@ -154,8 +181,13 @@ impl_accessibility_accessible_get_child_at_index (PortableServer_Servant servant
                                                   const CORBA_long      index,
                                                   CORBA_Environment     *ev)
 {
-  SpiBase *object = SPI_BASE (bonobo_object_from_servant (servant));
-  AtkObject *child = atk_object_ref_accessible_child (object->atko, (gint) index);
+  AtkObject *child;
+  AtkObject *object = get_accessible_from_servant (servant);
+
+  g_return_val_if_fail (object != NULL, 0);
+
+  child = atk_object_ref_accessible_child (object, index);
+
   return spi_accessible_new_return (child, TRUE, ev);
 }
 
@@ -166,13 +198,14 @@ static Accessibility_StateSet
 impl_accessibility_accessible_get_state (PortableServer_Servant servant,
 					 CORBA_Environment     *ev)
 {
-  Accessibility_StateSet retval;
-/*  SpiAccessible *accessible = SPI_ACCESSIBLE (bonobo_object_from_servant (servant));
-    AtkStateSet *state = atk_object_ref_state_set (accessible->atko); */
-  retval = CORBA_OBJECT_NIL;
+  AtkObject *object = get_accessible_from_servant (servant);
+
+  bonobo_return_val_if_fail (object != NULL, NULL, ev);
+
   printf ("SpiAccessible get_state.\n");
+
   /* TODO: implement the bonobo stateset class */
-  return (Accessibility_StateSet) retval;
+  return (Accessibility_StateSet) NULL;
 }
 
 /*
@@ -185,13 +218,18 @@ impl_accessibility_accessible_get_relation_set (PortableServer_Servant servant,
   Accessibility_RelationSet *retval;
   gint n_relations;
   gint i;
-  SpiBase *object = SPI_BASE (bonobo_object_from_servant (servant));
-  AtkRelationSet *relation_set = atk_object_ref_relation_set (object->atko);
+  AtkRelationSet *relation_set;
+  AtkObject      *object = get_accessible_from_servant (servant);
+
+  bonobo_return_val_if_fail (object != NULL, NULL, ev);
+
+  relation_set = atk_object_ref_relation_set (object);
+
   n_relations = atk_relation_set_get_n_relations (relation_set);
   retval = CORBA_sequence_Accessibility_Relation__alloc ();
   CORBA_sequence_Accessibility_Relation_allocbuf (n_relations);
 	  
-  for (i=0; i<n_relations; ++i)
+  for (i = 0; i < n_relations; ++i)
     {
       retval->_buffer[i] =
         bonobo_object_dup_ref (
@@ -211,18 +249,22 @@ static Accessibility_Role
 impl_accessibility_accessible_get_role (PortableServer_Servant servant,
 					CORBA_Environment     *ev)
 {
+  AtkRole            role;
   Accessibility_Role retval;
-  SpiBase *object = SPI_BASE (bonobo_object_from_servant (servant));
-  AtkRole role = atk_object_get_role (object->atko);
+  AtkObject         *object = get_accessible_from_servant (servant);
+
+  g_return_val_if_fail (object != NULL, 0);
+
+  role = atk_object_get_role (object);
   retval = role; /* FIXME: relies on ability to cast these back and forth */
-  return (Accessibility_Role) retval;
+
+  return retval;
 }
 
 static void
 spi_accessible_class_init (SpiAccessibleClass *klass)
 {
         POA_Accessibility_Accessible__epv *epv = &klass->epv;
-        spi_accessible_parent_class = g_type_class_peek_parent (klass);
 
         epv->_get_name = impl_accessibility_accessible_get_name;
         epv->_set_name = impl_accessibility_accessible_set_name;
@@ -374,7 +416,10 @@ spi_accessible_new_return (AtkObject         *o,
 
   accessible = spi_accessible_new (o);
 
-  g_object_unref (G_OBJECT (o));
+  if (release_ref)
+    {
+      g_object_unref (G_OBJECT (o));
+    }
 
   return CORBA_Object_duplicate (BONOBO_OBJREF (accessible), ev);
 }

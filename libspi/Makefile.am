@@ -19,7 +19,6 @@ libspiinclude_HEADERS = Accessibility.h \
                         application.h \
 			base.h \
 			component.h \
-                        desktop.h \
 			deviceeventcontroller.h	\
 			editabletext.h\
 			hyperlink.h\
@@ -29,7 +28,6 @@ libspiinclude_HEADERS = Accessibility.h \
 			keymasks.h \
 			libspi.h \
                         listener.h \
-                        registry.h \
 			relation.h \
 			selection.h \
 			table.h \

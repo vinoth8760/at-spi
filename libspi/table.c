@@ -25,6 +25,7 @@
 #include <config.h>
 #include <stdio.h>
 #include <bonobo/bonobo-exception.h>
+#include <atk/atktable.h>
 #include <libspi/accessible.h>
 #include <libspi/table.h>
 

@@ -20,9 +20,7 @@
 #ifndef SPI_TABLE_H_
 #define SPI_TABLE_H_
 
-#include <bonobo/bonobo-object.h>
-#include <atk/atk.h>
-#include <libspi/Accessibility.h>
+#include <libspi/base.h>
 
 G_BEGIN_DECLS
 

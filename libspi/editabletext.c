@@ -24,6 +24,7 @@
 
 #include <config.h>
 #include <stdio.h>
+#include <atk/atkeditabletext.h>
 #include <libspi/editabletext.h>
 
 /* Static function declarations */

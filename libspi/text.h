@@ -20,10 +20,7 @@
 #ifndef SPI_TEXT_H_
 #define SPI_TEXT_H_
 
-#include <bonobo/bonobo-object.h>
-#include <atk/atk.h>
-#include <libspi/Accessibility.h>
-#include <libspi/accessible.h>
+#include <libspi/base.h>
 
 G_BEGIN_DECLS
 

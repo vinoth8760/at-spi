@@ -86,8 +86,6 @@ gtk_module_init (gint *argc, gchar **argv[])
       g_error ("Could not locate registry");
     }
 
-  fprintf (stderr, "About to register application\n");
-
   bonobo_activate ();
 
   /* Create the accessible application server object */
@@ -146,7 +144,7 @@ register_atk_event_listeners (void)
   atk_add_global_event_listener (bridge_signal_listener, "Gtk:AtkTable:model-changed");
   atk_add_key_event_listener    (bridge_key_listener, NULL);
 
-  g_object_unref (o);
+//  g_object_unref (o);
 }
 
 static void
@@ -173,7 +171,7 @@ bridge_exit_func (void)
 						BONOBO_OBJREF (this_app),
 						&ev);
   
-  bonobo_object_release_unref (BONOBO_OBJREF (this_app), &ev);
+  bonobo_object_unref (BONOBO_OBJECT (this_app));
   
   fprintf (stderr, "bridge exit func complete.\n");
 
@@ -194,6 +192,8 @@ bridge_focus_tracker (AtkObject *object)
   e.detail2 = 0;
 
   Accessibility_Registry_notifyEvent (registry, &e, &ev);
+
+  CORBA_exception_free (&ev);
 }
 
 static void
@@ -240,6 +240,8 @@ emit_eventv (GObject      *gobject,
 #endif
 
       Accessibility_Registry_notifyEvent (registry, &e, &ev);
+
+      CORBA_exception_free (&ev);
 
       g_free (e.type);
     }
@@ -342,18 +344,29 @@ accessibility_init_keystroke_from_atk_key_event (Accessibility_KeyStroke *keystr
 static gint
 bridge_key_listener (AtkKeyEventStruct *event, gpointer data)
 {
+  CORBA_boolean           result;
   Accessibility_KeyStroke key_event;
-  CORBA_boolean result;
   Accessibility_DeviceEventController controller =
-	  Accessibility_Registry_getDeviceEventController (registry, &ev);
+    Accessibility_Registry_getDeviceEventController (registry, &ev);
 
-  accessibility_init_keystroke_from_atk_key_event (&key_event, event);
+  if (BONOBO_EX (&ev))
+    {
+      CORBA_exception_free (&ev);
+      result = FALSE;
+    }
+  else
+    {
+
+      accessibility_init_keystroke_from_atk_key_event (&key_event, event);
 
   /* FIXME: this casting is just totaly bogus */
-  result = Accessibility_DeviceEventController_notifyListenersSync (controller,
-								    (Accessibility_DeviceEvent *) &key_event,
-								    &ev);
-  return result; /* FIXME: is this correct ? */
+      result = Accessibility_DeviceEventController_notifyListenersSync (
+        controller, (Accessibility_DeviceEvent *) &key_event, &ev);
+
+      CORBA_exception_free (&ev);
+    }
+
+  return result;
 }
 
 static gboolean

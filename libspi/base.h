@@ -21,8 +21,8 @@
 #define SPI_BASE_H_
 
 #include <glib/gmacros.h>
-#include <bonobo/bonobo-object.h>
 #include <atk/atkobject.h>
+#include <bonobo/bonobo-object.h>
 #include <libspi/Accessibility.h>
 
 G_BEGIN_DECLS

@@ -23,11 +23,7 @@
 #ifndef SPI_DESKTOP_H_
 #define SPI_DESKTOP_H_
 
-#include <bonobo/bonobo-xobject.h>
-#include <atk/atkobject.h>
 #include <libspi/accessible.h>
-#include <libspi/application.h>
-#include <libspi/Accessibility.h>
 
 G_BEGIN_DECLS
 
@@ -39,7 +35,7 @@ G_BEGIN_DECLS
 
 typedef struct {
         SpiAccessible parent;
-        GList *applications; /* TODO: maybe change this so it's generated on-demand ? */
+        GList        *applications;
 } SpiDesktop;
 
 typedef struct {

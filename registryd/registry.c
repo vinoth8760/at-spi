@@ -24,20 +24,9 @@
 
 #include <config.h>
 
-#define SPI_DEBUG
-
 #ifdef SPI_DEBUG
 #  include <stdio.h>
 #endif
-
-/*
- * We'd like to replace the dependance on X-isms with a wrapper layer,
- * to the extent that it can't be done with pure GDK.
- * Anyone want to help?
- */
-#include <X11/Xlib.h>
-#include <gdk/gdk.h>
-#include <gdk/gdkx.h>
 
 #include <libspi/registry.h>
 
@@ -522,8 +511,6 @@ _get_unique_id ()
   static long id = 0;
   return ++id;
 }
-
-#define SPI_DEBUG
 
 static void
 _registry_notify_listeners (GList *listeners,

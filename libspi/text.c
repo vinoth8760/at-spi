@@ -25,6 +25,7 @@
 #include <config.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <atk/atktext.h>
 #include <libspi/text.h>
 
 /* Our parent Gtk object type */
