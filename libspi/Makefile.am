@@ -58,6 +58,7 @@ libspi_la_SOURCES = accessible.c         \
 		    action.h\
 		    application.c        \
                     application.h        \
+		    base.c		 \
 		    component.c		 \
 		    component.h		 \
                     desktop.c            \

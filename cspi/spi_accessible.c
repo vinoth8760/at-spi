@@ -661,6 +661,11 @@ GenericInterface *
 Accessible_queryInterface (Accessible *obj, char *interface_name)
 {
   Bonobo_Unknown iface;
+  
+  if (!obj)
+    {
+      return NULL;
+    }
 
   iface = Accessibility_Accessible_queryInterface (CSPI_OBJREF (obj),
 						   interface_name,

@@ -20,7 +20,7 @@ spi_object_hash (gconstpointer key)
   CORBA_Object object = (CORBA_Object) key;
   guint        retval;
   
-  retval = CORBA_Object_hash (object, G_MAXINT, &ev);
+  retval = CORBA_Object_hash (object, 0, &ev);
 
   return retval;
 }
@@ -51,7 +51,9 @@ spi_object_release (gpointer  value)
   memset (a, 0xaa, sizeof (Accessible));
   a->ref_count = -1;
 
+#ifndef DEBUG_OBJECTS
   g_free (a);
+#endif
 }
 
 
@@ -61,6 +63,11 @@ cspi_accessible_is_a (Accessible *obj,
 {
   SPIBoolean        retval;
   Bonobo_Unknown unknown;
+
+  if (obj == NULL)
+    {
+      return FALSE;
+    }
 
   unknown = Bonobo_Unknown_queryInterface (CSPI_OBJREF (obj),
 					   interface_name, cspi_ev ());
@@ -151,6 +158,9 @@ cspi_object_add (CORBA_Object corba_object)
           g_assert (ref->ref_count > 0);
 	  ref->ref_count++;
           bonobo_object_release_unref (corba_object, NULL);
+#ifdef DEBUG_OBJECTS
+          g_print ("returning cached %p => %p\n", ref, ref->objref);
+#endif
 	}
       else
         {
@@ -175,11 +185,22 @@ cspi_object_add_check (CORBA_Object corba_object)
 {
   Accessible *retval;
 
-  cspi_check_ev (cspi_ev (), "pre method check");
+  if (ev._major == CORBA_USER_EXCEPTION &&
+      !strcmp (ev._id, ex_Accessibility_ChildGone))
+    {
+      retval = NULL;
+    }
+  else if (ev._major != CORBA_NO_EXCEPTION)
+    {
+      cspi_check_ev (cspi_ev (), "pre method check");
+      retval = NULL;
+    }
+  else
+    {
+      retval = cspi_object_add (corba_object);
 
-  retval = cspi_object_add (corba_object);
-
-  cspi_check_ev (cspi_ev (), "post method check");
+      cspi_check_ev (cspi_ev (), "post method check");
+    }
 
   return retval;
 }

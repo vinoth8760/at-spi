@@ -345,9 +345,8 @@ spi_application_class_init (SpiApplicationClass *klass)
 }
 
 static void
-spi_application_init (SpiApplication  *application)
+spi_application_init (SpiApplication *application)
 {
-  application->parent.atko = g_object_new (ATK_TYPE_OBJECT, NULL);
   application->toolkit_listeners = NULL;
   the_app = application;
 }
@@ -359,9 +358,9 @@ BONOBO_TYPE_FUNC_FULL (SpiApplication,
 SpiApplication *
 spi_application_new (AtkObject *app_root)
 {
-    SpiApplication *retval = g_object_new (SPI_APPLICATION_TYPE, NULL);
-    g_object_unref (retval->parent.atko);
-    retval->parent.atko = app_root;
-    g_object_ref (G_OBJECT (app_root));
-    return retval;
+  SpiApplication *retval = g_object_new (SPI_APPLICATION_TYPE, NULL);
+
+  spi_base_construct (SPI_BASE (retval), app_root);
+
+  return retval;
 }

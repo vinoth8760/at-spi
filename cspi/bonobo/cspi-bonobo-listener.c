@@ -70,17 +70,18 @@ cspi_event (SpiEventListener    *listener,
   AccessibleEvent aevent;
 
   aevent.type    = event->type;
-  aevent.source  = cspi_object_add (bonobo_object_dup_ref (event->source, NULL));
+  aevent.source  = cspi_object_add_check (bonobo_object_dup_ref (event->source, cspi_ev ()));
   aevent.detail1 = event->detail1;
   aevent.detail2 = event->detail2;
 
+  /* FIXME: re-enterancy hazard on this list */
   for (l = clistener->callbacks; l; l = l->next)
     {
       EventHandler *eh = l->data;
 
       eh->cb.event (&aevent, eh->user_data);
     }
-  
+
   cspi_object_unref (aevent.source);
 }
 
@@ -183,6 +184,7 @@ cspi_key_event (SpiKeystrokeListener          *listener,
   akeystroke.timestamp = keystroke->timestamp;
   akeystroke.modifiers = keystroke->modifiers;
 
+  /* FIXME: re-enterancy hazard on this list */
   for (l = clistener->callbacks; l; l = l->next)
     {
       EventHandler *eh = l->data;

@@ -31,6 +31,7 @@
 int
 main (int argc, char **argv)
 {
+  int          ret;
   char        *obj_id;
   SpiRegistry *registry;
 
@@ -43,19 +44,25 @@ main (int argc, char **argv)
 
   registry = spi_registry_new ();
 
-  bonobo_activation_active_server_register (
+  ret = bonobo_activation_active_server_register (
 	  obj_id,
 	  bonobo_object_corba_objref (bonobo_object (registry)));
 
+  if (ret != Bonobo_ACTIVATION_REG_SUCCESS)
+    {
 #ifdef AT_SPI_DEBUG
-  fprintf (stderr, "SpiRegistry Message: SpiRegistry daemon is running.\n");
+      fprintf (stderr, "SpiRegistry Message: SpiRegistry daemon was already running.\n");
 #endif
-  
-  g_timeout_add_full (G_PRIORITY_HIGH_IDLE, 200, registry->kbd_event_hook, registry, NULL);
-  bonobo_main ();
+    }
+  else
+    {
+#ifdef AT_SPI_DEBUG
+      fprintf (stderr, "SpiRegistry Message: SpiRegistry daemon is running.\n");
+#endif
+      g_timeout_add_full (G_PRIORITY_HIGH_IDLE, 200, registry->kbd_event_hook, registry, NULL);
+      bonobo_main ();
+    }
 
   return 0;
 }
-
-
 

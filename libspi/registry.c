@@ -126,8 +126,7 @@ impl_accessibility_registry_register_application (PortableServer_Servant servant
 #ifdef SPI_DEBUG
   fprintf (stderr, "registering app %p\n", application);
 #endif
-  registry->desktop->applications = g_list_append (registry->desktop->applications,
-                                                   bonobo_object_dup_ref (application, ev));
+  spi_desktop_add_application (registry->desktop, application);
 
   Accessibility_Application__set_id (application, _get_unique_id (), ev);
 
@@ -272,34 +271,12 @@ impl_accessibility_registry_deregister_application (PortableServer_Servant serva
                                                     CORBA_Environment * ev)
 {
   SpiRegistry *registry = SPI_REGISTRY (bonobo_object_from_servant (servant));
-  GList *list = g_list_find_custom (registry->desktop->applications, application, compare_corba_objects);
+
+  spi_desktop_remove_application (registry->desktop, application);
 
 #ifdef SPI_DEBUG
-  gint i;
+  fprintf (stderr, "de-registered app %p\n", application);
 #endif
-
-  if (list)
-    {
-      Bonobo_Unknown app = list->data;
-#ifdef SPI_DEBUG
-      fprintf (stderr, "deregistering application %p\n", application);
-#endif
-      registry->desktop->applications = g_list_delete_link (registry->desktop->applications, list);
-      bonobo_object_release_unref (app, ev);
-#ifdef SPI_DEBUG
-      fprintf (stderr, "there are now %d apps registered.\n", g_list_length (registry->desktop->applications));
-      for (i = 0; i < g_list_length (registry->desktop->applications); ++i)
-        {
-          fprintf (stderr, "getting application %d\n", i);
-          fprintf (stderr, "object address %p\n",
-		       g_list_nth_data (registry->desktop->applications, i));
-        }
-#endif      
-    }
-  else
-    {
-      fprintf (stderr, "could not deregister application %p\n", application);
-    }
 }
 
 /*

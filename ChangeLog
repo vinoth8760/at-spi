@@ -1,3 +1,94 @@
+2001-12-06  Michael Meeks  <michael@ximian.com>
+
+	* at-bridge/bridge.c (gtk_module_init): some sort of
+	confusing merge clash - reverted.
+	(bridge_idle_init): ditto.
+
+	* test/test-simple.c (main, utterable_normal_derefs):
+	merge from Bill - somehow not committed.
+
+2001-12-06  Michael Meeks  <michael@ximian.com>
+
+	* libspi/value.c (spi_value_class_init): upd.
+	(spi_value_finalize): kill.
+
+	* libspi/table.c (spi_table_finalize): kill.
+	(spi_table_interface_new): upd.
+	(spi_table_class_init): upd.
+	(get_table_from_servant): impl.
+	Upd. all CORBA impl.s to use it killing yet more cut and paste.
+
+	* libspi/selection.c (spi_selection_finalize): kill.
+	(spi_selection_interface_new): upd.
+	(spi_selection_class_init): upd.
+	(get_selection_from_servant): impl.
+	Upd. all CORBA impl.s to use it killing yet more cut and paste.
+
+	* libspi/relation.c (spi_relation_finalize): kill.
+	(spi_relation_class_init, spi_relation_new): upd
+
+	* libspi/image.c (spi_image_finalize): kill.
+	(spi_image_class_init): upd.
+	(spi_image_interface_new): upd.
+	(get_image_from_servant): impl.
+	Upd. all CORBA impl.s to use it killing yet more cut and paste.
+
+	* libspi/hyperlink.c (spi_hyperlink_class_init): upd.
+	(spi_hyperlink_finalize): kill.
+	(spi_hyperlink_new): upd.
+	(get_hyperlink_from_servant): impl.
+	Upd. all CORBA impl.s to use it killing yet more cut and paste.
+
+	* libspi/hypertext.c (spi_hypertext_interface_new): upd.
+	(spi_hypertext_finalize): kill.
+	(spi_hypertext_class_init): upd.
+	(get_hypertext_from_servant): impl.
+	Upd. all CORBA impl.s to use it killing yet more cut and paste.
+
+	* libspi/editabletext.c (spi_editable_text_finalize): kill.
+	(spi_editable_text_interface_new): upd.
+	(get_editable_text_from_servant): impl.
+	Upd. all CORBA impl.s to use it killing yet more cut and paste.
+	
+	* libspi/text.c (get_text_from_servant): impl.
+	All impls - update to use it killing more cut and paste,
+	also fix bad string returns on duff args ( a somewhat
+	impossible case to handle - but hey ).
+	(spi_text_construct): impl.
+	(spi_text_interface_new): upd.
+	(spi_text_object_finalize): kill.
+
+	* libspi/component.c
+	(accessibility_component_object_finalize): kill.
+	(spi_component_class_init): upd.
+	(get_component_from_servant): impl. helper to kill cut & paste.
+	(impl_accessibility_component_contains): 
+	(impl_accessibility_component_get_accessible_at_point): 
+	(impl_accessibility_component_get_position): 
+	(impl_accessibility_component_get_extents): 
+	(impl_accessibility_component_get_mdi_z_order): 
+	(impl_accessibility_component_get_layer): 
+	(spi_component_interface_new): upd.
+
+	* libspi/action.c (spi_action_finalize): kill.
+	(spi_action_class_init): upd. inherit from SpiObject.
+	(spi_action_interface_new): upd.
+	(get_action_from_servant): impl. helper to reduce cut & paste.
+	(impl_getKeyBinding, impl_getName, impl_doAction),
+	(impl_getDescription): Use it everywhere.
+
+	* cspi/spi_main.c (get_live_refs): a pointer hash.
+	(spi_object_hash, spi_object_equal): comment out.
+	There are issues with CORBA object hashing that need
+	solving.
+
+	* libspi/application.c (spi_application_init),
+	(spi_application_new): upd.
+
+	* libspi/accessible.c (spi_accessible_object_finalize): kill.
+	(spi_accessible_class_init): upd.
+	s/accessible/object/ in epv methods.
+
 2001-12-05  Bill Haneman <bill.haneman@sun.com>
 
 	* at-bridge/bridge.c:
@@ -40,6 +131,78 @@
 	
 2001-12-05  Michael Meeks  <michael@ximian.com>
 
+	* registryd/registryd.c (main): protect against
+	bonobo-activation startup race condition.
+
+	* cspi/spi_main.c (cspi_object_add_check): cope
+	with the exception elegantly.
+
+	* idl/Accessible.idl: decl. ChildGone
+
+	* libspi/desktop.c (spi_desktop_dispose): impl.
+	(spi_desktop_class_init): upd.
+	(spi_desktop_add_application),
+	(spi_desktop_remove_application),
+	(abnormal_application_termination): impl.
+	(impl_desktop_get_child_at_index): re-impl.
+
+	* libspi/registry.c
+	(impl_accessibility_registry_deregister_application),
+	(impl_accessibility_registry_register_application): 
+	kill excessive debug clutter.
+
+	* test/test-simple.c (test_misc): test some NULL
+	tolerance. (main): upd.
+
+	* cspi/spi_main.c (cspi_accessible_is_a): a NULL
+	implements no interfaces - so let's not crash.
+
+	* cspi/spi_accessible.c (Accessible_queryInterface): ditto.
+
+	* libspi/accessible.c (spi_accessible_new_return): impl.
+	helper to calm the cut and paste, to cope with
+	NULL AtkObjects effectively and efficiently, and to kill
+	the referencing bugs.
+
+	* libspi/table.c (impl_getAccessibleAt),
+	(impl_getRowHeader, impl_getColumnHeader): upd.
+
+	* libspi/hyperlink.c (impl_getObject): upd.
+
+	* libspi/accessible.c
+	(impl_accessibility_accessible_get_child_at_index): upd.
+
+	* libspi/component.c
+	(impl_accessibility_component_get_accessible_at_point): upd.
+
+	* test/test-simple.c (test_editable_text, test_text): impl.
+	some simple tests.
+
+	* cspi/spi_editabletext.c
+	(AccessibleEditableText_insertText): constify.
+
+	* test/test-simple.c (focus_me): make more robust.
+
+	* libspi/accessible.c: remove some printfs in methods that
+	we test and work fine, so we can get a clean tree dump.
+
+	* test/test-simple.c (validate_accessible),
+	(validate_tree): make tree dumping pretty too.
+
+	* at-bridge/bridge.c (bridge_signal_listener): upd. so
+	it builds without debug on.
+
+	* test/test-simple.c (validate_accessible): fix the most
+	ludicrous bug.
+
+	* cspi/spi_main.c (spi_object_release): leave the nicely
+	blanked memory around if in debug mode.
+
+	* cspi/spi-listener-impl.c (cspi_event): use add_check.
+
+[committed to fixups2]
+2001-12-05  Michael Meeks  <michael@ximian.com>
+
 	* libspi/editabletext.c
 	(spi_editable_text_class_init): g_type_class_peek_parent,
 	not interface peek - so we finalize cleanly.
@@ -80,7 +243,6 @@
 	(spi_accessible_new): make more efficient & intuitive.
 	Now IndexInParent check works.
 
-[committed to fixups2]
 2001-12-04  Michael Meeks  <michael@ximian.com>
 
 	* cspi/spi-util.h: remove.

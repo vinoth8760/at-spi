@@ -32,6 +32,7 @@
 module Accessibility {
   
   typedef sequence<Relation> RelationSet;
+  exception ChildGone {} ;
 
   interface Accessible : Bonobo::Unknown {
 
@@ -74,7 +75,8 @@ module Accessibility {
      *
      * Returns: the 'nth' @Accessible child of this object.
      **/
-    Accessible 	getChildAtIndex (in long index);
+    Accessible 	getChildAtIndex (in long index)
+	    raises (ChildGone);
 
     /**
      * getIndexInParent:

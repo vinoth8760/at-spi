@@ -20,9 +20,8 @@
 #ifndef SPI_VALUE_H_
 #define SPI_VALUE_H_
 
-#include <bonobo/bonobo-object.h>
-#include <atk/atk.h>
-#include <libspi/Accessibility.h>
+#include <libspi/base.h>
+#include <atk/atkvalue.h>
 
 G_BEGIN_DECLS
 
@@ -36,12 +35,11 @@ typedef struct _Value SpiValue;
 typedef struct _ValueClass SpiValueClass;
 
 struct _Value {
-  BonoboObject parent;
-  AtkObject *atko;
+  SpiBase parent;
 };
 
 struct _ValueClass {
-  BonoboObjectClass parent_class;
+  SpiBaseClass parent_class;
   POA_Accessibility_Value__epv epv;
 };
 

@@ -21,9 +21,8 @@
 #ifndef SPI_RELATION_H_
 #define SPI_RELATION_H_
 
-#include <bonobo/bonobo-object.h>
-#include <atk/atk.h>
-#include <libspi/Accessibility.h>
+#include <libspi/base.h>
+#include <atk/atkrelation.h>
 
 G_BEGIN_DECLS
 
@@ -37,20 +36,16 @@ typedef struct _SpiRelation SpiRelation;
 typedef struct _SpiRelationClass SpiRelationClass;
 
 struct _SpiRelation {
-  BonoboObject parent;
-  AtkRelation *relation;
+  SpiBase parent;
 };
 
 struct _SpiRelationClass {
-  BonoboObjectClass parent_class;
+  SpiBaseClass parent_class;
   POA_Accessibility_Relation__epv epv;
 };
 
-GType
-spi_relation_get_type   (void);
-
-SpiRelation *
-spi_relation_new       (AtkRelation *relation);
+GType        spi_relation_get_type (void);
+SpiRelation *spi_relation_new      (AtkRelation *relation);
 
 G_END_DECLS
 

@@ -1033,7 +1033,7 @@ AccessibleEditableText_setTextContents (AccessibleEditableText *obj,
 SPIBoolean
 AccessibleEditableText_insertText (AccessibleEditableText *obj,
                                    long int position,
-                                   char *text,
+                                   const char *text,
                                    long int length);
 
 SPIBoolean

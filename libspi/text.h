@@ -37,16 +37,17 @@ typedef struct _SpiText      SpiText;
 typedef struct _SpiTextClass SpiTextClass;
 
 struct _SpiText {
-  BonoboObject parent;
-  AtkObject *atko;
+  SpiBase parent;
 };
 
 struct _SpiTextClass {
-  BonoboObjectClass parent_class;
+  SpiBaseClass parent_class;
   POA_Accessibility_Text__epv epv;
 };
 
 GType    spi_text_get_type      (void);
+void     spi_text_construct     (SpiText   *text,
+				 AtkObject *obj);
 SpiText *spi_text_interface_new (AtkObject *obj);
 
 G_END_DECLS

@@ -32,7 +32,7 @@
 #include "accessible.h"
 #include "application.h"
 
-#define SPI_BRIDGE_DEBUG
+#undef SPI_BRIDGE_DEBUG
 
 static CORBA_Environment ev;
 static Accessibility_Registry registry;
@@ -60,13 +60,6 @@ static gint bridge_key_listener (AtkKeyEventStruct *event,
 
 int
 gtk_module_init (gint *argc, gchar **argv[])
-{
-  bridge_register_app (argc, argv);
-  g_atexit (bridge_exit_func);
-}
-
-static void
-bridge_register_app (gint *argc, gchar **argv[])
 {
   CORBA_Environment ev;
 
@@ -97,7 +90,18 @@ bridge_register_app (gint *argc, gchar **argv[])
 
   bonobo_activate ();
 
+  g_idle_add (bridge_idle_init, NULL);
+
+  g_atexit (bridge_exit_func);
+
+  return 0;
+}
+
+static gboolean
+bridge_idle_init (gpointer user_data)
+{
   /* Create the accessible application server object */
+
   this_app = spi_application_new (atk_get_root ());
 
   fprintf (stderr, "About to register application\n");
@@ -106,13 +110,6 @@ bridge_register_app (gint *argc, gchar **argv[])
                                               BONOBO_OBJREF (this_app),
                                               &ev);
 
-  g_idle_add (bridge_idle_init, NULL);
-
-}
-
-static gboolean
-bridge_idle_init (gpointer user_data)
-{
   register_atk_event_listeners ();
   fprintf (stderr, "Application registered & listening\n");
 
@@ -354,16 +351,18 @@ bridge_signal_listener (GSignalInvocationHint *signal_hint,
 			gpointer data)
 {
   GObject *gobject;
-
-#ifdef SPI_BRIDGE_DEBUG
   GSignalQuery signal_query;
   const gchar *name;
   
   g_signal_query (signal_hint->signal_id, &signal_query);
+
   name = signal_query.signal_name;
+
+#ifdef SPI_BRIDGE_DEBUG
   fprintf (stderr, "Received signal %s:%s\n",
 	   g_type_name (signal_query.itype), name);
 #endif
+
   gobject = g_value_get_object (param_values + 0);
 
   emit_eventv (gobject, 0, 0, "%s:%s", name, g_type_name (signal_query.itype));

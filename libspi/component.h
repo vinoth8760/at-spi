@@ -33,12 +33,11 @@ G_BEGIN_DECLS
 #define SPI_IS_COMPONENT_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE ((k), SPI_COMPONENT_TYPE))
 
 typedef struct {
-        BonoboObject parent;
-        AtkObject   *atko;
+        SpiBase parent;
 } SpiComponent;
 
 typedef struct {
-        BonoboObjectClass parent_class;
+        SpiBaseClass parent_class;
         POA_Accessibility_Component__epv epv;
 } SpiComponentClass;
 
