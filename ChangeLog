@@ -1,5 +1,10 @@
 2001-12-06  Michael Meeks  <michael@ximian.com>
 
+	* at-bridge/bridge.c (gtk_module_init): g_error on
+	activation exception
+
+2001-12-06  Michael Meeks  <michael@ximian.com>
+
 	* at-bridge/bridge.c (gtk_module_init): some sort of
 	confusing merge clash - reverted.
 	(bridge_idle_init): ditto.

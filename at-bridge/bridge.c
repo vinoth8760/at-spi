@@ -75,10 +75,10 @@ gtk_module_init (gint *argc, gchar **argv[])
   
   if (ev._major != CORBA_NO_EXCEPTION)
     {
-      fprintf(stderr,
-            ("Accessibility app error: exception during registry activation from id: %s\n"),
-            CORBA_exception_id(&ev));
-      CORBA_exception_free(&ev);
+      g_error ("Accessibility app error: exception during "
+	       "registry activation from id: %s\n",
+	       CORBA_exception_id (&ev));
+      CORBA_exception_free (&ev);
     }
 
   if (CORBA_Object_is_nil (registry, &ev))
@@ -86,20 +86,10 @@ gtk_module_init (gint *argc, gchar **argv[])
       g_error ("Could not locate registry");
     }
 
-  fprintf(stderr, "About to register application\n");
+  fprintf (stderr, "About to register application\n");
 
   bonobo_activate ();
 
-  g_idle_add (bridge_idle_init, NULL);
-
-  g_atexit (bridge_exit_func);
-
-  return 0;
-}
-
-static gboolean
-bridge_idle_init (gpointer user_data)
-{
   /* Create the accessible application server object */
 
   this_app = spi_application_new (atk_get_root ());
@@ -110,7 +100,18 @@ bridge_idle_init (gpointer user_data)
                                               BONOBO_OBJREF (this_app),
                                               &ev);
 
+  g_atexit (bridge_exit_func);
+
+  g_idle_add (bridge_idle_init, NULL);
+
+  return 0;
+}
+
+static gboolean
+bridge_idle_init (gpointer user_data)
+{
   register_atk_event_listeners ();
+
   fprintf (stderr, "Application registered & listening\n");
 
   return FALSE;
