@@ -1,3 +1,98 @@
+2001-11-27  Michael Meeks  <michael@ximian.com>
+
+	* cspi/spi-listener-impl.c (cspi_event_listener_new),
+	(cspi_keystroke_listener_new): Use the cspi variants.
+
+2001-11-26  Michael Meeks  <michael@ximian.com>
+
+	* test/keysynth-demo.c: fix scads of warnings, missing
+	type in decl. etc. etc. !
+
+	* test/simple-at.c (report_focussed_accessible),
+	(report_focus_event, report_button_press),
+	(check_property_change, is_command_key),
+	(report_ordinary_key_event, report_command_key_event): upd.
+
+	* util/mag_client.h: include pre-requisites.
+
+	* libspi/accessibleeventlistener.c
+	(spi_event_listener_object_finalize): free any lingering
+	callbacks.
+	
+	* libspi/keystrokelistener.c
+	(keystroke_listener_object_finalize): ditto.
+
+	* cspi/spi-listener-impl.[ch]: Add to implement cspi style
+	callbacks, with cspi types.
+	
+	* cspi/spi_event.c (createAccessibleEventListener): chain to
+	(AccessibleEventListener_addCallback): here.
+	(createAccessibleKeystrokeListener): chain to 
+	(AccessibleKeystrokeListener_addCallback): here.
+
+	* libspi/keystrokelistener.c
+	(spi_keystroke_listener_class_init): add signal.
+	(impl_key_event): emit the event.
+	(boolean_handled_accumulator): impl.
+	(marshal_BOOLEAN__POINTER): add, gack.
+
+	* libspi/accessibleeventlistener.c
+	(spi_event_listener_class_init): add signal.
+	(impl_accessible_event_notify_event): emit the signal &
+	make the loop efficient.
+	(spi_event_listener_add_callback): prepend the callback.
+
+	* libspi/accessibleeventlistener.h: add an 'event' signal,
+	decl type on callback.
+
+	* libspi/keystrokelistener.h: ditto.
+
+	* cspi/spi-listener.h: make methods typesafe and
+	make them use the new event typedefs.
+
+	* test/simple-at.c (report_focussed_accessible):
+	include mag_client.h
+	Use *(void *)text_interface not the other thing.
+	
+	* configure.in: add gtk to registryd bits - since we use
+	gdk there ( why ? )
+
+	* util/magnifier.c: include libbonobo.h
+
+2001-11-23  Michael Meeks  <michael@ximian.com>
+
+	* cspi/spi_accessible.c (Accessible_getAction),
+	(Accessible_getComponent, Accessible_getHypertext),
+	(Accessible_getImage, Accessible_getSelection),
+	(Accessible_getTable, Accessible_getValue),
+	(Accessible_getText): kill cut and paste coding in favor
+	of chaining to Accessible_queryInterface; left (redundant)
+	casts in.
+	(spi_accessible_is): impl.
+	(Accessible_isAction, Accessible_isComponent),
+	(Accessible_isEditableText, Accessible_isHypertext),
+	(Accessible_isText, Accessible_isTable, Accessible_isImage),
+	(Accessible_isSelection, Accessible_isValue): use it to
+	kill cut and paste coding - and fix Unknown reference leak
+	from queryInterface cleanly.
+	(AccessibleStateSet_unref, AccessibleStateSet_ref): impl.
+
+	* cspi/spi_accessible.c (Accessible_queryInterface): upd.
+
+	* cspi/*.c: use SPI_OBJREF throught.
+
+	* cspi/spi_main.c (spi_object_add): return a constructed
+	Accessible - push it on the list of live refs.
+	(SPI_init): setup the registry somewhat differently.
+	(SPI_exit): kill the exit; bad practice, release any
+	live refs we have kicking about, and the registry.
+	(spi_object_unref, spi_object_ref): impl; also aggregate
+	Bonobo refs to reduce out of proc. CORBA traffic.
+
+	* cspi/spi-impl.h: make everything opaque.
+
+	* cspi/spi-private.h: define Accessible.
+
 2001-11-25  Bill Haneman  <bill.haneman@sun.com>
 
 	* test/keysynth-demo.c:

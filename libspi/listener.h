@@ -44,8 +44,8 @@ typedef struct {
         POA_Accessibility_EventListener__epv epv;
 } SpiListenerClass;
 
-GType               spi_listener_get_type   (void);
-SpiListener            *spi_listener_new       (void);
+GType        spi_listener_get_type (void);
+SpiListener *spi_listener_new      (void);
 
 G_END_DECLS
 

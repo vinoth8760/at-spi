@@ -36,16 +36,21 @@ G_BEGIN_DECLS
 #define IS_SPI_KEYSTROKE_LISTENER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), SPI_KEYSTROKE_LISTENER_TYPE))
 #define IS_SPI_KEYSTROKE_LISTENER_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE ((k), SPI_KEYSTROKE_LISTENER_TYPE))
 
-typedef gboolean (*BooleanKeystrokeListenerCB) (const void *keystroke_ptr);
+typedef gboolean (*BooleanKeystrokeListenerCB) (const Accessibility_KeyStroke *key);
 
-typedef struct {
+typedef struct _SpiKeystrokeListener SpiKeystrokeListener;
+
+struct _SpiKeystrokeListener {
         BonoboObject parent;
 	GList *callbacks;
-} SpiKeystrokeListener;
+};
 
 typedef struct {
         BonoboObjectClass parent_class;
         POA_Accessibility_KeystrokeListener__epv epv;
+
+	gboolean (*key_event) (SpiKeystrokeListener *listener,
+			       const Accessibility_KeyStroke *key);
 } SpiKeystrokeListenerClass;
 
 GType                  spi_keystroke_listener_get_type        (void);

@@ -1,21 +1,35 @@
 #ifndef _SPI_LISTENER_H_
 #define _SPI_LISTENER_H_
 
-#include <libspi/accessibleeventlistener.h>
-#include <libspi/keystrokelistener.h>
+#include <cspi/spi-impl.h>
 
 G_BEGIN_DECLS
 
 /*
- *
  * Structure used to encapsulate event information
- *
  */
+typedef struct {
+	const char  *type;
+	Accessible  *source;
+	long         detail1;
+	long         detail2;
+} AccessibleEvent;
 
-typedef Accessibility_Event AccessibleEvent;
+/* XXX: must be single bits since they are used as masks in keylistener API */
+typedef enum {
+  SPI_KEY_PRESSED  = 1,
+  SPI_KEY_RELEASED = 2
+} AccessibleKeyEventType;
+
+typedef struct {
+	long                   keyID;
+	short                  keycode;
+	long                   timestamp;
+	AccessibleKeyEventType type;
+	unsigned short         modifiers;
+} AccessibleKeystroke;
 
 /*
- *
  * Function prototype typedefs for Event Listener Callbacks.
  * (see libspi/accessibleeventlistener.h for definition of SpiVoidEventListenerCB).
  *
@@ -24,9 +38,8 @@ typedef Accessibility_Event AccessibleEvent;
  *
  * boolean (*AccessibleKeystrokeListenerCB) (AccessibleKeystrokeEvent *Event);
  */
-
-typedef VoidSpiEventListenerCB AccessibleEventListenerCB;
-typedef BooleanKeystrokeListenerCB    AccessibleKeystrokeListenerCB;
+typedef void    (*AccessibleEventListenerCB)     (AccessibleEvent     *event);
+typedef boolean (*AccessibleKeystrokeListenerCB) (AccessibleKeystroke *stroke);
 
 G_END_DECLS
 

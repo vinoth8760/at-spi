@@ -44,7 +44,7 @@ cspi_event_listener_class_init (CSpiEventListenerClass *klass)
 CSpiEventListener *
 cspi_event_listener_new (void)
 {
-  return g_object_new (spi_event_listener_get_type (), NULL);
+  return g_object_new (cspi_event_listener_get_type (), NULL);
 }
 
 void
@@ -123,7 +123,7 @@ BONOBO_TYPE_FUNC (CSpiKeystrokeListener,
 CSpiKeystrokeListener *
 cspi_keystroke_listener_new (void)
 {
-  return g_object_new (spi_keystroke_listener_get_type (), NULL);
+  return g_object_new (cspi_keystroke_listener_get_type (), NULL);
 }
 
 void
