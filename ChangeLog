@@ -1,5 +1,17 @@
 2001-12-04  Michael Meeks  <michael@ximian.com>
 
+	* test/test-simple.c (validate_tree): upd.
+	IndexInParent check to make it more lucid.
+	(validate_accessible): dump the tree.
+
+	* libspi/accessible.c (de_register_public_ref),
+	(get_public_refs): impl.
+	(spi_accessible_new): make more efficient & intuitive.
+	Now IndexInParent check works.
+
+[committed to fixups2]
+2001-12-04  Michael Meeks  <michael@ximian.com>
+
 	* cspi/spi-util.h: remove.
 
 	* cspi/spi.h: move SPI_freeString here

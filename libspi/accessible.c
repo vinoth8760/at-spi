@@ -272,14 +272,49 @@ BONOBO_TYPE_FUNC_FULL (SpiAccessible,
 		       PARENT_TYPE,
 		       spi_accessible);
 
+static GHashTable *public_corba_refs = NULL;
+
+static GHashTable *
+get_public_refs (void)
+{
+  if (!public_corba_refs)
+    {
+      public_corba_refs = g_hash_table_new (NULL, NULL);
+    }
+  return public_corba_refs;
+}
+
+static void
+de_register_public_ref (BonoboObject *object)
+{
+  SpiAccessible *accessible = (SpiAccessible *) object;
+
+  g_hash_table_remove (get_public_refs (), accessible->atko);
+}
+
 SpiAccessible *
 spi_accessible_new (AtkObject *o)
 {
-    SpiAccessible *retval = g_object_new (SPI_ACCESSIBLE_TYPE, NULL);
+    SpiAccessible *retval;
     CORBA_Environment ev;
+
     CORBA_exception_init (&ev);
+
+    if ((retval = g_hash_table_lookup (get_public_refs (), o)))
+      {
+	      g_warning ("Returning cached");
+        bonobo_object_ref (BONOBO_OBJECT (retval));
+	return retval;
+      }
+
+    retval = g_object_new (SPI_ACCESSIBLE_TYPE, NULL);
     g_object_ref (o);
     retval->atko = ATK_OBJECT (o);
+
+    g_hash_table_insert (get_public_refs (), o, retval);
+    g_signal_connect (G_OBJECT (retval), "destroy",
+		      G_CALLBACK (de_register_public_ref),
+		      NULL);
 
     /* aggregate appropriate SPI interfaces based on ATK interfaces */
 
