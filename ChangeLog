@@ -1,3 +1,34 @@
+2001-12-05  Michael Meeks  <michael@ximian.com>
+
+	* libspi/editabletext.c
+	(spi_editable_text_class_init): g_type_class_peek_parent,
+	not interface peek - so we finalize cleanly.
+
+	* libspi/accessible.c (spi_accessible_new): kill debug.
+
+	* test/test-simple.c (validate_accessible): fix ref.
+	leak, print strings before freeing them; sigh, comment a
+	chunk out due to strangeness.
+	(validate_tree): unref the child after use.
+
+	* cspi/spi_component.c (AccessibleComponent_getLayer):
+	add missing break statement, switch on zlayer not the
+	uninitialized retval.
+
+	* cspi/spi_main.c (cspi_object_add): add assert, local ref
+	before (possibly re-entering) remote unref.
+
+	* test/simple-at.c (main): unref the desktop.
+
+	* cspi/spi_accessible.c (cspi_accessible_is_a): move 
+	into:
+	
+	* cspi/spi_main.c (cspi_accessible_is_a): here to 
+	isolate bonobo API usage more.
+
+	* libspi/registry.c (impl_accessibility_registry_register_application): 
+	prune bogus comment.
+
 2001-12-04  Michael Meeks  <michael@ximian.com>
 
 	* test/test-simple.c (validate_tree): upd.

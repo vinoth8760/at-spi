@@ -100,8 +100,6 @@ bridge_idle_init (gpointer user_data)
 
   fprintf (stderr, "About to register application\n");
 
-  Accessibility_Registry_ref (registry, &ev);
-  
   Accessibility_Registry_registerApplication (registry,
                                               BONOBO_OBJREF (this_app),
                                               &ev);

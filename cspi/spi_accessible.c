@@ -314,36 +314,6 @@ Accessible_getStateSet (Accessible *obj)
 
 /* Interface query methods */
 
-static SPIBoolean
-cspi_accessible_is_a (Accessible *obj,
-		     const char *interface_name)
-{
-  SPIBoolean        retval;
-  Bonobo_Unknown unknown;
-
-  unknown = Bonobo_Unknown_queryInterface (CSPI_OBJREF (obj),
-					   interface_name, cspi_ev ());
-
-  if (BONOBO_EX (cspi_ev ()))
-    {
-      g_error ("Exception '%s' checking if is '%s'",
-	       bonobo_exception_get_text (cspi_ev ()),
-	       interface_name);
-    }
-
-  if (unknown != CORBA_OBJECT_NIL)
-    {
-      retval = TRUE;
-      bonobo_object_release_unref (unknown, NULL);
-    }
-  else
-    {
-      retval= FALSE;
-    }
-
-  return retval;
-}
-
 /**
  * Accessible_isAction:
  * @obj: a pointer to the #Accessible instance to query.

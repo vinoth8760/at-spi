@@ -91,6 +91,7 @@ main (int argc, char **argv)
           SPI_freeString (s);
           Accessible_unref (application);
         }
+      Accessible_unref (desktop);
     }
 
   /* prepare the keyboard snoopers */

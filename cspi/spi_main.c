@@ -49,8 +49,40 @@ spi_object_release (gpointer  value)
   bonobo_object_release_unref (a->objref, NULL);
 
   memset (a, 0xaa, sizeof (Accessible));
+  a->ref_count = -1;
 
   g_free (a);
+}
+
+
+SPIBoolean
+cspi_accessible_is_a (Accessible *obj,
+		      const char *interface_name)
+{
+  SPIBoolean        retval;
+  Bonobo_Unknown unknown;
+
+  unknown = Bonobo_Unknown_queryInterface (CSPI_OBJREF (obj),
+					   interface_name, cspi_ev ());
+
+  if (BONOBO_EX (cspi_ev ()))
+    {
+      g_error ("Exception '%s' checking if is '%s'",
+	       bonobo_exception_get_text (cspi_ev ()),
+	       interface_name);
+    }
+
+  if (unknown != CORBA_OBJECT_NIL)
+    {
+      retval = TRUE;
+      bonobo_object_release_unref (unknown, NULL);
+    }
+  else
+    {
+      retval = FALSE;
+    }
+
+  return retval;
 }
 
 static GHashTable *
@@ -116,8 +148,9 @@ cspi_object_add (CORBA_Object corba_object)
     {
       if ((ref = g_hash_table_lookup (get_live_refs (), corba_object)))
         {
-          bonobo_object_release_unref (corba_object, NULL);
+          g_assert (ref->ref_count > 0);
 	  ref->ref_count++;
+          bonobo_object_release_unref (corba_object, NULL);
 	}
       else
         {

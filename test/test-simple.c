@@ -166,6 +166,7 @@ validate_tree (Accessible *accessible,
 
 		g_assert (child_at_index == accessible);
 
+		Accessible_unref (child_at_index);
 		Accessible_unref (parent);
 	}
 
@@ -181,6 +182,8 @@ validate_tree (Accessible *accessible,
 
 		if (recurse_down)
 			validate_accessible (child, has_parent, recurse_down);
+
+		Accessible_unref (child);
 	}
 }
 
@@ -195,11 +198,9 @@ validate_accessible (Accessible *accessible,
 
 	name = Accessible_getName (accessible);
 	g_assert (name != NULL);
-	SPI_freeString (name);
   
 	descr = Accessible_getDescription (accessible);
 	g_assert (descr != NULL);
-	SPI_freeString (descr);
 
 	role = Accessible_getRole (accessible);
 	g_assert (role != NULL);
@@ -207,6 +208,9 @@ validate_accessible (Accessible *accessible,
 	if (print_tree)
 		fprintf (stderr, "accessible: %p '%s' (%s) - %s: [",
 			 accessible, name, descr, role);
+
+	SPI_freeString (name);
+	SPI_freeString (descr);
 
 	if (Accessible_isAction (accessible)) {
 		fprintf (stderr, "At");
@@ -218,8 +222,10 @@ validate_accessible (Accessible *accessible,
 	if (Accessible_isApplication (accessible)) {
 		fprintf (stderr, "Ap");
 		test_application (accessible);
+		AccessibleApplication_unref (accessible);
 	}
 
+#if 0
 	if (Accessible_isComponent (accessible)) {
 		fprintf (stderr, "Co");
 		tmp = Accessible_getComponent (accessible);
@@ -247,7 +253,6 @@ validate_accessible (Accessible *accessible,
 		g_assert (tmp != NULL);
 		AccessibleImage_unref (accessible);
 	}
-
 	if (Accessible_isSelection (accessible)) {
 		fprintf (stderr, "Se");
 		tmp = Accessible_getSelection (accessible);
@@ -268,7 +273,7 @@ validate_accessible (Accessible *accessible,
 		g_assert (tmp != NULL);
 		AccessibleText_unref (accessible);
 	}
-
+#endif
 
 	fprintf (stderr, "]\n");
 

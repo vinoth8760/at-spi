@@ -129,7 +129,6 @@ impl_accessibility_registry_register_application (PortableServer_Servant servant
   registry->desktop->applications = g_list_append (registry->desktop->applications,
                                                    bonobo_object_dup_ref (application, ev));
 
-  /* TODO: create unique string here (with libuuid call ?) and hash ? */
   Accessibility_Application__set_id (application, _get_unique_id (), ev);
 
   /*

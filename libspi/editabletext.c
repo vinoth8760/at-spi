@@ -79,7 +79,7 @@ spi_editable_text_class_init (SpiEditableTextClass *klass)
 {
   GObjectClass * object_class = (GObjectClass *) klass;
   POA_Accessibility_EditableText__epv *epv = &klass->epv;
-  parent_class = g_type_interface_peek_parent (klass);
+  parent_class = g_type_class_peek_parent (klass);
 
   object_class->finalize = spi_editable_text_finalize;
   

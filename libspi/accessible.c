@@ -302,7 +302,6 @@ spi_accessible_new (AtkObject *o)
 
     if ((retval = g_hash_table_lookup (get_public_refs (), o)))
       {
-	      g_warning ("Returning cached");
         bonobo_object_ref (BONOBO_OBJECT (retval));
 	return retval;
       }

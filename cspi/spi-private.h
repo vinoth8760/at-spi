@@ -25,6 +25,8 @@ Accessible            *cspi_object_add       (CORBA_Object         corba_object)
 Accessible            *cspi_object_add_check (CORBA_Object         corba_object);
 void                   cspi_object_ref       (Accessible          *accessible);
 void                   cspi_object_unref     (Accessible          *accessible);
+SPIBoolean             cspi_accessible_is_a  (Accessible          *obj,
+					      const char          *interface_name);
 SPIBoolean             cspi_warn_ev          (CORBA_Environment   *ev,
 					      const char          *error_string);
 void                   cspi_check_ev         (CORBA_Environment   *ev,
