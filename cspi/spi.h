@@ -160,7 +160,6 @@ SPI_nextEvent (boolean waitForEvent);
  * SPI_exit:
  *
  * Disconnects from the Accessibility Registry and releases resources.
- * Not Yet Implemented.
  *
  **/
 void
@@ -180,7 +179,8 @@ SPI_exit (void);
  *
  **/
 AccessibleEventListener *
-createAccessibleEventListener (AccessibleEventListenerCB callback);
+createAccessibleEventListener (AccessibleEventListenerCB callback,
+			       void                     *user_data);
 
 /**
  * AccessibleEventListener_addCallback:
@@ -193,8 +193,9 @@ createAccessibleEventListener (AccessibleEventListenerCB callback);
  *
  **/
 boolean
-AccessibleEventListener_addCallback (AccessibleEventListener *listener,
-				     AccessibleEventListenerCB callback);
+AccessibleEventListener_addCallback (AccessibleEventListener  *listener,
+				     AccessibleEventListenerCB callback,
+				     void                     *user_data);
 
 /**
  * AccessibleEventListener_removeCallback:
@@ -207,7 +208,7 @@ AccessibleEventListener_addCallback (AccessibleEventListener *listener,
  *
  **/
 boolean
-AccessibleEventListener_removeCallback (AccessibleEventListener *listener,
+AccessibleEventListener_removeCallback (AccessibleEventListener  *listener,
 					AccessibleEventListenerCB callback);
 
 /**
@@ -220,7 +221,8 @@ AccessibleEventListener_removeCallback (AccessibleEventListener *listener,
  *
  **/
 AccessibleKeystrokeListener *
-createAccessibleKeystrokeListener (AccessibleKeystrokeListenerCB callback);
+createAccessibleKeystrokeListener (AccessibleKeystrokeListenerCB callback,
+				   void                         *user_data);
 
 /**
  * KeystrokeListener_addCallback:
@@ -233,8 +235,9 @@ createAccessibleKeystrokeListener (AccessibleKeystrokeListenerCB callback);
  *
  **/
 boolean
-AccessibleKeystrokeListener_addCallback (AccessibleKeystrokeListener *listener,
-					 AccessibleKeystrokeListenerCB callback);
+AccessibleKeystrokeListener_addCallback (AccessibleKeystrokeListener  *listener,
+					 AccessibleKeystrokeListenerCB callback,
+					 void                         *user_data);
 
 /**
  * AccessibleKeystrokeListener_removeCallback:

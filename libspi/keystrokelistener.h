@@ -33,16 +33,13 @@ G_BEGIN_DECLS
 #define SPI_KEYSTROKE_LISTENER_TYPE        (spi_keystroke_listener_get_type ())
 #define SPI_KEYSTROKE_LISTENER(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), SPI_KEYSTROKE_LISTENER_TYPE, SpiKeystrokeListener))
 #define SPI_KEYSTROKE_LISTENER_CLASS(k)    (G_TYPE_CHECK_CLASS_CAST((k), SPI_KEYSTROKE_LISTENER_TYPE, SpiKeystrokeListenerClass))
-#define IS_SPI_KEYSTROKE_LISTENER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), SPI_KEYSTROKE_LISTENER_TYPE))
-#define IS_SPI_KEYSTROKE_LISTENER_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE ((k), SPI_KEYSTROKE_LISTENER_TYPE))
-
-typedef gboolean (*BooleanKeystrokeListenerCB) (const Accessibility_KeyStroke *key);
+#define SPI_IS_KEYSTROKE_LISTENER(o)       (G_TYPE_CHECK_INSTANCE_TYPE ((o), SPI_KEYSTROKE_LISTENER_TYPE))
+#define SPI_IS_KEYSTROKE_LISTENER_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE ((k), SPI_KEYSTROKE_LISTENER_TYPE))
 
 typedef struct _SpiKeystrokeListener SpiKeystrokeListener;
 
 struct _SpiKeystrokeListener {
         BonoboObject parent;
-	GList *callbacks;
 };
 
 typedef struct {
@@ -55,11 +52,6 @@ typedef struct {
 
 GType                  spi_keystroke_listener_get_type        (void);
 SpiKeystrokeListener  *spi_keystroke_listener_new             (void);
-void                   spi_keystroke_listener_add_callback    (SpiKeystrokeListener *listener,
-							       BooleanKeystrokeListenerCB callback);
-void                   spi_keystroke_listener_remove_callback (SpiKeystrokeListener *listener,
-							       BooleanKeystrokeListenerCB callback);
-
 
 G_END_DECLS
 

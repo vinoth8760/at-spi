@@ -315,7 +315,7 @@ button_exit(GtkButton *notused, void *alsonotused)
 }
 
 static boolean
-is_command_key (AccessibleKeystroke *key)
+is_command_key (AccessibleKeystroke *key, void *user_data)
 {
   switch (key->keyID)
     {
@@ -328,7 +328,7 @@ is_command_key (AccessibleKeystroke *key)
 }
 
 static boolean
-switch_callback (AccessibleKeystroke *key)
+switch_callback (AccessibleKeystroke *key, void *user_data)
 {
   static boolean is_down = FALSE;
   if (key->type == SPI_KEY_RELEASED)
@@ -469,7 +469,7 @@ main(int argc, char **argv)
 
   SPI_init ();
 
-  key_listener = createAccessibleKeystrokeListener (is_command_key);
+  key_listener = createAccessibleKeystrokeListener (is_command_key, NULL);
   /* will listen only to Alt-key combinations */
   registerAccessibleKeystrokeListener (key_listener,
 				       (AccessibleKeySet *) SPI_KEYSET_ALL_KEYS,
@@ -489,7 +489,7 @@ main(int argc, char **argv)
   switch_set.len = 1;
   switch_set.keysyms[0] = (unsigned long) 0;
   switch_set.keycodes[0] = (unsigned short) 0;
-  switch_listener = createAccessibleKeystrokeListener (switch_callback);
+  switch_listener = createAccessibleKeystrokeListener (switch_callback, NULL);
   registerAccessibleKeystrokeListener (switch_listener,
 				       &switch_set,
 				       SPI_KEYMASK_UNMODIFIED,

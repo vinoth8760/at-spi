@@ -59,7 +59,7 @@ impl__get_nSelectedChildren (PortableServer_Servant _servant,
 #ifdef SPI_DEBUG
   fprintf (stderr, "calling impl__get_nSelectedChildren\n");
 #endif
-  g_return_val_if_fail (IS_SPI_SELECTION (obj), 0);
+  g_return_val_if_fail (SPI_IS_SELECTION (obj), 0);
   selection = SPI_SELECTION (obj);
   g_return_val_if_fail (ATK_IS_SELECTION (selection->atko), 0);
   return (CORBA_long)
@@ -80,7 +80,7 @@ impl_getSelectedChild (PortableServer_Servant _servant,
 #ifdef SPI_DEBUG
   fprintf (stderr, "calling impl_getSelectedChild\n");
 #endif
-  g_return_val_if_fail (IS_SPI_SELECTION (obj), 0);
+  g_return_val_if_fail (SPI_IS_SELECTION (obj), 0);
   selection = SPI_SELECTION (obj);
   g_return_val_if_fail (ATK_IS_SELECTION (selection->atko), 0);
 

@@ -64,7 +64,7 @@ impl_accessibility_component_contains (PortableServer_Servant servant,
   SpiComponent *component;
 
   obj = bonobo_object_from_servant (servant);
-  g_return_val_if_fail (IS_SPI_COMPONENT(obj), FALSE);
+  g_return_val_if_fail (SPI_IS_COMPONENT(obj), FALSE);
   component = SPI_COMPONENT (obj);
   g_return_val_if_fail (ATK_IS_COMPONENT(component->atko), FALSE);
   retval = atk_component_contains (ATK_COMPONENT (component->atko), (gint) x, (gint) y,
@@ -88,7 +88,7 @@ impl_accessibility_component_get_accessible_at_point (PortableServer_Servant ser
   AtkObject *child;
 
   obj = bonobo_object_from_servant (servant);
-  g_return_val_if_fail (IS_SPI_COMPONENT(obj), CORBA_OBJECT_NIL);
+  g_return_val_if_fail (SPI_IS_COMPONENT(obj), CORBA_OBJECT_NIL);
   component = SPI_COMPONENT (obj);
   g_return_val_if_fail (ATK_IS_COMPONENT(component->atko), CORBA_OBJECT_NIL);
 
@@ -116,7 +116,7 @@ impl_accessibility_component_get_extents (PortableServer_Servant servant,
   gint ix, iy, iw, ih;
 
   obj = bonobo_object_from_servant (servant);
-  g_return_if_fail (IS_SPI_COMPONENT(obj));
+  g_return_if_fail (SPI_IS_COMPONENT(obj));
   component = SPI_COMPONENT (obj);
   g_return_if_fail (ATK_IS_COMPONENT (component->atko));
 
@@ -142,7 +142,7 @@ impl_accessibility_component_get_position (PortableServer_Servant servant,
   SpiComponent *component;
   gint ix, iy;
 
-  g_return_if_fail (IS_SPI_COMPONENT(obj));
+  g_return_if_fail (SPI_IS_COMPONENT(obj));
   component = SPI_COMPONENT(obj);
   g_return_if_fail (ATK_IS_COMPONENT(component->atko));
 
@@ -165,7 +165,7 @@ impl_accessibility_component_get_size (PortableServer_Servant servant,
   BonoboObject *obj = bonobo_object_from_servant (servant);
   gint iw, ih;
 
-  g_return_if_fail (IS_SPI_COMPONENT(obj));
+  g_return_if_fail (SPI_IS_COMPONENT(obj));
   component = SPI_COMPONENT(obj);
   g_return_if_fail (ATK_IS_COMPONENT(component->atko));
   atk_component_get_size (ATK_COMPONENT (component->atko), &iw, &ih);

@@ -34,8 +34,8 @@ G_BEGIN_DECLS
 #define SPI_DESKTOP_TYPE        (spi_desktop_get_type ())
 #define SPI_DESKTOP(o)          (G_TYPE_CHECK_INSTANCE_CAST ((o), SPI_DESKTOP_TYPE, SpiDesktop))
 #define SPI_DESKTOP_CLASS(k)    (G_TYPE_CHECK_CLASS_CAST((k), SPI_DESKTOP_TYPE, SpiDesktopClass))
-#define IS_SPI_DESKTOP(o)       (G_TYPE_CHECK__INSTANCE_TYPE ((o), SPI_DESKTOP_TYPE))
-#define IS_SPI_DESKTOP_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE ((k), SPI_DESKTOP_TYPE))
+#define SPI_IS_DESKTOP(o)       (G_TYPE_CHECK__INSTANCE_TYPE ((o), SPI_DESKTOP_TYPE))
+#define SPI_IS_DESKTOP_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE ((k), SPI_DESKTOP_TYPE))
 
 typedef struct {
         SpiAccessible parent;

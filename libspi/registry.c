@@ -392,6 +392,7 @@ impl_accessibility_registry_deregister_global_event_listener (
       break;
     case (ETYPE_WINDOW) :
       /* Support for Window Manager Events is not yet implemented */
+      listeners = NULL;
       break;
     case (ETYPE_TOOLKIT) :
       listeners = &registry->toolkit_listeners;
@@ -555,11 +556,10 @@ _registry_notify_listeners (GList *listeners,
 #endif
 	  e_out = ORBit_copy_value (e_in, TC_Accessibility_Event);
 	  e_out->source = CORBA_Object_duplicate (e_in->source, ev);
-          Accessibility_Accessible_ref ( e_out->source, ev);
+          Accessibility_Accessible_ref (e_out->source, ev);
           Accessibility_EventListener_notifyEvent ((Accessibility_EventListener) ls->listener,
                                                    e_out,
                                                    ev);
-	  /* is it safe to free e_out now ? notifyEvent is a oneway... */
 	  CORBA_free (e_out);
           if (ev->_major != CORBA_NO_EXCEPTION) {
                 fprintf(stderr,

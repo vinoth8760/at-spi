@@ -28,11 +28,11 @@
 #include <cspi/spi.h>
 #include "../util/mag_client.h"
 
-static void report_focus_event    (AccessibleEvent *event);
-static void report_button_press   (AccessibleEvent *event);
-static void check_property_change (AccessibleEvent *event);
-static boolean report_command_key_event  (AccessibleKeystroke *stroke);
-static boolean report_ordinary_key_event (AccessibleKeystroke *stroke);
+static void report_focus_event    (AccessibleEvent *event, void *user_data);
+static void report_button_press   (AccessibleEvent *event, void *user_data);
+static void check_property_change (AccessibleEvent *event, void *user_data);
+static boolean report_command_key_event  (AccessibleKeystroke *stroke, void *user_data);
+static boolean report_ordinary_key_event (AccessibleKeystroke *stroke, void *user_data);
 static void get_environment_vars (void);
 
 static int _festival_init ();
@@ -50,7 +50,7 @@ static AccessibleKeystrokeListener *command_key_listener;
 static AccessibleKeystrokeListener *ordinary_key_listener;
 
 int
-main(int argc, char **argv)
+main (int argc, char **argv)
 {
   int i, j;
   int n_desktops;
@@ -67,9 +67,9 @@ main(int argc, char **argv)
 
   SPI_init();
 
-  focus_listener = createAccessibleEventListener (report_focus_event);
-  property_listener = createAccessibleEventListener (check_property_change); 
-  button_listener = createAccessibleEventListener (report_button_press);
+  focus_listener = createAccessibleEventListener (report_focus_event, NULL);
+  property_listener = createAccessibleEventListener (check_property_change, NULL); 
+  button_listener = createAccessibleEventListener (report_button_press, NULL);
   registerGlobalEventListener (focus_listener, "focus:");
   registerGlobalEventListener (property_listener, "object:property-change:accessible-selection"); 
   registerGlobalEventListener (button_listener, "Gtk:GtkWidget:button-press-event");
@@ -89,8 +89,8 @@ main(int argc, char **argv)
     }
 
   /* prepare the keyboard snoopers */
-  command_key_listener = createAccessibleKeystrokeListener (report_command_key_event);
-  ordinary_key_listener = createAccessibleKeystrokeListener (report_ordinary_key_event);
+  command_key_listener = createAccessibleKeystrokeListener (report_command_key_event, NULL);
+  ordinary_key_listener = createAccessibleKeystrokeListener (report_ordinary_key_event, NULL);
   
   /* will listen only to Alt-key combinations, and only to KeyPress events */
   registerAccessibleKeystrokeListener(command_key_listener,
@@ -179,7 +179,7 @@ report_focussed_accessible (Accessible *obj, boolean shutup_previous_speech)
 }
 
 void
-report_focus_event (AccessibleEvent *event)
+report_focus_event (AccessibleEvent *event, void *user_data)
 {
   fprintf (stderr, "%s event from %s\n", event->type,
            Accessible_getName (event->source));
@@ -187,7 +187,7 @@ report_focus_event (AccessibleEvent *event)
 }
 
 void
-report_button_press (AccessibleEvent *event)
+report_button_press (AccessibleEvent *event, void *user_data)
 {
   fprintf (stderr, "%s event from %s\n", event->type,
            Accessible_getName (event->source));
@@ -197,7 +197,7 @@ report_button_press (AccessibleEvent *event)
 
 
 void
-check_property_change (AccessibleEvent *event)
+check_property_change (AccessibleEvent *event, void *user_data)
 {
   AccessibleSelection *selection = Accessible_getSelection (event->source);
   int n_selections;
@@ -219,7 +219,7 @@ check_property_change (AccessibleEvent *event)
 }
 
 static void
-simple_at_exit()
+simple_at_exit ()
 {
   deregisterGlobalEventListenerAll (focus_listener);
   deregisterGlobalEventListenerAll (property_listener);
@@ -254,7 +254,7 @@ is_command_key (AccessibleKeystroke *key)
 }
 
 static boolean
-report_command_key_event (AccessibleKeystroke *key)
+report_command_key_event (AccessibleKeystroke *key, void *user_data)
 {
   fprintf (stderr, "Command KeyEvent %s%c (keycode %d)\n",
 	  (key->modifiers & SPI_KEYMASK_ALT)?"Alt-":"",
@@ -266,7 +266,7 @@ report_command_key_event (AccessibleKeystroke *key)
 
 
 static boolean
-report_ordinary_key_event (AccessibleKeystroke *key)
+report_ordinary_key_event (AccessibleKeystroke *key, void *user_data)
 {
   fprintf (stderr, "Received key event:\tsym %ld\n\tmods %x\n\tcode %d\n\ttime %ld\n",
 	   (long) key->keyID,
@@ -276,7 +276,8 @@ report_ordinary_key_event (AccessibleKeystroke *key)
   return FALSE;
 }
 
-static int _festival_init ()
+static int
+_festival_init ()
 {
   int fd;
   struct sockaddr_in name;
@@ -300,7 +301,8 @@ static int _festival_init ()
   return fd;
 }
 
-static void _festival_say (const char *text, const char *voice, boolean shutup)
+static void 
+_festival_say (const char *text, const char *voice, boolean shutup)
 {
   static int fd = 0;
   gchar *quoted;
@@ -345,7 +347,8 @@ static void _festival_say (const char *text, const char *voice, boolean shutup)
   g_free(quoted);
 }
 
-static void _festival_write (const gchar *command_string, int fd)
+static void
+_festival_write (const gchar *command_string, int fd)
 {
   fprintf(stderr, command_string);
   if (fd < 0) {

@@ -92,6 +92,8 @@ cspi_object_unref (Accessible *accessible)
     }
 }
 
+static gboolean SPI_inited  = FALSE;
+
 /**
  * SPI_init:
  *
@@ -104,14 +106,13 @@ SPI_init (void)
 {
   int argc = 0;
   char *obj_id;
-  static gboolean inited = FALSE;
 
-  if (inited)
+  if (SPI_inited)
     {
       return 1;
     }
 
-  inited = TRUE;
+  SPI_inited = TRUE;
 
   CORBA_exception_init (&ev);
 
@@ -138,6 +139,8 @@ SPI_init (void)
 
   bonobo_activate ();
 
+  g_atexit (SPI_exit);
+
   return 0;
 }
 
@@ -150,24 +153,15 @@ SPI_init (void)
  *
  * Starts/enters the main event loop for the SPI services.
  *
- * (NOTE: This method does not return control, it is exited via a call to exit()
- * from within an event handler).
- *
+ * (NOTE: This method does not return control, it is exited via a call
+ *  to SPI_exit() from within an event handler).
  **/
 void
 SPI_event_main (boolean isGNOMEApp)
 {
-  if (isGNOMEApp)
-    {
-      g_atexit (SPI_exit);
-      bonobo_main ();
-    }
-  else
-    {
-      /* TODO: install signal handlers to do cleanup */
-      CORBA_ORB_run (bonobo_orb (), cspi_ev ());
-      fprintf (stderr, "orb loop exited...\n");
-    }
+  bonobo_main ();
+  
+  fprintf (stderr, "orb loop exited...\n");
 }
 
 /**
@@ -216,6 +210,12 @@ SPI_exit (void)
 {
   GSList *l, *refs;
 
+  if (!SPI_inited)
+    { 
+      return;
+    }
+  SPI_inited = FALSE;
+
   refs = live_refs;
   live_refs = NULL;
 
@@ -235,6 +235,8 @@ SPI_exit (void)
       bonobo_object_release_unref (registry, NULL);
       registry = CORBA_OBJECT_NIL;
     }
+
+  bonobo_main_quit ();
 
   fprintf (stderr, "bye-bye!\n");	
 }

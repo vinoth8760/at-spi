@@ -34,7 +34,6 @@ main (int argc,
       char **argv)
 {
         SpiRegistry *registry;
-	GSource *keyevent_source;
         char *obj_id;
 
         if (!bonobo_init (&argc, argv))
@@ -56,9 +55,7 @@ main (int argc,
   
         gdk_init (&argc, &argv);
         g_timeout_add_full (G_PRIORITY_HIGH_IDLE, 200, registry->kbd_event_hook, registry, NULL);
-/*	keyevent_source =
-		g_source_new (registry->kbd_event_hook, sizeof (GSourceFunc));
-		g_source_attach (keyevent_source, g_main_context_default());*/
+
         bonobo_main ();
 
         return 0;

@@ -1,3 +1,88 @@
+2001-11-30  Michael Meeks  <michael@ximian.com>
+
+	* libspi/keystrokelistener.c
+	(spi_keystroke_listener_class_init): fixup arg
+	count (doh).
+
+	* libspi/eventlistener.c
+	(spi_event_listener_class_init): ditto.
+
+	* tests/test.sh: add.
+
+	* cspi/spi-listener-impl.h: update macros.
+
+	* cspi/spi-listener-impl.c
+	(cspi_event_listener_remove_callback): add
+	correct pre-conditions.
+
+	* cspi/spi_main.c (SPI_exit): guard vs. double
+	exits, exit the mainloop nicely.
+	(SPI_event_main): make more sense.
+	(SPI_init): move the atexit evilness here so we
+	always do it (yuck).
+	(SPI_event_main): upd.
+
+	* test/simple-at.c: update for listener changes.
+
+	* registryd/registryd.c (main): prune kruft.
+
+	* libspi/libspi.h: upd.
+
+	* libspi/eventlistener.[ch]: rename broken macros.
+
+	* libspi/accessibleeventlistener.[ch]: remove.
+
+	* libspi/*.[ch]: IS_SPI_... -> SPI_IS_...
+
+	* test/test-simple.c: Add - automated tests.
+
+	* cspi/spi-listener-impl.c (cspi_event),
+	(cspi_key_event): add user_data to invoke.
+	(cspi_keystroke_listener_finalize): impl.
+	(cspi_keystroke_listener_class_init): upd.
+
+	* cspi/spi_event.c
+	(createAccessibleEventListener),
+	(AccessibleEventListener_addCallback),
+	(createAccessibleKeystrokeListener),
+	(AccessibleKeystrokeListener_addCallback): upd.
+
+	* libspi/deviceeventcontroller.c
+	(spi_device_event_controller_check_key_event): add public proto.
+
+	* libspi/registry.c
+	(impl_accessibility_registry_deregister_global_event_listener): 
+	always init listeners.
+	(_registry_notify_listeners): yes it is.
+
+	* cspi/spi-listener-impl.c (cspi_key_event): 
+	move debug to here.
+	(cspi_event_listener_finalize): impl.
+	(cspi_event_listener_class_init): hook up.
+	(event_handler_new, event_handler_free),
+	(event_list_remove_by_callback): impl.
+	(cspi_event_listener_remove_callback),
+	(cspi_keystroke_listener_remove_callback),
+	(cspi_keystroke_listener_add_callback),
+	(cspi_event_listener_add_callback): upd.
+
+	* libspi/keystrokelistener.c
+	(keystroke_listener_object_finalize): kill
+	(spi_keystroke_listener_class_init): upd.
+	(spi_keystroke_listener_add_callback),
+	(spi_keystroke_listener_remove_callback): kill,
+	use signals.
+	(impl_key_event): prune drasticaly.
+
+	* libspi/eventlistener.c
+	(spi_event_listener_add_callback),
+	(spi_event_listener_remove_callback): kill, use
+	signals.
+	(impl_accessible_event_notify_event): upd.
+	(spi_event_listener_object_finalize): remove.
+
+	* libspi/Makefile.am: use eventlistener.[ch]
+
 2001-11-27  Michael Meeks  <michael@ximian.com>
 
 	* cspi/spi-listener.h: fixup enum.
