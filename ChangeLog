@@ -1,5 +1,10 @@
 2001-12-07  Michael Meeks  <michael@ximian.com>
 
+	* test/simple-at.c (report_focus_event),
+	(report_focussed_accessible): remove g_warning debug.
+
+2001-12-07  Michael Meeks  <michael@ximian.com>
+
 	* test/test-simple.c (validate_tree): comment out some checks.
 	(test_desktop): app now not registered idly - horay.
 

@@ -144,7 +144,7 @@ register_atk_event_listeners (void)
   atk_add_global_event_listener (bridge_signal_listener, "Gtk:AtkTable:model-changed");
   atk_add_key_event_listener    (bridge_key_listener, NULL);
 
-//  g_object_unref (o);
+/*  g_object_unref (o); */
 }
 
 static void
