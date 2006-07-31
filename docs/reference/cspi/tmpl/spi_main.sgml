@@ -145,10 +145,6 @@ SPI main loop and initialization
 
 </para>
 
-@x: 
-@y: 
-@width: 
-@height: 
 
 <!-- ##### FUNCTION SPI_freeRect ##### -->
 <para>
