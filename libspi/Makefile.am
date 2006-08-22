@@ -108,6 +108,7 @@ Accessibility_module_la_LDFLAGS = \
 	-export-dynamic -module -avoid-version
 Accessibility_module_la_SOURCES = \
 	Accessibility-imodule.c
+Accessibility_module_la_LIBADD = $(LIBSPI_LIBS)
 
 DONT_DIST_SOURCE = $(IDL_OUT) Accessibility-imodule.c
 

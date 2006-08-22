@@ -1,3 +1,10 @@
+2006-08-22  Bill Haneman <bill.haneman@sun.com>
+	
+	* Multiple Makefile.am modifications for build, bug #346456,
+	"gnome-2.14 branch fails to build with -z defs 
+	(missing symbols check)."
+	Patches from Loïc Minier.
+	
 2006-07-31  Bill Haneman <bill.haneman@sun.com>
 
 	* atk-bridge/bridge.c: 

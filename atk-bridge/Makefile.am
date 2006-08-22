@@ -25,3 +25,6 @@ libatk_bridge_la_LDFLAGS =  	\
 	-rpath $(moduledir) -module -avoid-version \
 	@LDFLAGS@	\
 	$(top_builddir)/libspi/libspi.la
+
+libatk_bridge_la_LIBADD = $(LIBSPI_LIBS)
+

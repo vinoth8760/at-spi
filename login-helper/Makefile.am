@@ -1,7 +1,5 @@
 lib_LTLIBRARIES = libloginhelper.la
 
-LDADD = $(X_LIBS) $(LOGIN_HELPER_LIBS) 
-
 INCLUDES = -I$(top_srcdir)          \
            -I$(top_builddir)        \
            $(REGISTRYD_CFLAGS)
@@ -23,6 +21,7 @@ libloginhelperinclude_HEADERS = \
 libloginhelper_la_SOURCES =		\
 	$(IDL_OUT)		\
 	login-helper.c
+libloginhelper_la_LIBADD = $(LIBSPI_LIBS)
 
 IDLFLAGS = -I$(BONOBO_ACTIVATION_IDL_DIR) \
 	   -I$(LIBBONOBO_IDL_DIR)         \
@@ -39,6 +38,7 @@ Accessibility_LoginHelper_module_la_LDFLAGS = \
 	-export-dynamic -module -avoid-version
 Accessibility_LoginHelper_module_la_SOURCES = \
 	Accessibility_LoginHelper-imodule.c
+Accessibility_LoginHelper_module_la_LIBADD = $(LIBSPI_LIBS)
 
 DONT_DIST_SOURCE = $(IDL_OUT) Accessibility_LoginHelper-imodule.c
 
