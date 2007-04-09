@@ -1,5 +1,9 @@
 2007-04-09  Li Yuan <li.yuan@sun.com>
 
+	* configure.in, NEWS: Uprev/release 1.18.1.
+
+2007-04-09  Li Yuan <li.yuan@sun.com>
+
 	* atk-bridge/bridge.c: don't call threads_leave and enter if own the
 	main context. Fix for #329454.
 
