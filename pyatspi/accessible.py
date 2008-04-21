@@ -52,7 +52,8 @@ _ACCESSIBLE_USER_DATA = weakref.WeakValueDictionary()
 _CACHE_LEVEL = None
 
 class _PropertyCache:
-  pass
+  def wipe(self):
+      self.__dict__ = {}
 
 class _UserData:
   value = None
@@ -115,7 +116,7 @@ def _updateCache(event):
   @type event: L{event.Event}
   '''
   try:
-    del _ACCESSIBLE_CACHE[hash(event.source)]
+    _ACCESSIBLE_CACHE[hash(event.source)].wipe()
   except KeyError:
     return
 
