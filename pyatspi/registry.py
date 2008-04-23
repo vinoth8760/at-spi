@@ -310,7 +310,7 @@ class Registry(object):
     self.clients = {}
     self.observers = {}
     
-  def __call__(self):
+  def __call__(self, reg):
     '''
     @return: This instance of the registry
     @rtype: L{Registry}

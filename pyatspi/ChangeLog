@@ -1,3 +1,8 @@
+2008-04-23  Eitan Isaacson  <eitan@ascender.com>
+
+	* registry.py (Registry.__call__): Added an extra argument, since
+	__init__ takes one.
+
 2008-04-21  Eitan Isaacson  <eitan@ascender.com>
 
 	* accessible.py (_updateCache): Instead of removing the
