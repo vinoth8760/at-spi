@@ -303,20 +303,35 @@ class Registry(object):
     @param reg: Reference to the AT-SPI registry daemon
     @type reg: Accessibility.Registry
     '''
-    self.async = None
     self.reg = reg
-    self.dev = self.reg.getDeviceEventController()
+    self.async = None
     self.queue = Queue.Queue()
     self.clients = {}
     self.observers = {}
-    
+
+    if self.reg is not None:
+      self.dev = self.reg.getDeviceEventController()
+    else:
+      self.dev = None
+
   def __call__(self, reg):
     '''
-    @return: This instance of the registry
+    @return: This instance of the registry. If we are passed a remote registry
+    instance for the first time, add it to our instance, and get a device event
+    controller.
     @rtype: L{Registry}
     '''
+    if reg and not self.reg:
+      self.reg = reg
+      self.dev = self.reg.getDeviceEventController()
     return self
   
+  def __getattribute__(self, attr):
+    if attr != 'reg' and object.__getattribute__(self, 'reg') is None:
+      raise RuntimeError('Could not find or activate registry')
+    else:
+      return object.__getattribute__(self, attr)
+
   def start(self, async=False, gil=True):
     '''
     Enter the main loop to start receiving and dispatching events.

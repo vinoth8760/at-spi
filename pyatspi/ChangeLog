@@ -1,5 +1,10 @@
 2008-04-23  Eitan Isaacson  <eitan@ascender.com>
 
+	* registry.py:
+	* __init__.py: Suppress exceptions at import time, raise
+	RuntimeError when we don't have a reference to a remote registry
+	during a registry operation (bug #529611).
+
 	* registry.py (Registry.__call__): Added an extra argument, since
 	__init__ takes one.
 

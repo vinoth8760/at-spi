@@ -41,9 +41,10 @@ import ORBit, bonobo
 # initialize the ORB
 orb = ORBit.CORBA.ORB_init()
 # get a reference to the gnome Accessibility registry
-reg = bonobo.activation.activate_from_id(REGISTRY_IID, 0, 0)
-if reg is None:
-  raise RuntimeError('could not activate:', REGISTRY_IID)
+try:
+  reg = bonobo.activation.activate_from_id(REGISTRY_IID, 0, 0)
+except Exception:
+  reg = None
 # generate Python code for the Accessibility module from the IDL
 ORBit.load_typelib(TYPELIB_NAME)
 
