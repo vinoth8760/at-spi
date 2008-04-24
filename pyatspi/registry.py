@@ -314,7 +314,7 @@ class Registry(object):
     else:
       self.dev = None
 
-  def __call__(self, reg):
+  def __call__(self, reg=None):
     '''
     @return: This instance of the registry. If we are passed a remote registry
     instance for the first time, add it to our instance, and get a device event
