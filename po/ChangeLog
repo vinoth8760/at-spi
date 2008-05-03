@@ -1,3 +1,8 @@
+2008-05-03  Praveen Arimbrathodiyil  <pravi dot a at gmail dot com>
+
+	* LINGUAS: Added Malayalam (ml)
+	* ml.po: Added Malayalam translation.
+
 2008-03-21  Erdal Ronahi  <erdal dot ronahi at gmail dot com>
 
 	* LINGUAS: Added Kurdish (ku)
