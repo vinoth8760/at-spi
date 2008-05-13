@@ -1,3 +1,8 @@
+2008-05-13  Li Yuan  <li.yuan@sun.com>
+
+	* cspi/spi_hyperlink.c: (AccessibleHyperlink_unref):
+	Bug #532887. Unref the object instead of ref it.
+
 2008-03-31  Li Yuan  <li.yuan@sun.com>
 
 	* atk-bridge/bridge.c: (atk_bridge_init),

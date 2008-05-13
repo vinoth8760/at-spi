@@ -44,7 +44,7 @@ AccessibleHyperlink_ref (AccessibleHyperlink *obj)
 void
 AccessibleHyperlink_unref (AccessibleHyperlink *obj)
 {
-  cspi_object_ref (obj);
+  cspi_object_unref (obj);
 }
 
 /**
