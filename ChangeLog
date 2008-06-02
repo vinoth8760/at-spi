@@ -1,3 +1,10 @@
+2008-06-02  Li Yuan  <li.yuan@sun.com>
+
+	* NEWS:
+	* README:
+	* configure.in:
+	Uprev/release 1.23.3.
+
 2008-05-13  Li Yuan  <li.yuan@sun.com>
 
 	* cspi/spi_hyperlink.c: (AccessibleHyperlink_unref):
