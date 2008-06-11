@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: at-spi.HEAD.oc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-07-20 03:06+0200\n"
-"PO-Revision-Date: 2007-05-09 17:43+0200\n"
+"PO-Revision-Date: 2008-06-11 11:40+0200\n"
 "Last-Translator: Yannig MARCHEGAY (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan (post 1500) <ubuntu-l10n-oci@lists.ubuntu.com>\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
-msgstr ""
+msgstr "Registre AT-SPI"
 
 #: registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
-msgstr ""
+msgstr "Registre d'accessibilitat"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr ""
