@@ -1,3 +1,8 @@
+2008-06-25  Willie Walker  <william.walker@sun.com>
+
+        * accessible.py: fix for bug #435833 to narrow the relation
+        before ref'ing it.
+
 2008-04-24  Eitan Isaacson  <eitan@ascender.com>
 
 	* registry.py (Registry.__call__): Make extra argument a keyword,
@@ -30,7 +35,7 @@
 	* registry.py (Registry.pumpQueuedEvents): Added this method for
 	pumping queued events (bug #509412). Thanks Steve Lee!
 
-2009-01-12  Willie Walker  <william.walker@sun.com>
+2008-01-12  Willie Walker  <william.walker@sun.com>
 
 	* accessible.py: fix for bug 503091 - getApplication doesn't
 	fallback properly.
