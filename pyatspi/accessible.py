@@ -652,7 +652,9 @@ class _RelationMixin(object):
     @return: The 'nth' target of this Relation.
     @rtype: Accessibility.Accessible
     '''
-    target = self._mix_getTarget(index)._narrow(Accessibility.Accessible)
+    target = self._mix_getTarget(index)
+    if not isinstance(target, Accessibility.Accessible):
+      target = target._narrow(Accessibility.Accessible)
     target.ref()
     return target
 
