@@ -1,3 +1,9 @@
+2008-07-01  Li Yuan  <li.yuan@sun.com>
+
+	* libspi/text.c: (impl_getBoundedRanges):
+	Bug #524806. Fix memory leak in impl_getBoundedRanges.
+	Patch from Mike Gorse <mgorse@novell.com>.
+
 2008-06-02  Li Yuan  <li.yuan@sun.com>
 
 	* NEWS:

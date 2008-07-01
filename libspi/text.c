@@ -511,6 +511,7 @@ impl_getBoundedRanges(PortableServer_Servant servant,
 		      const Accessibility_TEXT_CLIP_TYPE yClipType, 
 		      CORBA_Environment * ev)
 {
+  Accessibility_Text_RangeList *rv;
   AtkText *text = get_text_from_servant (servant);
   AtkTextRange **range_list = NULL;
   AtkTextRectangle rect;
@@ -525,7 +526,9 @@ impl_getBoundedRanges(PortableServer_Servant servant,
 					    (AtkTextClipType) xClipType,
 					    (AtkTextClipType) yClipType);
 
-  return _spi_text_range_seq_from_atkrangelist (range_list); 
+  rv = _spi_text_range_seq_from_atkrangelist (range_list);
+  atk_text_free_ranges(range_list);
+  return rv; 
 }
 
 
