@@ -1,5 +1,8 @@
 2008-07-02  Eitan Isaacson  <eitan@ascender.com>
 
+	* __init__.py.in: Instead of a string use a tuple for easier version
+	comparisons. (bug #541119).
+	
 	* __init__.py.in: Renamed from __init__.py. Added a version string
 	via a macro (bug #541119).
 
