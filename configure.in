@@ -241,6 +241,7 @@ test/Makefile
 cspi/Makefile
 cspi/bonobo/Makefile
 pyatspi/Makefile
+pyatspi/__init__.py
 ])
 
 echo "AT-SPI setup:

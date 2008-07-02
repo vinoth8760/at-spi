@@ -1,3 +1,7 @@
+2008-07-02  Eitan Isaacson  <eitan@ascender.com>
+
+	* configure.in: Add pyatspi/__init__.py to AC_OUTPUT (bug #541119).
+
 2008-07-01  Li Yuan  <li.yuan@sun.com>
 
 	* libspi/text.c: (impl_getBoundedRanges):

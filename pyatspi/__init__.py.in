@@ -33,6 +33,8 @@ IBM Corporation under the BSD license, available at
 U{http://www.opensource.org/licenses/bsd-license.php}
 '''
 
+__version__ = "@VERSION@"
+
 REGISTRY_IID = "OAFIID:Accessibility_Registry:1.0"
 TYPELIB_NAME = "Accessibility"
 
