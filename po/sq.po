@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-18 13:42+0100\n"
+"POT-Creation-Date: 2008-07-16 15:23+0200\n"
 "PO-Revision-Date: 2005-11-18 17:37+0100\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
@@ -22,4 +22,3 @@ msgstr "Regjistri AT-SPI"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Regjistri i açesibilitetit"
-
