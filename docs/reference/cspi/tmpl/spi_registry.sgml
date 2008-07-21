@@ -261,6 +261,7 @@ AccessibleDeviceEvent is a struct which encapsulates a device event.
 
 @keystring: 
 @type: 
+@modifiers: 
 @is_text: 
 
 <!-- ##### TYPEDEF AccessibleDeviceEventMask ##### -->

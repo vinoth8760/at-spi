@@ -1,3 +1,10 @@
+2008-07-21  Li Yuan  <li.yuan@sun.com>
+
+	* NEWS:
+	* README:
+	* configure.in:
+	Uprev/release 1.23.5.
+
 2008-07-10  Li Yuan  <li.yuan@sun.com>
 
 	* configure.in:
