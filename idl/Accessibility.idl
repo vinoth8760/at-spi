@@ -46,16 +46,19 @@
  * Namespace Accessibility includes service APIs implemented by
  * participating applications and their user interface components:\n\n
  * Accessibility::Accessible\n 
+ * Accessibility::Action\n
  * Accessibility::Application\n
- * Accessibility::Desktop\n
+ * Accessibility::Collection\n
  * Accessibility::Component\n
+ * Accessibility::Desktop\n
+ * Accessibility::Document\n
+ * Accessibility::EditableText\n
  * Accessibility::Hypertext\n
  * Accessibility::Image\n
  * Accessibility::Selection\n
  * Accessibility::StreamableContent\n
  * Accessibility::Table\n
  * Accessibility::Text\n
- * Accessibility::EditableText\n
  * Accessibility::Value
  *
  * \section types Enumerated Types

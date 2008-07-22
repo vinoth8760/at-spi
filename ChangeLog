@@ -1,3 +1,9 @@
+2008-07-22  Li Yuan  <li.yuan@sun.com>
+
+	* idl/Accessibility.idl:
+	Bug #436579. Patch from Peter Parente. Add Action, Document and Collection to
+	the front page of IDL.
+
 2008-07-21  Li Yuan  <li.yuan@sun.com>
 
 	* NEWS:
