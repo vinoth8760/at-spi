@@ -84,6 +84,9 @@ static unsigned int _numlock_physical_mask = Mod2Mask; /* a guess, will be reset
 static GQuark spi_dec_private_quark = 0;
 static XModifierKeymap* xmkeymap = NULL;
 
+static gboolean have_mouse_listener = FALSE;
+static gboolean have_mouse_event_listener = FALSE;
+
 static int (*x_default_error_handler) (Display *display, XErrorEvent *error_event);
 
 typedef enum {
@@ -599,7 +602,9 @@ spi_dec_poll_mouse_moved (gpointer data)
 static gboolean
 spi_dec_poll_mouse_idle (gpointer data)
 {
-  if (! spi_dec_poll_mouse_moved (data)) 
+  if (!have_mouse_event_listener && !have_mouse_listener)
+    return FALSE;
+  else if (! spi_dec_poll_mouse_moved (data)) 
     return TRUE;
   else
     {
@@ -611,7 +616,9 @@ spi_dec_poll_mouse_idle (gpointer data)
 static gboolean
 spi_dec_poll_mouse_moving (gpointer data)
 {
-  if (spi_dec_poll_mouse_moved (data))
+  if (!have_mouse_event_listener && !have_mouse_listener)
+    return FALSE;
+  else if (spi_dec_poll_mouse_moved (data))
     return TRUE;
   else
     {
@@ -639,10 +646,7 @@ spi_dec_init_mouse_listener (SpiRegistry *registry)
 {
 #ifdef GRAB_BUTTON
   Display *display = spi_get_display ();
-#endif
-  g_timeout_add (100, spi_dec_poll_mouse_idle, registry);
 
-#ifdef GRAB_BUTTON
   if (display)
     {
       if (XGrabButton (display, AnyButton, AnyModifier,
@@ -925,6 +929,12 @@ spi_controller_register_device_listener (SpiDEController      *controller,
       break;
   case SPI_DEVICE_TYPE_MOUSE:
       controller->mouse_listeners = g_list_prepend (controller->mouse_listeners, listener);
+      if (!have_mouse_listener)
+        {
+          have_mouse_listener = TRUE;
+          if (!have_mouse_event_listener)
+            g_timeout_add (100, spi_dec_poll_mouse_idle, controller->registry);
+        }
       break;
   default:
       DBG (1, g_warning ("listener registration for unknown device type.\n"));
@@ -1906,6 +1916,8 @@ spi_deregister_controller_device_listener (SpiDEController            *controlle
 
   spi_re_entrant_list_foreach (&controller->mouse_listeners,
 			       remove_listener_cb, &ctx);
+  if (!controller->mouse_listeners)
+    have_mouse_listener = FALSE;
 }
 
 static void
@@ -2578,6 +2590,22 @@ spi_device_event_controller_new (SpiRegistry *registry)
   spi_dec_init_mouse_listener (registry);
   /* TODO: kill mouse listener on finalize */  
   return retval;
+}
+void
+spi_device_event_controller_start_poll_mouse (SpiRegistry *registry)
+{
+  if (!have_mouse_event_listener)
+    {
+      have_mouse_event_listener = TRUE;
+      if (!have_mouse_listener)
+        g_timeout_add (100, spi_dec_poll_mouse_idle, registry);
+    }
+}
+
+void
+spi_device_event_controller_stop_poll_mouse (void)
+{
+  have_mouse_event_listener = FALSE;
 }
 
 static gboolean

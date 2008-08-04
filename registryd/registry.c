@@ -432,6 +432,10 @@ impl_accessibility_registry_register_global_event_listener (
     {
       spi_listener_struct_free (ls, ev);
     }
+
+  if ((!g_ascii_strcasecmp (event_name, "mouse:abs")) ||
+       (!g_ascii_strcasecmp (event_name, "mouse:rel")))
+    spi_device_event_controller_start_poll_mouse (registry);
 }
 
 typedef struct {
@@ -478,6 +482,8 @@ impl_accessibility_registry_deregister_global_event_listener_all (
   GList **lists[3];
   SpiRegistry *registry = SPI_REGISTRY (bonobo_object_from_servant (servant));
   RemoveListenerClosure cl = { 0, };
+  GList *listeners;
+  gboolean has_mouse_listener = FALSE;
 
   lists[0] = &registry->object_listeners;
   lists[1] = &registry->window_listeners;
@@ -490,6 +496,18 @@ impl_accessibility_registry_deregister_global_event_listener_all (
     {
       spi_re_entrant_list_foreach (lists [i], remove_listener_cb, &cl);
     }
+
+  for (listeners = *get_listener_list (registry, ETYPE_MOUSE); listeners; listeners = (listeners)->next)
+    {
+      SpiListenerStruct *ls = (SpiListenerStruct *) listeners->data;
+      if (ls->event_type_quark == g_quark_from_string ("abs") ||
+            ls->event_type_quark == g_quark_from_string ("rel"))
+        has_mouse_listener = TRUE;
+    }
+
+  if (!has_mouse_listener)
+    spi_device_event_controller_stop_poll_mouse ();
+
 }
 
 
@@ -505,6 +523,8 @@ impl_accessibility_registry_deregister_global_event_listener (
 {
   SpiRegistry    *registry;
   RemoveListenerClosure cl = { 0, };
+  GList *listeners;
+  gboolean has_mouse_listener = FALSE;
 
   registry = SPI_REGISTRY (bonobo_object_from_servant (servant));
 
@@ -514,6 +534,20 @@ impl_accessibility_registry_deregister_global_event_listener (
 
   spi_re_entrant_list_foreach (get_listener_list (registry, cl.etype.type_cat),
 				remove_listener_cb, &cl);
+
+  if (cl.etype.type_cat == ETYPE_MOUSE)
+    {
+      for (listeners = *get_listener_list (registry, ETYPE_MOUSE); listeners; listeners = listeners->next)
+        {
+          SpiListenerStruct *ls = (SpiListenerStruct *) listeners->data;
+          if (ls->event_type_quark == g_quark_from_string ("abs") ||
+                ls->event_type_quark == g_quark_from_string ("rel"))
+            has_mouse_listener = TRUE;
+        }
+
+      if (!has_mouse_listener)
+        spi_device_event_controller_stop_poll_mouse ();
+    }
 }
 
 

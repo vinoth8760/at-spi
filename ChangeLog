@@ -1,3 +1,19 @@
+2008-08-04  Li Yuan  <li.yuan@sun.com>
+
+	* registryd/deviceeventcontroller.c: (spi_dec_poll_mouse_idle),
+	(spi_dec_poll_mouse_moving), (spi_dec_init_mouse_listener),
+	(spi_controller_register_device_listener),
+	(spi_deregister_controller_device_listener),
+	(spi_device_event_controller_start_poll_mouse),
+	(spi_device_event_controller_stop_poll_mouse):
+	* registryd/deviceeventcontroller.h:
+	* registryd/registry.c:
+	(impl_accessibility_registry_register_global_event_listener),
+	(impl_accessibility_registry_deregister_global_event_listener_all),
+	(impl_accessibility_registry_deregister_global_event_listener):
+	Bug #545849. Only poll mouse when there is listeners for mouse:abs and
+	mouse:rel or mouse device listeners.
+
 2008-07-22  Li Yuan  <li.yuan@sun.com>
 
 	* idl/Accessibility.idl:

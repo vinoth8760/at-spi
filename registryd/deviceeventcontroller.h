@@ -60,6 +60,9 @@ typedef struct {
 GType            spi_device_event_controller_get_type (void);
 SpiDEController *spi_device_event_controller_new      (SpiRegistry *registry);
 
+void spi_device_event_controller_start_poll_mouse (SpiRegistry *registry);
+void spi_device_event_controller_stop_poll_mouse (void);
+
 G_END_DECLS
 
 #endif /* DEVICEEVENTCONTROLLER_H_ */
