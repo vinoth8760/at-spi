@@ -1,5 +1,12 @@
 2008-08-04  Li Yuan  <li.yuan@sun.com>
 
+	* NEWS:
+	* README:
+	* configure.in:
+	Uprev/release 1.23.6.
+
+2008-08-04  Li Yuan  <li.yuan@sun.com>
+
 	* registryd/deviceeventcontroller.c: (spi_dec_poll_mouse_idle),
 	(spi_dec_poll_mouse_moving), (spi_dec_init_mouse_listener),
 	(spi_controller_register_device_listener),
