@@ -1,3 +1,9 @@
+2008-08-15  Li Yuan  <li.yuan@sun.com>
+
+	* Makefile.am:
+	* configure.in:
+	Bug #457875.  Bump intltool dependency to 0.40.0.
+
 2008-08-04  Li Yuan  <li.yuan@sun.com>
 
 	* NEWS:
