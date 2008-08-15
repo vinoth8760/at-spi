@@ -1,12 +1,3 @@
-2008-08-12  Runa Bhattacharjee <runab@redhat.com>
-
-	* bn_IN.po: Added Bengali India Translation
-	* LINGUAS: Added Bengali India (bn_IN) to the list of languages.
-
-2008-08-6  Djihed Afifi <djihed@gmail.com> 
-
-	* ar.po: Updated Arabic Translation by Arafat Medini.
-
 2008-07-29  Djihed Afifi <djihed@gmail.com> 
 
 	* ar.po: Updated Arabic Translation by Arafat Medini.
