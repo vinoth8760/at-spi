@@ -1296,6 +1296,10 @@ spi_atk_tidy_windows (void)
   gint i;
 
   root = atk_get_root ();
+
+  if (!root)
+    return;
+
   n_children = atk_object_get_n_accessible_children (root);
   for (i = 0; i < n_children; i++)
     {
