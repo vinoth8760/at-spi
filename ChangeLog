@@ -1,3 +1,9 @@
+2008-08-25  Li Yuan  <li.yuan@sun.com>
+
+	* atk-bridge/bridge.c: (spi_atk_bridge_signal_listener):
+	Bug #350552. In children-changed, get child at detail 2 first. 
+	Patch from Ginn Chen.
+
 2008-08-20  Li Yuan  <li.yuan@sun.com>
 
 	* atk-bridge/bridge.c: (spi_atk_tidy_windows):

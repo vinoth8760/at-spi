@@ -1156,19 +1156,28 @@ spi_atk_bridge_signal_listener (GSignalInvocationHint *signal_hint,
   else if ((signal_query.signal_id == atk_signal_children_changed) && gobject)
     {
       detail1 = g_value_get_uint (param_values + 1);
-      ao = atk_object_ref_accessible_child (ATK_OBJECT (gobject), 
-			        	    detail1);
-      if (ao) 
+      gpointer child = g_value_get_pointer (param_values + 2);
+      if (ATK_IS_OBJECT (child))
+        {
+          ao = ATK_OBJECT (child);
+          g_object_ref (ao);
+        }
+      else
+        {
+          ao = atk_object_ref_accessible_child (ATK_OBJECT (gobject), 
+                                                detail1);
+        }
+      if (ao)
         {
           s_ao = spi_accessible_new (ao);
           c_obj = BONOBO_OBJREF (s_ao);
           spi_atk_bridge_init_object (&any, ATK_OBJECT (gobject), &c_obj);
-	  g_object_unref (ao);
-	}
+          g_object_unref (ao);
+        }
       else
-	{
-	  spi_atk_bridge_init_nil (&any, ATK_OBJECT (gobject));
-	}
+        {
+          spi_atk_bridge_init_nil (&any, ATK_OBJECT (gobject));
+        }
     }
   else
     {
