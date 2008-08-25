@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-02-12 01:39+0100\n"
-"PO-Revision-Date: 2004-02-12 01:41+0100\n"
+"PO-Revision-Date: 2004-02-12 01:40+0100\n"
 "Last-Translator: Danilo Šegan <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr "greška: nije nađen upravljač za događaje na uređaju.\n"
 
 #: atk-bridge/bridge.c:778
 msgid "WARNING: NULL key event reported."
-msgstr "UPOZORENЈE: Primio je NULL taster."
+msgstr "UPOZORENJE: Primio je NULL taster."
 
 #: registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
