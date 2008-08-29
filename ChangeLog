@@ -7,7 +7,7 @@
 2008-08-20  Li Yuan  <li.yuan@sun.com>
 
 	* atk-bridge/bridge.c: (spi_atk_tidy_windows):
-	Bug #458559. Patch from Mike Gorse. If the root has gone,
+	Bug #548559. Patch from Mike Gorse. If the root has gone,
 	just return.
 
 2008-08-15  Li Yuan  <li.yuan@sun.com>
