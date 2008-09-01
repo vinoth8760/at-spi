@@ -1,3 +1,10 @@
+2008-09-01  Li Yuan  <li.yuan@sun.com>
+
+	* NEWS:
+	* README:
+	* configure.in:
+	Uprev/release 1.23.91.
+
 2008-08-25  Li Yuan  <li.yuan@sun.com>
 
 	* atk-bridge/bridge.c: (spi_atk_bridge_signal_listener):
