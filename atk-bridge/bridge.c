@@ -1101,7 +1101,7 @@ spi_atk_bridge_signal_listener (GSignalInvocationHint *signal_hint,
   CORBA_any any;
   CORBA_Object c_obj;
   char *sp = NULL;
-  AtkObject *ao;
+  AtkObject *ao = NULL;
   gint detail1 = 0, detail2 = 0;
   SpiAccessible *s_ao = NULL;
 #ifdef SPI_BRIDGE_DEBUG
@@ -1162,7 +1162,7 @@ spi_atk_bridge_signal_listener (GSignalInvocationHint *signal_hint,
           ao = ATK_OBJECT (child);
           g_object_ref (ao);
         }
-      else
+      else if ((detail != NULL) && (strcmp (detail, "add") == 0))
         {
           ao = atk_object_ref_accessible_child (ATK_OBJECT (gobject), 
                                                 detail1);

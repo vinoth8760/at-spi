@@ -1,3 +1,9 @@
+2008-09-08  Li Yuan  <li.yuan@sun.com>
+
+	* atk-bridge/bridge.c: (spi_atk_bridge_signal_listener):
+	Bug #548782. Do not emit the removed children with children::changed
+	signal.
+
 2008-09-01  Li Yuan  <li.yuan@sun.com>
 
 	* NEWS:
