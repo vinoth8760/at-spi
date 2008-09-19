@@ -1,3 +1,15 @@
+2008-09-19  Matthias Clasen <mclasen@redhat.com>
+
+	Bug 535827 Automatically load gail:atk-bridge if AT_SPI_IOR is set
+	on root window
+
+	* at-spi.schemas.in: Add a GConf schema for a key that makes 
+	gnome-settings-daemon add the a11y modules to the gtk-modules
+	xsetting.
+
+	* configure.in:
+	* Makefile.am: Necessary glue to install the schemas file.
+
 2008-09-08  Li Yuan  <li.yuan@sun.com>
 
 	* NEWS:
