@@ -1,3 +1,7 @@
+2008-09-20  Matthias Clasen <mclasen@redhat.com>
+
+	po/POTFILES.in: Add at-spi.schemas.in
+
 2008-09-19  Matthias Clasen <mclasen@redhat.com>
 
 	Bug 535827 Automatically load gail:atk-bridge if AT_SPI_IOR is set
