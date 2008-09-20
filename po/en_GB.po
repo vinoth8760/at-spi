@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-16 21:03-0500\n"
+"POT-Creation-Date: 2008-09-20 19:41+0100\n"
 "PO-Revision-Date: 2004-03-07 16:58-0500\n"
 "Last-Translator: Gareth Owen <gowen72@yahoo.com>\n"
 "Language-Team: en_GB\n"
@@ -15,18 +15,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: atk-bridge/bridge.c:309
-msgid "failure: no device event controller found.\n"
-msgstr "failure: no device event controller found.\n"
+#: ../at-spi.schemas.in.h:1
+msgid "GTK+ modules for accessibility support"
+msgstr "GTK+ modules for accessibility support"
 
-#: atk-bridge/bridge.c:778
-msgid "WARNING: NULL key event reported."
-msgstr "WARNING: NULL key event reported."
+#: ../at-spi.schemas.in.h:2
+msgid "This key determines the GTK+ modules to load for accessibility support."
+msgstr "This key determines the GTK+ modules to load for accessibility support."
 
-#: registryd/Accessibility_Registry.server.in.in.h:1
+#: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
 msgstr "AT-SPI Registry"
 
-#: registryd/Accessibility_Registry.server.in.in.h:2
+#: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Accessibility Registry"
+
+#~ msgid "failure: no device event controller found.\n"
+#~ msgstr "failure: no device event controller found.\n"
+
+#~ msgid "WARNING: NULL key event reported."
+#~ msgstr "WARNING: NULL key event reported."
