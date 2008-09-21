@@ -1,14 +1,14 @@
-# Norwegian translations for PACKAGE package.
+# Norwegian translations for at-spi package.
 # Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Kjartan Maraas <kmaraas@broadpark.no>, 2003.
+# Kjartan Maraas <kmaraas@broadpark.no>, 2003-2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AT-SPI 1.2\n"
+"Project-Id-Version: AT-SPI 2.23.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-28 20:28+0200\n"
-"PO-Revision-Date: 2003-09-28 20:30+0200\n"
+"POT-Creation-Date: 2008-09-21 16:55+0200\n"
+"PO-Revision-Date: 2008-09-21 16:56+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@broadpark.no>\n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -16,18 +16,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: atk-bridge/bridge.c:308
-msgid "failure: no device event controller found.\n"
-msgstr "feil: ingen hendelseshåndterer funnet for enhet.\n"
+#: ../at-spi.schemas.in.h:1
+msgid "GTK+ modules for accessibility support"
+msgstr "GTK+-moduler for tilgjengelighet"
 
-#: atk-bridge/bridge.c:777
-msgid "WARNING: NULL key event reported."
-msgstr "ADVARSEL: NULL-tastehendelse rapportert."
+#: ../at-spi.schemas.in.h:2
+msgid "This key determines the GTK+ modules to load for accessibility support."
+msgstr "Denne nøkkelen bestemmer GTK+ moduler som skal lastes for tilgjengelighet."
 
-#: registryd/Accessibility_Registry.server.in.in.h:1
+#: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
 msgstr "AT-SPI-register"
 
-#: registryd/Accessibility_Registry.server.in.in.h:2
+#: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Register for hjelpefunksjoner"
