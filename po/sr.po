@@ -10,26 +10,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-12 01:39+0100\n"
-"PO-Revision-Date: 2004-02-12 01:40+0100\n"
-"Last-Translator: Данило Шеган <danilo@prevod.org>\n"
+"POT-Creation-Date: 2008-09-22 01:40+0200\n"
+"PO-Revision-Date: 2008-09-22 01:41+0100\n"
+"Last-Translator: Горан Ракић <grakic@devbase.net>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: atk-bridge/bridge.c:309
-msgid "failure: no device event controller found.\n"
-msgstr "грешка: није нађен управљач за догађаје на уређају.\n"
+#: ../at-spi.schemas.in.h:1
+msgid "GTK+ modules for accessibility support"
+msgstr "ГТК+ модули подршке за приступачност"
 
-#: atk-bridge/bridge.c:778
-msgid "WARNING: NULL key event reported."
-msgstr "УПОЗОРЕЊЕ: Примио је NULL тастер."
+#: ../at-spi.schemas.in.h:2
+msgid "This key determines the GTK+ modules to load for accessibility support."
+msgstr "Овај кључ одређује ГТК+ модуле који се учитавају ради подршке за приступачност."
 
-#: registryd/Accessibility_Registry.server.in.in.h:1
+#: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
 msgstr "AT-SPI регистар"
 
-#: registryd/Accessibility_Registry.server.in.in.h:2
+#: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Регистар за приступачност"
+
+#~ msgid "failure: no device event controller found.\n"
+#~ msgstr "грешка: није нађен управљач за догађаје на уређају.\n"
+#~ msgid "WARNING: NULL key event reported."
+#~ msgstr "УПОЗОРЕЊЕ: Примио је NULL тастер."
+
