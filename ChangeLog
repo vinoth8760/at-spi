@@ -1,3 +1,10 @@
+2008-09-22  Li Yuan  <li.yuan@sun.com>
+
+	* NEWS:
+	* README:
+	* configure.in:
+	Uprev/release 1.24.0.
+
 2008-09-20  Matthias Clasen <mclasen@redhat.com>
 
 	po/POTFILES.in: Add at-spi.schemas.in
