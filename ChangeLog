@@ -1,3 +1,16 @@
+2008-09-27  Li Yuan  <li.yuan@sun.com>
+
+	* libspi/collection.c: (match_states_all_p), (match_states_any_p),
+	(match_roles_all_p), (match_roles_any_p), (match_roles_none_p),
+	(match_interfaces_all_p), (match_interfaces_any_p),
+	(match_interfaces_none_p), (match_attributes_all_p),
+	(match_attributes_any_p), (match_attributes_none_p),
+	(getMatchesFrom), (getMatchesInOrder), (getMatchesInBackOrder),
+	(getMatchesTo), (impl_getMatches):
+	Bug #527585. Fix memory leak and swapped order of some checks so that
+	a NULL pointer is checked for before attempting to read from it.
+	Patch from Mike Gorse.
+
 2008-09-22  Li Yuan  <li.yuan@sun.com>
 
 	* NEWS:

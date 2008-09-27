@@ -178,7 +178,7 @@ match_states_all_p (Accessibility_Accessible child,
      Accessibility_StateSeq *seq = Accessibility_StateSet_getStates (set, ev); 
      gint i;
 
-     if (seq->_length == 0 || seq == NULL)
+     if (seq == NULL || seq->_length == 0)
 	  return TRUE;
 
      chs = Accessibility_Accessible_getState (child, ev);
@@ -199,7 +199,7 @@ match_states_any_p  (Accessibility_Accessible child,
      Accessibility_StateSeq *seq = Accessibility_StateSet_getStates (set, ev);
      gint i;
 
-     if (seq->_length == 0 || seq == NULL)
+     if (seq == NULL || seq->_length == 0)
 	  return TRUE;
 
      chs = Accessibility_Accessible_getState (child, ev);
@@ -265,10 +265,10 @@ match_roles_all_p (Accessibility_Accessible child,
 
    Accessibility_Role role; 
 
-     if (roles->_length > 1) 
-	  return FALSE;
-     else if (roles->_length == 0 || roles == NULL)
+     if (roles == NULL || roles->_length == 0)
 	  return TRUE;
+     else if (roles->_length > 1) 
+	  return FALSE;
 
      role  = Accessibility_Accessible_getRole (child, ev);
 
@@ -287,7 +287,7 @@ match_roles_any_p (Accessibility_Accessible child,
      Accessibility_Role role; 
      int i;
 
-     if (roles->_length == 0 || roles == NULL)
+     if (roles == NULL || roles->_length == 0)
 	  return TRUE;
 
      role =  Accessibility_Accessible_getRole (child, ev);
@@ -307,7 +307,7 @@ match_roles_none_p (Accessibility_Accessible child,
   Accessibility_Role role ; 
      int i;
 
-     if (roles->_length == 0 || roles == NULL)
+     if (roles == NULL || roles->_length == 0)
 	  return TRUE;
 
      role =  Accessibility_Accessible_getRole (child, ev);
@@ -363,9 +363,10 @@ match_interfaces_all_p (Accessibility_Accessible obj,
 
      for (i = 0; i < length; i++)
        if (!child_interface_p (obj, ifaces [i], ev)){
-	    g_free (ifaces);
+	    g_strfreev (ifaces);
 	       return FALSE;
        }
+     g_strfreev(ifaces);
      return TRUE;
 }
 
@@ -384,9 +385,10 @@ match_interfaces_any_p (Accessibility_Accessible obj,
 
      for (i = 0; i < length; i++)
        if (child_interface_p (obj, ifaces [i], ev)){
-	        g_free (ifaces);
+	        g_strfreev (ifaces);
 		return TRUE;
        }
+     g_strfreev(ifaces);
      return FALSE;
 }
 
@@ -402,9 +404,12 @@ match_interfaces_none_p (Accessibility_Accessible obj,
 	  return TRUE;
 
      for (i = 0; i < length; i++)
-	   if (child_interface_p (obj, ifaces [i], ev))
+	   if (child_interface_p (obj, ifaces [i], ev)){
+		g_strfreev(ifaces);
 		return FALSE;
+	   }
      
+     g_strfreev(ifaces);
      return TRUE;
 }
 
@@ -447,7 +452,7 @@ match_attributes_all_p (Accessibility_Accessible child,
      Accessibility_AttributeSet *oa ;
      gboolean flag = FALSE;
 
-     if (attributes->_length == 0 || attributes == NULL)
+     if (attributes == NULL || attributes->_length == 0)
 	  return TRUE;
      
      oa =  Accessibility_Accessible_getAttributes (child, ev);
@@ -476,7 +481,7 @@ match_attributes_any_p (Accessibility_Accessible child,
 
      Accessibility_AttributeSet *oa;
 
-     if (attributes->_length == 0 || attributes == NULL)
+     if (attributes == NULL || attributes->_length == 0)
 	  return TRUE;
 
      oa =  Accessibility_Accessible_getAttributes (child, ev);
@@ -497,7 +502,7 @@ match_attributes_none_p (Accessibility_Accessible child,
      int i, k;
      Accessibility_AttributeSet *oa;
 
-     if (attributes->_length == 0 || attributes == NULL)
+     if (attributes == NULL || attributes->_length == 0)
 	  return TRUE;
 
      oa =  Accessibility_Accessible_getAttributes (child, ev);
@@ -712,7 +717,7 @@ getMatchesFrom (PortableServer_Servant servant,
      glong index = 
            Accessibility_Accessible_getIndexInParent (current_object, ev);
      gint kount = 0;
-
+     Accessibility_AccessibleSet *retval;
      ls = g_list_append (ls, current_object);
      mrp =  get_collection_from_servant (servant)->_mrp;;
           
@@ -726,12 +731,14 @@ getMatchesFrom (PortableServer_Servant servant,
                               current_object, 0, FALSE, CORBA_OBJECT_NIL, 
                               TRUE, traverse, ev);
 
-     ls = g_list_next (ls); 
+     ls = g_list_remove(ls, g_list_nth_data(ls, 0));
 
      if (sortby == Accessibility_Collection_SORT_ORDER_REVERSE_CANONICAL)
        ls = g_list_reverse (ls);
  
-     return  _accessible_list_to_set (ls, kount);
+     retval = _accessible_list_to_set (ls, kount);
+     g_list_free(ls);
+     return retval;
 }
 
 /*
@@ -793,6 +800,7 @@ getMatchesInOrder (PortableServer_Servant servant,
   Accessibility_Accessible obj;
   MatchRulePrivate *mrp;
   gint kount = 0;
+  Accessibility_AccessibleSet *retval;
 
   ls = g_list_append (ls, current_object);
   mrp = get_collection_from_servant (servant)->_mrp;
@@ -803,12 +811,14 @@ getMatchesInOrder (PortableServer_Servant servant,
   kount = inorder (obj, mrp, ls, 0, count, 
                    current_object, TRUE, CORBA_OBJECT_NIL, traverse, ev);
 
-  ls = g_list_next (ls);
+  ls = g_list_remove(ls, g_list_nth_data(ls, 0));
 
   if (sortby == Accessibility_Collection_SORT_ORDER_REVERSE_CANONICAL)
     ls = g_list_reverse (ls);
 
-  return _accessible_list_to_set (ls, kount); 
+  retval = _accessible_list_to_set (ls, kount); 
+  g_list_free(ls);
+  return retval;
 }
 
 /*
@@ -827,6 +837,7 @@ getMatchesInBackOrder (PortableServer_Servant servant,
   Accessibility_Accessible collection;
   MatchRulePrivate *mrp;
   gint kount = 0;
+  Accessibility_AccessibleSet *retval;
 
   ls = g_list_append (ls, current_object);
   mrp = get_collection_from_servant (servant)->_mrp;
@@ -837,12 +848,14 @@ getMatchesInBackOrder (PortableServer_Servant servant,
   kount = sort_order_rev_canonical (mrp, ls, 0, count, current_object, 
                                    FALSE, collection, ev);
 
-  ls = g_list_next (ls);
+  ls = g_list_remove(ls, g_list_nth_data(ls, 0));
 
   if (sortby == Accessibility_Collection_SORT_ORDER_REVERSE_CANONICAL)
     ls = g_list_reverse (ls);
 
-  return _accessible_list_to_set (ls, kount); 
+  retval = _accessible_list_to_set (ls, kount); 
+  g_list_free(ls);
+  return retval;
 }
 
 
@@ -862,6 +875,7 @@ getMatchesTo (PortableServer_Servant servant,
   Accessibility_Accessible obj;
   MatchRulePrivate *mrp;
   gint kount = 0;
+  Accessibility_AccessibleSet *retval;
 
   ls = g_list_append (ls, current_object); 
   mrp =  get_collection_from_servant (servant)->_mrp;
@@ -879,13 +893,14 @@ getMatchesTo (PortableServer_Servant servant,
 
   }
 
-  ls = g_list_next (ls); 
+  ls = g_list_remove(ls, g_list_nth_data(ls, 0));
    
   if (sortby != Accessibility_Collection_SORT_ORDER_REVERSE_CANONICAL)
     ls = g_list_reverse (ls);
 
-  return  _accessible_list_to_set (ls, kount);
-  
+  retval = _accessible_list_to_set (ls, kount);
+  g_list_free(ls);
+  return retval;
 }
 
 static Accessibility_AccessibleSet *
@@ -955,6 +970,7 @@ impl_getMatches (PortableServer_Servant servant,
      Accessibility_Accessible obj;
      MatchRulePrivate *mrp;
      gint kount = 0;
+     Accessibility_AccessibleSet *retval;
     
      obj = spi_accessible_new_return (aobj, FALSE, ev);
      ls = g_list_prepend (ls, obj); 
@@ -963,12 +979,14 @@ impl_getMatches (PortableServer_Servant servant,
      kount = query_exec (mrp,  sortby, ls, 0, count, 
                          obj, 0, TRUE, CORBA_OBJECT_NIL, TRUE, traverse, ev); 
 
-     ls = g_list_next (ls); 
+     ls = g_list_remove(ls, g_list_nth_data(ls, 0));
     
      if (sortby == Accessibility_Collection_SORT_ORDER_REVERSE_CANONICAL)
        ls = g_list_reverse (ls);
 
-     return  _accessible_list_to_set (ls, kount);
+     retval = _accessible_list_to_set (ls, kount);
+     g_list_free(ls);
+     return retval;
 }
 
 static void
