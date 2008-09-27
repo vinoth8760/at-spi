@@ -33,9 +33,3 @@ msgstr "Registro AT-SPI"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Registro de acessibilidade"
-
-#~ msgid "failure: no device event controller found.\n"
-#~ msgstr "falha: não foi encontrado um aparelho controlador de eventos.\n"
-
-#~ msgid "WARNING: NULL key event reported."
-#~ msgstr "AVISO: evento de tecla NULL reportado."
