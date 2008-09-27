@@ -1,5 +1,11 @@
 2008-09-27  Li Yuan  <li.yuan@sun.com>
 
+	* atk-bridge/bridge.c: (spi_atk_bridget_get_dec):
+	Bug #547943. Patch from Matthias Clasen. Print warning message only
+	in debug mode.
+
+2008-09-27  Li Yuan  <li.yuan@sun.com>
+
 	* libspi/accessible.c:
 	(impl_accessibility_accessible_get_attributes):
 	* libspi/document.c: (impl_getAttributes):

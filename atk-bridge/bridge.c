@@ -470,7 +470,7 @@ spi_atk_bridget_get_dec (void)
 
   if (BONOBO_EX (&ev))
     {
-      g_warning (_("failure: no device event controller found.\n"));
+      DBG (1, g_warning (_("failure: no device event controller found.\n")));
       registry_died = TRUE;
       device_event_controller = CORBA_OBJECT_NIL;
     }
