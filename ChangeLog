@@ -1,5 +1,14 @@
 2008-09-27  Li Yuan  <li.yuan@sun.com>
 
+	* libspi/accessible.c:
+	(impl_accessibility_accessible_get_attributes):
+	* libspi/document.c: (impl_getAttributes):
+	* libspi/text.c: (impl_getAttributeRun),
+	(impl_getDefaultAttributeSet):
+	Bug #525519. Fix memory leak. Patch from Mike Gorse.
+
+2008-09-27  Li Yuan  <li.yuan@sun.com>
+
 	* libspi/collection.c: (match_states_all_p), (match_states_any_p),
 	(match_roles_all_p), (match_roles_any_p), (match_roles_none_p),
 	(match_interfaces_all_p), (match_interfaces_any_p),

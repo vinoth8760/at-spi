@@ -101,6 +101,7 @@ impl_getAttributes (PortableServer_Servant servant,
   Accessibility_AttributeSet *retval;
   gint n_attributes = 0;
   gint i;
+  gchar *concat_str;
   
   g_return_val_if_fail (document != NULL, NULL);
   
@@ -120,7 +121,9 @@ impl_getAttributes (PortableServer_Servant servant,
   for (i = 0; i < n_attributes; ++i)
   {
       attr = g_slist_nth_data (attributes, i);
-      retval->_buffer [i] = CORBA_string_dup (g_strconcat (attr->name, ":", attr->value, NULL));
+      concat_str = g_strconcat (attr->name, ":", attr->value, NULL);
+      retval->_buffer [i] = CORBA_string_dup (concat_str);
+      g_free (concat_str);
   }
     
   atk_attribute_set_free (attributes);

@@ -547,6 +547,7 @@ impl_getAttributeRun (PortableServer_Servant servant,
      AtkText *text = get_text_from_servant (servant);
      gint n_attributes = 0, total_attributes = 0, n_default_attributes = 0;
      gint i, j;
+     gchar *concat_str;
      
      g_return_val_if_fail (text != NULL, NULL);
 
@@ -576,13 +577,17 @@ impl_getAttributeRun (PortableServer_Servant servant,
 	 for (i = 0; i < n_attributes; ++i)
 	 {
 	     attr = g_slist_nth_data (attributes, i);
-	     retval->_buffer[i] = CORBA_string_dup (g_strconcat (attr->name, ":", attr->value, NULL));
+             concat_str = g_strconcat (attr->name, ":", attr->value, NULL);
+	     retval->_buffer[i] = CORBA_string_dup (concat_str);
+	     g_free (concat_str);
 	 }
 	 
 	 for (j = 0; j < n_default_attributes; ++i, ++j)
 	 {
 	     attr = g_slist_nth_data (default_attributes, j);
-	     retval->_buffer[i] = CORBA_string_dup (g_strconcat (attr->name, ":", attr->value, NULL));
+	     concat_str = g_strconcat (attr->name, ":", attr->value, NULL);
+	     retval->_buffer[i] = CORBA_string_dup (concat_str);
+	     g_free(concat_str);
 	 }
 	 
 	 atk_attribute_set_free (attributes);
@@ -601,6 +606,7 @@ impl_getDefaultAttributeSet (PortableServer_Servant servant,
      AtkText *text = get_text_from_servant (servant);
      gint n_attributes = 0;
      gint i;
+     gchar *concat_str;
      
      g_return_val_if_fail (text != NULL, NULL);
      
@@ -618,7 +624,9 @@ impl_getDefaultAttributeSet (PortableServer_Servant servant,
 	 for (i = 0; i < n_attributes; ++i)
 	 {
 	     attr = g_slist_nth_data (attributes, i);
-	     retval->_buffer [i] = CORBA_string_dup (g_strconcat (attr->name, ":", attr->value, NULL));
+	     concat_str = g_strconcat (attr->name, ":", attr->value, NULL);
+	     retval->_buffer [i] = CORBA_string_dup (concat_str);
+	     g_free (concat_str);
 	 }
 	 atk_attribute_set_free (attributes);
      }     

@@ -461,6 +461,7 @@ impl_accessibility_accessible_get_attributes (PortableServer_Servant servant,
     gint i;
     
     AtkObject *object = get_atkobject_from_servant (servant);
+    gchar *concat_str;
     
     g_return_val_if_fail (object != NULL, NULL);
     attributes = atk_object_get_attributes (object);
@@ -476,7 +477,9 @@ impl_accessibility_accessible_get_attributes (PortableServer_Servant servant,
     for (i = 0; i < n_attributes; ++i)
     {
 	attr = g_slist_nth_data (attributes, i);
-	retval->_buffer[i] = CORBA_string_dup (g_strconcat (attr->name, ":", attr->value, NULL));
+	concat_str = g_strconcat (attr->name, ":", attr->value, NULL);
+	retval->_buffer[i] = CORBA_string_dup (concat_str);
+	g_free (concat_str);
     }
 
     atk_attribute_set_free (attributes);
