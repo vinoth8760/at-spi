@@ -1,3 +1,8 @@
+2008-09-28  Li Yuan  <li.yuan@sun.com>
+
+	* cspi/bonobo/cspi-bonobo.c: (cspi_init):
+	Bug #552469. Patch from Gerd Kohlberger. Fix memory leak.
+
 2008-09-27  Li Yuan  <li.yuan@sun.com>
 
 	* atk-bridge/bridge.c: (spi_atk_bridget_get_dec):

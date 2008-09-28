@@ -161,6 +161,7 @@ cspi_init (void)
     {
       registry = CORBA_ORB_string_to_object (bonobo_activation_orb_get (),
 			  			 ior, &ev);
+      XFree (ior);
     }
 
   if (ev._major != CORBA_NO_EXCEPTION)
