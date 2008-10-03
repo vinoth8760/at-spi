@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
-"POT-Creation-Date: 2004-03-15 16:02+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-10-03 23:47+0100\n"
 "PO-Revision-Date: 2004-03-15 16:04-0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.fothnet.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -14,19 +15,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: atk-bridge/bridge.c:309
-msgid "failure: no device event controller found.\n"
-msgstr "αποτυχία: δε βρέθηκε ελεγκτής γεγονότος συσκευής.\n"
+#: ../at-spi.schemas.in.h:1
+msgid "GTK+ modules for accessibility support"
+msgstr "Αρθρώματα GTK+ για υποστήριξη προσιτότητας"
 
-#: atk-bridge/bridge.c:778
-msgid "WARNING: NULL key event reported."
-msgstr "ΠΡΟΕΙΔΟΠΟΙΗΣΗ: αναφέρθηκε  NULL key event."
+#: ../at-spi.schemas.in.h:2
+msgid "This key determines the GTK+ modules to load for accessibility support."
+msgstr "Αυτό το κλειδί καθορίζει τα αρθρώματα GTK+ που θα φορτωθούν για την υποστήριξη προσιτότητας."
 
-#: registryd/Accessibility_Registry.server.in.in.h:1
+#: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
 msgstr "Μητρώο AT-SPI"
 
-#: registryd/Accessibility_Registry.server.in.in.h:2
+#: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Μητρώο Προσιτότητας"
 
+#~ msgid "failure: no device event controller found.\n"
+#~ msgstr "αποτυχία: δε βρέθηκε ελεγκτής γεγονότος συσκευής.\n"
+
+#~ msgid "WARNING: NULL key event reported."
+#~ msgstr "ΠΡΟΕΙΔΟΠΟΙΗΣΗ: αναφέρθηκε  NULL key event."
