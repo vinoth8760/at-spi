@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-03 23:47+0100\n"
+"POT-Creation-Date: 2008-10-05 16:32+0100\n"
 "PO-Revision-Date: 2004-03-15 16:04-0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.fothnet.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -21,7 +21,9 @@ msgstr "Αρθρώματα GTK+ για υποστήριξη προσιτότητ
 
 #: ../at-spi.schemas.in.h:2
 msgid "This key determines the GTK+ modules to load for accessibility support."
-msgstr "Αυτό το κλειδί καθορίζει τα αρθρώματα GTK+ που θα φορτωθούν για την υποστήριξη προσιτότητας."
+msgstr ""
+"Αυτό το κλειδί καθορίζει τα αρθρώματα GTK+ που θα φορτωθούν για την "
+"υποστήριξη προσιτότητας."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
