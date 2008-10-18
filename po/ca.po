@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 15:45+0000\n"
-"PO-Revision-Date: 2008-09-22 00:44+0200\n"
+"POT-Creation-Date: 2008-10-18 19:13+0200\n"
+"PO-Revision-Date: 2008-09-28 18:27+0200\n"
 "Last-Translator: Joan Duran <jodufi@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,20 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
-
 #: ../at-spi.schemas.in.h:1
 msgid "GTK+ modules for accessibility support"
-msgstr "Mòduls de GTK+ per a permetre l'ús de l'accessibilitat"
+msgstr "Mòduls del GTK+ per a permetre l'ús de l'accessibilitat"
 
 #: ../at-spi.schemas.in.h:2
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr ""
-"Aquesta clau determina els mòduls de GTK+ que es carregaran per a permetre "
+"Aquesta clau determina els mòduls del GTK+ que es carregaran per a permetre "
 "l'ús de l'accessibilitat."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
-msgstr "Registre d'AT-SPI"
+msgstr "Registre del servei d'accessibilitat (AT-SPI)"
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
