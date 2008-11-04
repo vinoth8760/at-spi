@@ -1,3 +1,10 @@
+2008-11-04  Li Yuan  <li.yuan@sun.com>
+
+	* NEWS:
+	* README:
+	* configure.in:
+	Uprev/release 1.25.1.
+
 2008-09-28  Li Yuan  <li.yuan@sun.com>
 
 	* cspi/bonobo/cspi-bonobo.c: (cspi_init):
