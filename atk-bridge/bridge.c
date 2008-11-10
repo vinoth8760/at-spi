@@ -41,6 +41,7 @@
 #include "accessible.h"
 #include "application.h"
 #include <bonobo-activation/bonobo-activation-register.h>
+#include <gmodule.h>
 
 #undef SPI_BRIDGE_DEBUG
 
@@ -1395,3 +1396,10 @@ spi_atk_bridge_init_rect (CORBA_any *any, AtkObject *obj, AtkRectangle *rect)
     spi_init_any_rect (any, app, role, name, rect);
 }
 
+const char *
+g_module_check_init (GModule *module)
+{
+    g_module_make_resident (module);
+
+    return NULL;
+}

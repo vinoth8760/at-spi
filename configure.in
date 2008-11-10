@@ -116,6 +116,7 @@ AC_SUBST(TESTS_CFLAGS)
 PKG_CHECK_MODULES(ATK_BRIDGE, [
 	libbonobo-2.0	>= req_ver_libbonobo
 	atk		>= req_ver_atk
+	gmodule-2.0
 ])	
 AC_SUBST(ATK_BRIDGE_LIBS)
 AC_SUBST(ATK_BRIDGE_CFLAGS)
