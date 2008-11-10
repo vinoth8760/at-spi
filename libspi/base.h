@@ -24,7 +24,7 @@
 #ifndef SPI_BASE_H_
 #define SPI_BASE_H_
 
-#include <glib/gmacros.h>
+#include <glib.h>
 #include <atk/atkobject.h>
 #include <bonobo/bonobo-object.h>
 #include <libspi/Accessibility.h>

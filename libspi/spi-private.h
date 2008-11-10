@@ -24,7 +24,7 @@
 #ifndef SPI_PRIVATE_H_
 #define SPI_PRIVATE_H_
 
-#include <glib/glist.h>
+#include <glib.h>
 #include <atk/atk.h>
 #include <orbit/orbit.h>
 #include <Accessibility.h>

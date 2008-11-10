@@ -22,8 +22,7 @@
  */
 
 #include <config.h>
-#include <glib/gmessages.h>
-#include <glib/gslist.h>
+#include <glib.h>
 #include <Accessibility.h>
 
 #include "spi-private.h"

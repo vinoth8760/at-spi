@@ -1,3 +1,16 @@
+2008-11-10  Cosimo Cecchi  <cosimoc@gnome.org>
+
+	* libspi/base.h:
+	* libspi/keymasks.h:
+	* libspi/spi-private.h:
+	* libspi/util.c:
+	* registryd/desktop.c:
+	* registryd/deviceeventcontroller.c:
+	* registryd/registry-main.c:
+	* registryd/registry.h:
+	* test/login-helper-server-test.c:
+	Use single GLib/GTK+ includes.
+
 2008-11-10  Li Yuan  <li.yuan@sun.com>
 
 	* atk-bridge/bridge.c: (g_module_check_init):

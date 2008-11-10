@@ -29,7 +29,7 @@
 #include <string.h>
 #include <gdk/gdkx.h>
 #include <libbonobo.h>
-#include <glib/gmain.h>
+#include <glib.h>
 #include "registry.h"
 
 #define spi_get_display() GDK_DISPLAY()

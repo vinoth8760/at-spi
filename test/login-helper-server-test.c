@@ -1,7 +1,6 @@
 #include <libbonobo.h>
 #include <login-helper/login-helper.h>
-#include <gtk/gtkmain.h>
-#include <gtk/gtkwindow.h>
+#include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <X11/Xatom.h>
 

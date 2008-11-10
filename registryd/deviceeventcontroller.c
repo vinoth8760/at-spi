@@ -51,7 +51,6 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h> /* TODO: hide dependency (wrap in single porting file) */
 #include <gdk/gdkkeysyms.h>
-#include <gdk/gdkwindow.h>
 
 #include "../libspi/spi-private.h"
 #include "deviceeventcontroller.h"

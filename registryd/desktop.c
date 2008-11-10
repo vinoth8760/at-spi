@@ -28,7 +28,7 @@
 #include <libbonobo.h>
 #include "desktop.h"
 #include <atk/atkcomponent.h>
-#include <gdk/gdkscreen.h>
+#include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 
 /* SpiDesktop signals */
