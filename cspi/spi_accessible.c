@@ -651,6 +651,7 @@ Accessible_getHostApplication (Accessible *obj)
     retval = Accessible_getApplication (cspi_object_add (
 					    Accessibility_Accessible_getApplication (CSPI_OBJREF (obj),
 										     cspi_ev ())));
+    AccessibleApplication_unref (retval);
     cspi_return_val_if_ev ("getApplication", NULL);
 
     return retval;

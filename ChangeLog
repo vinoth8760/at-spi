@@ -1,3 +1,10 @@
+2008-11-18  Li Yuan  <li.yuan@sun.com>
+
+	* atk-bridge/bridge.c: (spi_atk_bridge_toplevel_removed):
+	Bug #446574. Don't reinit vars too early. Can cause crash.
+	* cspi/spi_accessible.c: (Accessible_getHostApplication):
+	Bug #532907. Return application with reference 1.
+
 2008-11-10  Cosimo Cecchi  <cosimoc@gnome.org>
 
 	* libspi/base.h:
