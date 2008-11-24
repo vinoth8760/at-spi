@@ -763,7 +763,7 @@ main (int argc, char **argv)
 	modules = NULL;
 
 	for (i = 1; i < argc; i++) {
-		if (!g_strcasecmp (argv [i], "--poke"))
+		if (!g_ascii_strcasecmp (argv [i], "--poke"))
 			do_poke = TRUE;
 	}
 
