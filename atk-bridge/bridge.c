@@ -1154,8 +1154,10 @@ spi_atk_bridge_signal_listener (GSignalInvocationHint *signal_hint,
     }
   else if ((signal_query.signal_id == atk_signal_children_changed) && gobject)
     {
+      gpointer child;
+
       detail1 = g_value_get_uint (param_values + 1);
-      gpointer child = g_value_get_pointer (param_values + 2);
+      child = g_value_get_pointer (param_values + 2);
       if (ATK_IS_OBJECT (child))
         {
           ao = ATK_OBJECT (child);

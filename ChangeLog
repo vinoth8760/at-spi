@@ -1,3 +1,9 @@
+2008-11-24  Li Yuan  <li.yuan@sun.com>
+
+	* atk-bridge/bridge.c: (spi_atk_bridge_signal_listener):
+	Bug #553306. Patch from Jens Granseuer. Fix compile error
+	for gcc 2.x.
+
 2008-11-19  Yue Wang <yue.wang@sun.com>
 
 	* cspi/spi_component.c: AccessibleComponent_contains ():
