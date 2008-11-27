@@ -1,3 +1,10 @@
+2008-11-27  Li Yuan  <li.yuan@sun.com>
+
+	* registryd/deviceeventcontroller.c: (spi_key_set_contains_key),
+	(dec_synth_keystring):
+	Bug #540183. Patch from Mike Gorse. Add string length for the
+	terminating null.
+
 2008-11-24  Li Yuan  <li.yuan@sun.com>
 
 	* test/test-simple.c: (main):

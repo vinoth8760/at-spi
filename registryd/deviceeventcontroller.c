@@ -1359,7 +1359,9 @@ spi_key_set_contains_key (Accessibility_KeySet            *key_set,
   
   if (len == 0) /* special case, means "all keys/any key" */
     {
-      g_print ("anykey\n");	    
+#ifdef SPI_DEBUG
+      g_print ("anykey\n");
+#endif
       return TRUE;
     }
 
@@ -2226,7 +2228,7 @@ dec_synth_keystring (SpiDEController *controller, const CORBA_char *keystring)
 	gboolean retval = TRUE;
 	const gchar *c;
 
-	maxlen = strlen (keystring);
+	maxlen = strlen (keystring) + 1;
 	keysyms = g_new0 (KeySym, maxlen);
 	if (!(keystring && *keystring && g_utf8_validate (keystring, -1, &c))) { 
 		retval = FALSE;
