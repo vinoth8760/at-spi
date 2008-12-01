@@ -1,3 +1,10 @@
+2008-12-01  Li Yuan  <li.yuan@sun.com>
+
+	* NEWS:
+	* README:
+	* configure.in:
+	Uprev/release 1.25.2.
+
 2008-11-27  Li Yuan  <li.yuan@sun.com>
 
 	* registryd/deviceeventcontroller.c: (spi_key_set_contains_key),
