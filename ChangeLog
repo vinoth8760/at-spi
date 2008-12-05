@@ -1,3 +1,9 @@
+2008-12-05  Li Yuan  <li.yuan@sun.com>
+
+	* cspi/spi_main.c: (cspi_object_unref):
+	Bug #563313. Decrease the ref count after the object has been
+	removed to avoid crash.
+
 2008-12-01  Li Yuan  <li.yuan@sun.com>
 
 	* NEWS:
