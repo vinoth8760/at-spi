@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-04 11:52+0200\n"
+"POT-Creation-Date: 2008-11-07 00:21+0100\n"
 "PO-Revision-Date: 2003-07-04 20:53+0300\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -16,19 +16,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.1\n"
 
-#: atk-bridge/bridge.c:311
-msgid "failure: no device event controller found.\n"
-msgstr "כשלון: לא נמצא בקר אירוע התקן.\n"
+#: ../at-spi.schemas.in.h:1
+msgid "GTK+ modules for accessibility support"
+msgstr "GTK+ modules for accessibility support"
 
-#: atk-bridge/bridge.c:806
-msgid "WARNING: NULL key event reported."
-msgstr "אזהרה: דיווח על אירוע מפתח ריק."
+#: ../at-spi.schemas.in.h:2
+msgid "This key determines the GTK+ modules to load for accessibility support."
+msgstr "This key determines the GTK+ modules to load for accessibility support."
 
-#: registryd/Accessibility_Registry.server.in.in.h:1
+#: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
 msgstr "רישום AT-SPI"
 
-#: registryd/Accessibility_Registry.server.in.in.h:2
+#: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "רישום נגישות"
 
+#~ msgid "failure: no device event controller found.\n"
+#~ msgstr "כשלון: לא נמצא בקר אירוע התקן.\n"
+
+#~ msgid "WARNING: NULL key event reported."
+#~ msgstr "אזהרה: דיווח על אירוע מפתח ריק."
