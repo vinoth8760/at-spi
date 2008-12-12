@@ -33,4 +33,4 @@ libatk_bridge_la_LDFLAGS =  	\
 
 libatk_bridge_la_LIBADD = \
 	$(top_builddir)/libspi/libspi.la	\
-	$(ATK_BRIDGE_LIBS)	
+	$(ATK_BRIDGE_LIBS) $(X_LIBS)

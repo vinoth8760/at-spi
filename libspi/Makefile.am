@@ -10,7 +10,7 @@ INCLUDES = -I$(top_srcdir)	\
            $(X_CFLAGS)
 
 libspi_la_LDFLAGS = @LT_VERSION_INFO@ -no-undefined
-libspi_la_LIBADD = $(LIBSPI_LIBS) $(XTST_LIBS)
+libspi_la_LIBADD = $(LIBSPI_LIBS)
 
 libspiincludedir = $(includedir)/at-spi-1.0/libspi
 

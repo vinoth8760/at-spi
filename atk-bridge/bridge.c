@@ -480,7 +480,13 @@ spi_atk_bridget_get_dec (void)
 int
 gtk_module_init (gint *argc, gchar **argv[])
 {
+  const gchar *load_bridge = g_getenv ("NO_AT_BRIDGE");
+
+  if (!load_bridge || g_ascii_strtod (load_bridge, NULL) == 0)
+    {
 	return atk_bridge_init (argc, argv);
+    }
+  return 0;
 }
 
 static void
@@ -650,11 +656,16 @@ spi_atk_bridge_exit_func (void)
 void
 gnome_accessibility_module_init (void)
 {
-  atk_bridge_init (NULL, NULL);
+  const gchar *load_bridge = g_getenv ("NO_AT_BRIDGE");
 
-  if (g_getenv ("AT_BRIDGE_SHUTDOWN"))
+  if (!load_bridge || g_ascii_strtod (load_bridge, NULL) == 0)
     {
-	g_print("Atk Accessibility bridge initialized\n");
+      atk_bridge_init (NULL, NULL);
+
+      if (g_getenv ("AT_SPI_DEBUG"))
+        {
+	    g_print("Atk Accessibility bridge initialized\n");
+        }
     }
 }
 
@@ -673,7 +684,7 @@ gnome_accessibility_module_shutdown (void)
   atk_bridge_initialized = FALSE;
   this_app = NULL;
 
-  if (g_getenv ("AT_BRIDGE_SHUTDOWN"))
+  if (g_getenv ("AT_SPI_DEBUG"))
     {
 	g_print("Atk Accessibility bridge shutdown\n");
     }

@@ -1,3 +1,17 @@
+2008-12-12  Li Yuan  <li.yuan@sun.com>
+
+	* atk-bridge/bridge.c: (gtk_module_init),
+	(gnome_accessibility_module_init),
+	(gnome_accessibility_module_shutdown):
+	Bug #563943. Allow applications choose not to load atk-bridge during
+	startup.
+	* atk-bridge/Makefile.am:
+	* configure.in:
+	* cspi/Makefile.am:
+	* libspi/Makefile.am:
+	Bug #563806. Reduce unused direct dependencies. Initial patch from
+	Matthias Clasen.
+
 2008-12-05  Li Yuan  <li.yuan@sun.com>
 
 	* cspi/spi_main.c: (cspi_object_unref):
