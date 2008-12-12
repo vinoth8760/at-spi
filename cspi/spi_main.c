@@ -220,7 +220,7 @@ cspi_object_get_ref (CORBA_Object corba_object, gboolean on_loan)
     {
       if ((ref = g_hash_table_lookup (cspi_get_live_refs (), corba_object)))
         {
-          g_assert (ref->ref_count > 0);
+          g_return_val_if_fail (ref->ref_count > 0, NULL);
 	  ref->ref_count++;
 	  if (!on_loan)
 	    {
@@ -331,10 +331,9 @@ cspi_object_unref (Accessible *accessible)
     }
 
   g_return_if_fail (accessible->ref_count > 0);
-  if (accessible->ref_count == 1)
+  if (--accessible->ref_count == 0)
     {
       g_hash_table_remove (cspi_get_live_refs (), accessible->objref);
-      accessible->ref_count--;
     }
 }
 
