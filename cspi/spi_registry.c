@@ -35,7 +35,7 @@
  *            where all subfields other than EventClass are optional.
  *            EventClasses include "object", "window", "mouse",
  *            and toolkit events (e.g. "Gtk", "AWT").
- *            Examples: "focus:", "Gtk:GtkWidget:button_press_event".
+ *            Examples: "focus:", "Gtk:GtkWidget:button-press-event".
  *
  * Legal object event types:
  *
