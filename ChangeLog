@@ -1,3 +1,15 @@
+2008-12-19  Li Yuan  <li.yuan@sun.com>
+
+	* NEWS:
+	* README:
+	* configure.in:
+	Uprev/release 1.24.1.
+	* atk-bridge/bridge.c: (gtk_module_init),
+	(gnome_accessibility_module_init),
+	(gnome_accessibility_module_shutdown):
+	Bug #563943. Allow applications choose not to load atk-bridge during
+	startup.
+
 2008-09-22  Li Yuan  <li.yuan@sun.com>
 
 	* NEWS:
