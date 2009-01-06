@@ -1,3 +1,10 @@
+2009-01-06  Li Yuan  <li.yuan@sun.com>
+
+	* NEWS:
+	* README:
+	* configure.in:
+	Uprev/release 1.25.4.
+
 2008-12-18  Li Yuan  <li.yuan@sun.com>
 
 	* cspi/spi_registry.c:
