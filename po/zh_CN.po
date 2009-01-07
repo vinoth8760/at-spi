@@ -17,11 +17,11 @@ msgstr ""
 
 #: ../at-spi.schemas.in.h:1
 msgid "GTK+ modules for accessibility support"
-msgstr "GTK+ 模块，提供可操作性支持"
+msgstr "GTK+ 模块，提供辅助功能支持"
 
 #: ../at-spi.schemas.in.h:2
 msgid "This key determines the GTK+ modules to load for accessibility support."
-msgstr "该键值决定 GTK+ 模块是否载入可操作性支持。"
+msgstr "该键值决定 GTK+ 模块是否载入辅助功能支持。"
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
