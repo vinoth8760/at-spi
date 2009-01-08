@@ -135,6 +135,7 @@ static gint     spi_atk_bridge_key_listener            (AtkKeyEventStruct     *e
 							gpointer               data);
 static void     spi_atk_tidy_windows                   (void);
 static void     deregister_application                 (BonoboObject          *app);
+static void     reinit_register_vars                   (void);
 
 /* For automatic libgnome init */
 extern void gnome_accessibility_module_init     (void);
@@ -314,6 +315,7 @@ spi_atk_bridge_toplevel_removed (AtkObject *object,
   if (toplevels == 0)
     {
       deregister_application (app);
+      reinit_register_vars ();
     }
   if (toplevels < 0)
     {
@@ -1346,6 +1348,14 @@ spi_atk_tidy_windows (void)
       spi_atk_emit_eventv (G_OBJECT (child), 0, 0, &any, "window:destroy");
       g_object_unref (child);
     }
+}
+
+static void
+reinit_register_vars (void)
+{
+  registry = CORBA_OBJECT_NIL;
+  device_event_controller = CORBA_OBJECT_NIL;
+  this_app = NULL;
 }
 
 static void

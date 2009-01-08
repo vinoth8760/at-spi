@@ -1,3 +1,11 @@
+2009-01-08  Li Yuan  <li.yuan@sun.com>
+
+	* atk-bridge/bridge.c: (spi_atk_bridge_toplevel_removed),
+	(reinit_register_vars):
+	Bug #566999. Unset registry to avoid crash.
+	* configure.in:
+	Bug #566998. Fix build error on Solaris.
+
 2009-01-06  Li Yuan  <li.yuan@sun.com>
 
 	* NEWS:

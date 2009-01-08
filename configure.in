@@ -110,6 +110,9 @@ PKG_CHECK_MODULES(TESTS, [
 	gtk+-2.0	>= req_ver_gtk
 	gail		>= req_ver_gail
 ])
+
+AC_CHECK_LIB(socket, connect, TESTS_LIBS="$TESTS_LIBS -lsocket")
+
 AC_SUBST(TESTS_LIBS)
 AC_SUBST(TESTS_CFLAGS)
 
