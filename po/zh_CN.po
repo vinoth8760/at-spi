@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-07 00:21+0100\n"
-"PO-Revision-Date: 2009-01-07 16:58+0700\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-spi&component=general\n"
+"POT-Creation-Date: 2009-01-07 09:25+0000\n"
+"PO-Revision-Date: 2009-01-08 23:21+0700\n"
 "Last-Translator: 甘露(Gan Lu) <rhythm.gan@gmail.com>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "AT-SPI 注册项"
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
-msgstr "可操作性注册项"
+msgstr "辅助功能注册项"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "失败：找不到设备事件控制器。\n"
