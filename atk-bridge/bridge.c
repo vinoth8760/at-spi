@@ -574,6 +574,7 @@ spi_atk_register_event_listeners (void)
   add_signal_listener ("Gtk:AtkText:text-selection-changed");
   add_signal_listener ("Gtk:AtkText:text-changed");
   add_signal_listener ("Gtk:AtkText:text-caret-moved");
+  add_signal_listener ("Gtk:AtkText:text-attributes-changed");
   add_signal_listener ("Gtk:AtkTable:row-inserted");
   add_signal_listener ("Gtk:AtkTable:row-reordered");
   add_signal_listener ("Gtk:AtkTable:row-deleted");

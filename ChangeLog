@@ -1,3 +1,8 @@
+2009-01-14  Li Yuan  <li.yuan@sun.com>
+
+	* atk-bridge/bridge.c: (spi_atk_register_event_listeners):
+	Bug #567706. Listen to text-attributes-changed signal.
+
 2009-01-08  Li Yuan  <li.yuan@sun.com>
 
 	* atk-bridge/bridge.c: (spi_atk_bridge_toplevel_removed),
