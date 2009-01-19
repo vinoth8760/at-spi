@@ -1,3 +1,10 @@
+2009-01-19  Li Yuan  <li.yuan@sun.com>
+
+	* NEWS:
+	* README:
+	* configure.in:
+	Uprev/release 1.25.5.
+
 2009-01-14  Li Yuan  <li.yuan@sun.com>
 
 	* atk-bridge/bridge.c: (spi_atk_register_event_listeners):
