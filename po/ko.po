@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-22 02:30+0900\n"
-"PO-Revision-Date: 2009-01-22 02:32+0900\n"
+"PO-Revision-Date: 2009-01-22 03:03+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: Korean <gnome-kr-translation@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,6 @@ msgid "GTK+ modules for accessibility support"
 msgstr "접근성 지원 기능 GTK+ 모듈"
 
 #: ../at-spi.schemas.in.h:2
-#, fuzzy
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr "이 키는 접근성 지원 기능에 읽어들일 GTK+ 모듈을 지정합니다."
 
