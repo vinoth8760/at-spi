@@ -1,3 +1,12 @@
+2009-02-06  Li Yuan  <li.yuan@sun.com>
+
+	* atk-bridge/bridge.c: (deregister_application):
+	Bug #570752.
+	Change the variable's name to avoid conflict.
+	Patch fron Mike Gorse <mgorse@novell.com>.
+	* configure.in:
+	Bug 570754. Disable XEvIE by default.
+
 2009-01-19  Li Yuan  <li.yuan@sun.com>
 
 	* NEWS:

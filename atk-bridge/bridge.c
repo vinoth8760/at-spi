@@ -599,13 +599,13 @@ spi_atk_register_event_listeners (void)
 static void
 deregister_application (BonoboObject *app)
 {
-  Accessibility_Registry registry = spi_atk_bridge_get_registry ();
+  Accessibility_Registry local_registry = spi_atk_bridge_get_registry ();
   bridge_threads_leave ();
-  Accessibility_Registry_deregisterApplication (registry, BONOBO_OBJREF (app), &ev);
+  Accessibility_Registry_deregisterApplication (local_registry, BONOBO_OBJREF (app), &ev);
   bridge_threads_enter ();
 
   device_event_controller = bonobo_object_release_unref (device_event_controller, &ev);
-  registry = bonobo_object_release_unref (registry, &ev);
+  registry = bonobo_object_release_unref (local_registry, &ev);
 }
 
 static void
