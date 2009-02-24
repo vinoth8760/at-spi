@@ -1,3 +1,9 @@
+2009-02-24  Li Yuan  <li.yuan@sun.com>
+
+	* test/accessx-gui.c: (gui_exit), (basic_toggles_box),
+	(repeat_keys_box), (mouse_keys_box), (timeout_box), (create_gui_x):
+	Patch from Yue Wang. Bug #572188. Remove deprecated GTK+ symbols.
+
 2009-02-06  Li Yuan  <li.yuan@sun.com>
 
 	* atk-bridge/bridge.c: (deregister_application):

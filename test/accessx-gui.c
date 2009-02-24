@@ -43,7 +43,7 @@ typedef struct {
 static void
 gui_exit(GtkButton *notused, void *alsonotused)
 {
-  gtk_exit(0);
+  exit(0);
 }
 
 static void
@@ -250,7 +250,7 @@ basic_toggles_box ()
 			    set_accessx_control_value, control,
 			    NULL);
   
-  gtk_widget_set_usize (GTK_WIDGET (range), 150, -1);
+  gtk_widget_set_size_request (GTK_WIDGET (range), 150, -1);
   
   label = gtk_widget_new (GTK_TYPE_LABEL,
 			  "GtkLabel::label", "Delay (mS)",
@@ -325,7 +325,7 @@ basic_toggles_box ()
 			    set_accessx_control_value, control,
 			    NULL);
   
-  gtk_widget_set_usize (GTK_WIDGET (range), 150, -1);
+  gtk_widget_set_size_request (GTK_WIDGET (range), 150, -1);
   
   label = gtk_widget_new (GTK_TYPE_LABEL,
 			  "GtkLabel::label", "Delay (mS)",
@@ -400,7 +400,7 @@ repeat_keys_box ()
 			    set_accessx_control_value, control,
 			    NULL);
   
-  gtk_widget_set_usize (GTK_WIDGET (range), 150, -1);
+  gtk_widget_set_size_request (GTK_WIDGET (range), 150, -1);
   
   adjustment = GTK_ADJUSTMENT (gtk_adjustment_new (200.0, 40.0, 4000.0, 1.0, 10.0, 1.0 ));
   
@@ -417,7 +417,7 @@ repeat_keys_box ()
 			    set_accessx_control_value, control,
 			    NULL);
   
-  gtk_widget_set_usize (GTK_WIDGET (range), 150, -1);
+  gtk_widget_set_size_request (GTK_WIDGET (range), 150, -1);
 
   vbox = gtk_widget_new (GTK_TYPE_VBOX,
 			 "GtkWidget::visible", TRUE,
@@ -488,7 +488,7 @@ mouse_keys_box ()
 			    set_accessx_control_value, control,
 			    NULL);
   
-  gtk_widget_set_usize (GTK_WIDGET (range), 150, -1);
+  gtk_widget_set_size_request (GTK_WIDGET (range), 150, -1);
   
   adjustment = GTK_ADJUSTMENT (gtk_adjustment_new (800.0, 200.0, 4000.0, 1.0, 10.0, 1.0 ));
   
@@ -505,7 +505,7 @@ mouse_keys_box ()
 			    set_accessx_control_value, control,
 			    NULL);
   
-  gtk_widget_set_usize (GTK_WIDGET (range), 150, -1);
+  gtk_widget_set_size_request (GTK_WIDGET (range), 150, -1);
   
   adjustment = GTK_ADJUSTMENT (gtk_adjustment_new (800.0, 200.0, 4000.0, 1.0, 10.0, 1.0 ));
   
@@ -522,7 +522,7 @@ mouse_keys_box ()
 			    set_accessx_control_value, control,
 			    NULL);
   
-  gtk_widget_set_usize (GTK_WIDGET (range), 150, -1);
+  gtk_widget_set_size_request (GTK_WIDGET (range), 150, -1);
   
   adjustment = GTK_ADJUSTMENT (gtk_adjustment_new (800.0, 200.0, 4000.0, 1.0, 10.0, 1.0 ));
   
@@ -611,7 +611,7 @@ timeout_box ()
 			    set_accessx_control_value, control,
 			    NULL);
   
-  gtk_widget_set_usize (GTK_WIDGET (range), 150, -1);
+  gtk_widget_set_size_request (GTK_WIDGET (range), 150, -1);
   
   label = gtk_widget_new (GTK_TYPE_LABEL,
 			  "GtkLabel::label", "AccessX Timeout (Min.)",
@@ -714,7 +714,7 @@ create_gui_x (void)
 			    set_accessx_control_value, controls[i],
 			    NULL);
 	  
-  gtk_widget_set_usize (GTK_WIDGET (range), 150, -1);
+  gtk_widget_set_size_request (GTK_WIDGET (range), 150, -1);
   gtk_widget_new (gtk_label_get_type(),
 		  "GtkWidget::parent", hbox,
 		  "GtkLabel::label", controls[i]->val_label,
