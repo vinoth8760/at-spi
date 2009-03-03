@@ -1,14 +1,14 @@
-# translation of at-spi.HEAD.po to Telugu
+# translation of te.po to Telugu
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Krishna Babu K <kkrothap@redhat.com>, 2008.
+# Krishna Babu K <kkrothap@redhat.com>, 2008, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: at-spi.HEAD\n"
+"Project-Id-Version: te\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-20 03:48+0000\n"
-"PO-Revision-Date: 2008-09-20 19:46+0530\n"
+"POT-Creation-Date: 2008-11-07 00:21+0100\n"
+"PO-Revision-Date: 2009-03-03 11:18+0530\n"
 "Last-Translator: Krishna Babu K <kkrothap@redhat.com>\n"
 "Language-Team: Telugu <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
+
+#: ../at-spi.schemas.in.h:1
+msgid "GTK+ modules for accessibility support"
+msgstr "ఏక్సెస్‌బిలిటి మద్దతు కొరకు GTK+ మాడ్యూళ్ళు"
+
+#: ../at-spi.schemas.in.h:2
+msgid "This key determines the GTK+ modules to load for accessibility support."
+msgstr "ఏక్సిస్‌బిలిటి మద్దతుకొరకు లొడవ్వుటకు ఈ కీ GTK+ మాడ్యూళ్ళను నిర్ధారణచేస్తుంది."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
