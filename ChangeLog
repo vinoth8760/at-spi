@@ -1,3 +1,10 @@
+2009-03-16  Li Yuan  <li.yuan@sun.com>
+
+	* NEWS:
+	* README:
+	* configure.in:
+	Uprev/release 1.26.0.
+
 2009-03-02  Willie Walker  <william.walker@sun.com>
 
 	* NEWS:
