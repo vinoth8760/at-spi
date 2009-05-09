@@ -31,7 +31,7 @@ msgstr "Μητρώο AT-SPI"
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
-msgstr "Μητρώο Προσιτότητας"
+msgstr "Μητρώο προσιτότητας"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "αποτυχία: δε βρέθηκε ελεγκτής γεγονότος συσκευής.\n"
