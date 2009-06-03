@@ -411,7 +411,8 @@ module Accessibility {
      * startOffset and endOffset will be back-filled to indicate the start and end of the attribute run
      * which contains 'offset' - an attribute run is a contiguous section of text whose attributes are
      * homogeneous.
-     * @param offset the offset of the character whose attributes will be reported.
+     * @param offset the offset of the character whose attributes will be reported. -1 means the offset of
+     *                    the character to be inserted at the caret location.
      * @param startOffset backfilled with the starting offset of the character range over which all
      *                    text attributes match those of \c offset, i.e. the start of the homogeneous
      *                    attribute run including \c offset.
