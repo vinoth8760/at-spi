@@ -107,11 +107,9 @@ impl_getAttributes (PortableServer_Servant servant,
   
   attributes = atk_document_get_attributes (document);
 
-  if (!attributes)
-    return NULL;  
-
   /* according to atkobject.h, AtkAttributeSet is a GSList */
-  n_attributes = g_slist_length (attributes);
+  if (attributes)
+    n_attributes = g_slist_length (attributes);
     
   retval = CORBA_sequence_CORBA_string__alloc ();
   retval->_length = retval->_maximum = n_attributes;
