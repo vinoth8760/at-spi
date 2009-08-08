@@ -1,14 +1,14 @@
 # Irish translations for at-spi package.
-# Copyright (C) 2008 Free Software Foundation, Inc.
+# Copyright (C) 2008-2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the at-spi package.
-# Seán de Búrca <leftmostcat@gmail.com>, 2008.
+# Seán de Búrca <leftmostcat@gmail.com>, 2008-2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: at-spi HEAD\n"
+"Project-Id-Version: at-spi.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-28 14:41-0400\n"
-"PO-Revision-Date: 2008-08-28 14:41-0500\n"
+"POT-Creation-Date: 2009-08-08 03:07-0600\n"
+"PO-Revision-Date: 2009-08-08 03:10-0600\n"
 "Last-Translator: Seán de Búrca <leftmostcat@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : (n%10==1 || n%10==2) ? 1 : (n%"
 "10>=3 && n%10<= 6) ? 2 : ((n%10>=7 && n%10<=9) || n==10) ? 3 : 4;\n"
+
+#: ../at-spi.schemas.in.h:1
+msgid "GTK+ modules for accessibility support"
+msgstr "Modúil GTK+ le haghaidh tacaíochta inrochtaineachta"
+
+#: ../at-spi.schemas.in.h:2
+msgid "This key determines the GTK+ modules to load for accessibility support."
+msgstr ""
+"Socraíonn an eochair seo na modúil GTK+ le luchtú le haghaidh tacaíochta "
+"inrochtaineachta"
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
