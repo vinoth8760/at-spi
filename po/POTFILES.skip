@@ -2,3 +2,5 @@
 # Please keep this file sorted alphabetically.
 atk-bridge/bridge.c
 registryd/Accessibility_Registry.server.in
+registryd/at-spi-registryd-wrapper.desktop.in
+registryd/at-spi-registryd-wrapper.desktop.in.in

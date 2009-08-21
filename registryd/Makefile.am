@@ -22,12 +22,33 @@ at_spi_registryd_SOURCES =		\
 	registry.h		\
 	ucs2keysym.c
 
-LDADD = $(top_builddir)/libspi/libspi.la $(X_LIBS) $(XTST_LIBS) $(XEVIE_LIBS) $(REGISTRYD_LIBS) 
+LDADD = $(top_builddir)/libspi/libspi.la $(X_LIBS) $(SM_LIBS) $(XTST_LIBS) $(XEVIE_LIBS) $(REGISTRYD_LIBS) 
 
 serverinfodir = $(libdir)/bonobo/servers
 serverinfo_DATA = Accessibility_Registry.server
 
+default_sessiondir = $(sysconfdir)/xdg/autostart
+default_session_in_in_files = 				\
+	at-spi-registryd.desktop.in.in
+default_session_in_files = $(default_session_in_in_files:.desktop.in.in=.desktop.in)
+default_session_DATA = $(default_session_in_files:.desktop.in=.desktop)
+
+@INTLTOOL_DESKTOP_RULE@
+
+%.desktop.in: %.desktop.in.in Makefile.am
+	sed -e "s,\@registryddir\@,$(libexecdir)," \
+		< $< > $@
+
 @INTLTOOL_SERVER_RULE@
 
 EXTRA_DIST = Accessibility_Registry.server.in.in
-CLEANFILES = $(serverinfo_DATA) $(server_dot_in)
+CLEANFILES = 			\
+	$(serverinfo_DATA)	\
+	$(server_dot_in)	\
+	$(default_session_DATA)	\
+	$(default_session_in_files)
+	
+DISTCLEANFILES =					\
+	$(default_session_in_in_files)
+
+
