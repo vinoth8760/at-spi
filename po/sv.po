@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-07 12:10+0200\n"
-"PO-Revision-Date: 2009-02-01 12:36+0100\n"
+"POT-Creation-Date: 2009-08-23 14:04+0200\n"
+"PO-Revision-Date: 2009-08-23 14:05+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -24,9 +24,7 @@ msgstr "GTK+-moduler för hjälpmedelsstöd"
 
 #: ../at-spi.schemas.in.h:2
 msgid "This key determines the GTK+ modules to load for accessibility support."
-msgstr ""
-"Denna nyckel bestämmer vilka GTK+-moduler som ska läsas in för "
-"hjälpmedelsstöd."
+msgstr "Denna nyckel bestämmer vilka GTK+-moduler som ska läsas in för hjälpmedelsstöd."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
@@ -36,8 +34,12 @@ msgstr "AT-SPI-register"
 msgid "Accessibility Registry"
 msgstr "Hjälpmedelsregister"
 
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "Omslag för AT-SPI-register"
+
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "misslyckande: ingen enhetshändelsekontroller hittades.\n"
-
 #~ msgid "WARNING: NULL key event reported."
 #~ msgstr "VARNING: NULL-tangenthändelse rapporterades."
+
