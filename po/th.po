@@ -6,9 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 19:59+0700\n"
-"PO-Revision-Date: 2009-09-21 20:01+0700\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
+"spi&component=general\n"
+"POT-Creation-Date: 2009-08-22 20:09+0000\n"
+"PO-Revision-Date: 2009-08-23 16:23+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -30,3 +31,7 @@ msgstr "เรจิสตรี AT-SPI"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "เรจิสตรีระบบอำนวยการใช้งาน"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "โปรแกรมครอบเรจิสตรี AT SPI"
