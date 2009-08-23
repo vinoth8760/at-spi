@@ -1,14 +1,14 @@
 # at-spi Portuguese translation.
-# Copyright © 2003, 2008 at-spi
+# Copyright © 2003, 2008, 2009 at-spi
 # This file is distributed under the same license as the at-spi package.
-# Duarte Loreto <happyguy_pt@hotmail.com>, 2003, 2008.
+# Duarte Loreto <happyguy_pt@hotmail.com>, 2003, 2008, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.24\n"
+"Project-Id-Version: 2.28\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-20 22:35+0100\n"
-"PO-Revision-Date: 2008-09-20 22:40+0000\n"
+"POT-Creation-Date: 2009-08-23 11:24+0100\n"
+"PO-Revision-Date: 2009-08-23 11:25+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,8 @@ msgstr "Módulos GTK+ de suporte à acessibilidade"
 
 #: ../at-spi.schemas.in.h:2
 msgid "This key determines the GTK+ modules to load for accessibility support."
-msgstr "Esta chave determina os módulos GTK+ a ler para suportar a acessibilidade."
+msgstr ""
+"Esta chave determina os módulos GTK+ a ler para suportar a acessibilidade."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
@@ -30,6 +31,10 @@ msgstr "Registo AT-SPI"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Registo de Acessibilidade"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "Invólucro de Registo AT SPI"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "falha: nenhum dispositivo controlador de eventos encontrado.\n"
