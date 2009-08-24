@@ -1,3 +1,8 @@
+What's new in at-spi-1.27.91:
+
+* Bugfixes: #489828, #584467, #578334.
+* Translation update.
+
 What"s new in at-spi-1.26.0:
 
 * Translation update: ml, gl, ta, as, hi, bn_IN, te.
