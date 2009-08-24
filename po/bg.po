@@ -1,15 +1,15 @@
 # Bulgarian translation of at-spi po-file.
-# Copyright (C) 2004, 2205, 2008 Free Software Foundation
+# Copyright (C) 2004, 2205, 2008, 2009 Free Software Foundation
 # This file is distributed under the same license as the at-spi package.
 # Vladimir Petkov <vpetkov@i-space.org>, 2004.
-# Alexander Shopov <ash@contact.bg>, 2005, 2008.
+# Alexander Shopov <ash@contact.bg>, 2005, 2008, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: at-spi trunk\n"
+"Project-Id-Version: at-spi master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-28 14:38+0300\n"
-"PO-Revision-Date: 2008-09-28 14:38+0300\n"
+"POT-Creation-Date: 2009-08-24 22:44+0300\n"
+"PO-Revision-Date: 2009-08-24 22:44+0300\n"
 "Last-Translator:  Alexander Shopov <ash@contact.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -32,3 +32,7 @@ msgstr "Регистър AT-SPI"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Регистър за достъпност"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "Обвивка към регистъра AT-SPI"
