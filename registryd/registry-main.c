@@ -31,6 +31,7 @@
 #include <libbonobo.h>
 #include <glib.h>
 #include "registry.h"
+#include <dbus/dbus-glib.h>
 
 #ifdef HAVE_SM
 #include <X11/SM/SMlib.h>
@@ -42,6 +43,7 @@
 
 static void registry_set_ior (SpiRegistry *registry);
 static void registry_session_init (const char *previous_client_id, const char *exe);
+static void set_gtk_modules (DBusGProxy *gsm);
 #ifdef HAVE_SM
 static void die_callback (SmcConn smc_conn, SmPointer client_data);
 static void save_yourself_callback      (SmcConn   smc_conn,
@@ -62,6 +64,10 @@ main (int argc, char **argv)
   const char  *display_name;
   char        *cp, *dp;
   SpiRegistry *registry;
+
+  DBusGConnection *connection;
+  DBusGProxy      *gsm;
+  GError          *error;
 
   if (!bonobo_init (&argc, argv))
     {
@@ -96,6 +102,18 @@ main (int argc, char **argv)
 #ifdef AT_SPI_DEBUG
       fprintf (stderr, "SpiRegistry Message: SpiRegistry daemon is running.\n");
 #endif
+      error = NULL;
+      connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
+      if (connection == NULL)
+        {
+          g_error ("couldn't get D-Bus connection: %s", error->message);
+        }
+      gsm = dbus_g_proxy_new_for_name (connection,
+                                       "org.gnome.SessionManager",
+                                       "/org/gnome/SessionManager",
+                                       "org.gnome.SessionManager");
+      set_gtk_modules (gsm);
+
       registry_set_ior (registry);
 
       /* If DESKTOP_AUTOSTART_ID exists, assume we're started by session
@@ -364,3 +382,63 @@ save_yourself_callback      (SmcConn   smc_conn,
 }
 #endif
 
+static void
+set_gtk_modules (DBusGProxy *gsm)
+{
+        const char *old;
+        char       *value;
+        gboolean    found_gail;
+        gboolean    found_atk_bridge;
+        GError     *error;
+        int         i;
+
+        found_gail = FALSE;
+        found_atk_bridge = FALSE;
+
+        old = g_getenv ("GTK_MODULES");
+        if (old != NULL) {
+                char **old_modules;
+                char **modules;
+
+                old_modules = g_strsplit (old, ":", -1);
+                for (i = 0; old_modules[i]; i++) {
+                        if (!strcmp (old_modules[i], "gail")) {
+                                found_gail = TRUE;
+                        } else if (!strcmp (old_modules[i], "atk-bridge")) {
+                                found_atk_bridge = TRUE;
+                        }
+                }
+
+                modules = g_new (char *, i + (found_gail ? 0 : 1) +
+                                 (found_atk_bridge ? 0 : 1) + 1);
+                for (i = 0; old_modules[i]; i++) {
+                        modules[i] = old_modules[i];
+                }
+                if (!found_gail) {
+                                modules[i++] = "gail";
+                }
+                if (!found_atk_bridge) {
+                        modules[i++] = "atk-bridge";
+                }
+                modules[i] = NULL;
+
+                value = g_strjoinv (":", modules);
+                g_free (modules);
+                g_strfreev (old_modules);
+        } else {
+                value = g_strdup ("gail:atk-bridge");
+        }
+
+        error = NULL;
+        if (!dbus_g_proxy_call (gsm, "Setenv", &error,
+                                G_TYPE_STRING, "GTK_MODULES",
+                                G_TYPE_STRING, value,
+                                G_TYPE_INVALID,
+                                G_TYPE_INVALID)) {
+                g_warning ("Could not set GTK_MODULES: %s", error->message);
+                g_error_free (error);
+        }
+
+        g_free (value);
+        return;
+}
