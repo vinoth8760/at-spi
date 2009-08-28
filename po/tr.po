@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-21 15:36+0200\n"
-"PO-Revision-Date: 2009-02-21 15:37+0200\n"
+"POT-Creation-Date: 2009-08-29 00:07+0300\n"
+"PO-Revision-Date: 2009-08-29 00:07+0300\n"
 "Last-Translator: Baris Cicek <baris@teamforce.name.tr>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,6 +33,10 @@ msgstr "AT-SPI Kaydı"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Erişilebilirlik Kaydı"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "AT-SPI Kayıt İşleyici"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "hata: aygıt olay kontrolörü bulunamadı.\n"
