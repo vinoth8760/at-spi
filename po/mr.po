@@ -1,17 +1,18 @@
-# translation of mr.po to marathi
+# translation of mr.po to Marathi
 # This file is distributed under the same license as the at-spi package.
 # Copyright (C) 2005 Free Software Foundation Inc., 2005.
 #
+# Sandeep Shedmake <sandeep.shedmake@gmail.com>, 2008.
+# Sandeep Shedmake <sshedmak@redhat.com>, 2009.
 # First Author: Swapnil Hajare <dreamil@gmail.com>
-# Sandeep Shedmake <sandeep.shedmake@gmail.com>, 2008. 
 msgid ""
 msgstr ""
 "Project-Id-Version: mr\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 03:49+0000\n"
-"PO-Revision-Date: 2008-09-21 11:05+0530\n"
-"Last-Translator: Sandeep Shedmake <sandeep.shedmake@gmail.com>\n"
-"Language-Team: marathi\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-spi&component=general\n"
+"POT-Creation-Date: 2009-08-24 19:45+0000\n"
+"PO-Revision-Date: 2009-08-31 20:03+0530\n"
+"Last-Translator: Sandeep Shedmake <sshedmak@redhat.com>\n"
+"Language-Team: Marathi <fedora-trans-mr@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,4 +34,9 @@ msgstr "AT-SPI रजिस्ट्री"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "प्रवेशजोगी रजिस्ट्री"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+#| msgid "AT-SPI Registry"
+msgid "AT SPI Registry Wrapper"
+msgstr "AT-SPI रजिस्ट्री व्रॅप्पर"
 
