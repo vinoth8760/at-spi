@@ -1,14 +1,14 @@
 # Norwegian translations for at-spi package.
 # Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Kjartan Maraas <kmaraas@broadpark.no>, 2003-2008.
+# Kjartan Maraas <kmaraas@broadpark.no>, 2003-2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: AT-SPI 2.23.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 16:55+0200\n"
-"PO-Revision-Date: 2008-09-21 16:56+0200\n"
+"POT-Creation-Date: 2009-09-01 12:04+0200\n"
+"PO-Revision-Date: 2009-09-01 12:05+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@broadpark.no>\n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,8 @@ msgstr "GTK+-moduler for tilgjengelighet"
 
 #: ../at-spi.schemas.in.h:2
 msgid "This key determines the GTK+ modules to load for accessibility support."
-msgstr "Denne nøkkelen bestemmer GTK+ moduler som skal lastes for tilgjengelighet."
+msgstr ""
+"Denne nøkkelen bestemmer GTK+ moduler som skal lastes for tilgjengelighet."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
@@ -31,3 +32,7 @@ msgstr "AT-SPI-register"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Register for hjelpefunksjoner"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "AT-SPI-register"
