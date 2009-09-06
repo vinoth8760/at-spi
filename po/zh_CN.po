@@ -1,15 +1,17 @@
 # translation of at-spi.po to zh_CN
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the at-spi package.
 # Yi Yang <yang_yi_cn@yahoo.com>, 2003.
-# 甘露(Gan Lu) <rhythm.gan@gmail.com>, 2009
+# 甘露(Gan Lu) <rhythm.gan@gmail.com>, 2009.
+# Aron Xu <happyaron.xu@gmail.com>, 2009.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: at-spi\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-spi&component=general\n"
-"POT-Creation-Date: 2009-01-07 09:25+0000\n"
-"PO-Revision-Date: 2009-01-08 23:21+0700\n"
-"Last-Translator: 甘露(Gan Lu) <rhythm.gan@gmail.com>\n"
+"Project-Id-Version: at-spi master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-06 23:06+0800\n"
+"PO-Revision-Date: 2009-09-06 23:21+0800\n"
+"Last-Translator: Aron Xu <happyaron.xu@gmail.com>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +19,7 @@ msgstr ""
 
 #: ../at-spi.schemas.in.h:1
 msgid "GTK+ modules for accessibility support"
-msgstr "GTK+ 模块，提供辅助功能支持"
+msgstr "提供辅助功能支持的 GTK+ 模块"
 
 #: ../at-spi.schemas.in.h:2
 msgid "This key determines the GTK+ modules to load for accessibility support."
@@ -31,8 +33,12 @@ msgstr "AT-SPI 注册项"
 msgid "Accessibility Registry"
 msgstr "辅助功能注册项"
 
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "AT-SPI 注册项封装器"
+
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "失败：找不到设备事件控制器。\n"
+
 #~ msgid "WARNING: NULL key event reported."
 #~ msgstr "警告：报告了为空的关键事件。"
-
