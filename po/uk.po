@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 14:08+0000\n"
+"POT-Creation-Date: 2009-09-11 01:37+0300\n"
 "PO-Revision-Date: 2005-02-09 09:33+0300\n"
 "Last-Translator: Maxim V. Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -31,3 +31,7 @@ msgstr "Реєстр системи AT-SPI"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Реєстр системи спеціальних можливостей"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "Обгортка реєстру системи AT-SPI"
