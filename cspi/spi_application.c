@@ -83,11 +83,11 @@ AccessibleApplication_getToolkitName (AccessibleApplication *obj)
  * AccessibleApplication_getVersion:
  * @obj: a pointer to the #AccessibleApplication being queried.
  *
- * Get the version of the at-spi bridge exported by an
+ * Get the version of the UI toolkit used by an
  *      #AccessibleApplication instance.
  *
- * Returns: a UTF-8 string indicating the application's
- *          at-spi version.
+ * Returns: a UTF-8 string indicating the version of the UI toolkit
+ *          which is used by an application.
  **/
 char *
 AccessibleApplication_getVersion (AccessibleApplication *obj)
