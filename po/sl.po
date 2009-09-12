@@ -2,14 +2,14 @@
 # Copyright (C) 2002 Free Software Foundation, Inc.
 #
 # Andraz Tori <andraz.tori1@guest.arnes.si>, 2002
-# Matej Urbančič <mateju@svn.gnome.org>, 2008.
+# Matej Urbančič <mateju@svn.gnome.org>, 2008 - 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 05:39+0000\n"
-"PO-Revision-Date: 2008-09-21 09:17+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-spi&component=general\n"
+"POT-Creation-Date: 2009-09-11 07:22+0000\n"
+"PO-Revision-Date: 2009-09-12 10:04+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -37,6 +37,10 @@ msgstr "Register AT-SPI"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Register dostopnosti"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "Zvijalec registra AT-SPI"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "napaka: nobenega nadzornika dogodkov ni bilo mogoče najti.\n"
