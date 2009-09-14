@@ -2,14 +2,14 @@
 # Copyright © 2003, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the at-spi package.
 # Jordi Mallach <jordi@sindominio.net>, 2003.
-# Joan Duran <jodufi@gmail.com>, 2008.
+# Joan Duran <jodufi@gmail.com>, 2008, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-18 19:15+0200\n"
-"PO-Revision-Date: 2008-09-28 18:27+0200\n"
+"POT-Creation-Date: 2009-09-14 18:30+0200\n"
+"PO-Revision-Date: 2009-09-13 23:23+0200\n"
 "Last-Translator: Joan Duran <jodufi@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -34,6 +34,10 @@ msgstr "Registre del servei d'accessibilitat (AT-SPI)"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Registre d'accessibilitat"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "Embolcall del registre del servei d'accessibilitat (AT SPI)"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "falla: no s'ha trobat un controlador d'events de dispositiu\n"
