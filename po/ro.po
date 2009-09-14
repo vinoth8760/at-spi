@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-07 00:21+0100\n"
-"PO-Revision-Date: 2009-02-05 15:17+0200\n"
+"POT-Creation-Date: 2009-09-14 23:12+0300\n"
+"PO-Revision-Date: 2009-09-14 23:12+0300\n"
 "Last-Translator: Mișu Moldovan <dumol@gnome.ro>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -31,3 +31,8 @@ msgstr "Registru AT-SPI"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Registru de accesibilitate"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "Încapsulare a registrului AT-SPI"
+
