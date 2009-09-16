@@ -9,8 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-22 01:40+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
+"spi&component=general\n"
+"POT-Creation-Date: 2009-08-24 19:45+0000\n"
 "PO-Revision-Date: 2008-09-22 01:41+0100\n"
 "Last-Translator: Goran Rakić <grakic@devbase.net>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
@@ -24,7 +25,9 @@ msgstr "GTK+ moduli podrške za pristupačnost"
 
 #: ../at-spi.schemas.in.h:2
 msgid "This key determines the GTK+ modules to load for accessibility support."
-msgstr "Ovaj ključ određuje GTK+ module koji se učitavaju radi podrške za pristupačnost."
+msgstr ""
+"Ovaj ključ određuje GTK+ module koji se učitavaju radi podrške za "
+"pristupačnost."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
@@ -34,8 +37,13 @@ msgstr "AT-SPI registar"
 msgid "Accessibility Registry"
 msgstr "Registar za pristupačnost"
 
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+#| msgid "AT-SPI Registry"
+msgid "AT SPI Registry Wrapper"
+msgstr "omotač AT-SPI registra"
+
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "greška: nije nađen upravljač za događaje na uređaju.\n"
+
 #~ msgid "WARNING: NULL key event reported."
 #~ msgstr "UPOZORENJE: Primio je NULL taster."
-
