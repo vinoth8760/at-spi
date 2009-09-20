@@ -2,14 +2,15 @@
 # Copyright (C) 2008 the author(s) of at-spi.
 # This file is distributed under the same license as the at-spi package.
 # Miloslav Trmac <mitr@volny.cz>, 2003.
-# Lucas Lommer <llommer@svn.gnome.org>, 2008.
+# Lucas Lommer <llommer@svn.gnome.org>, 2008, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-22 00:51+0200\n"
-"PO-Revision-Date: 2008-09-21 03:09+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
+"spi&component=general\n"
+"POT-Creation-Date: 2009-09-16 16:39+0000\n"
+"PO-Revision-Date: 2009-09-17 11:58+0100\n"
 "Last-Translator: Lucas Lommer <llommer@svn.gnome.org>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,3 +34,8 @@ msgstr "Registr AT-SPI"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Registr usnadnění"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "Objekt registru AT SPI"
+
