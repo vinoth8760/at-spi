@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-22 02:30+0900\n"
-"PO-Revision-Date: 2009-01-22 03:03+0900\n"
+"POT-Creation-Date: 2009-09-21 10:35+0900\n"
+"PO-Revision-Date: 2009-09-21 10:35+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: Korean <gnome-kr-translation@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -29,3 +29,7 @@ msgstr "AT-SPI 레지스트리"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "접근성 레지스트리"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "AT-SPI 레지스트리 래퍼"
