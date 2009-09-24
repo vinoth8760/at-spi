@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 04:55+0300\n"
+"POT-Creation-Date: 2009-09-24 10:57+0300\n"
 "PO-Revision-Date: 2008-09-21 04:54+0300\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -31,6 +31,11 @@ msgstr "AT-SPI registras"
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Prieinamumo registras"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+#, fuzzy
+msgid "AT SPI Registry Wrapper"
+msgstr "AT-SPI registras"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "triktis: nerastas įrengimo įvykio valdiklis.\n"
