@@ -1,32 +1,39 @@
 # Indonesian translation of at-spi.
 # Copyright (C) 2003 THE at-spi'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the at-spi package.
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi HEAD\n"
-"POT-Creation-Date: 2003-12-16 16:58+0700\n"
-"PO-Revision-Date: 2003-12-10 19:36+0700\n"
-"Last-Translator: Ahmad Riza H Nst <ari@160c.afraid.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-spi&component=general\n"
+"POT-Creation-Date: 2009-09-24 07:57+0000\n"
+"PO-Revision-Date: 2009-10-13 15:13+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesia <sukarelawan@gnome.linux.or.id>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
+"X-Poedit-Language: Indonesian\n"
+"X-Poedit-Country: Indonesia\n"
 
-#: atk-bridge/bridge.c:309
-msgid "failure: no device event controller found.\n"
-msgstr "kesalahan: tidak menemukan pengatur device event.\n"
+#: ../at-spi.schemas.in.h:1
+msgid "GTK+ modules for accessibility support"
+msgstr "Modul GTK+ untuk dukungan aksesibilitas"
 
-#: atk-bridge/bridge.c:778
-msgid "WARNING: NULL key event reported."
-msgstr "PERINGATAN: kunci event NULL ditemukan."
+#: ../at-spi.schemas.in.h:2
+msgid "This key determines the GTK+ modules to load for accessibility support."
+msgstr "Kunci ini menentukan modul GTK+ yang akan dimuat untuk dukungan aksesibilitas."
 
-#: registryd/Accessibility_Registry.server.in.in.h:1
+#: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
 msgstr "Registri AT-SPI"
 
-#: registryd/Accessibility_Registry.server.in.in.h:2
+#: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
-msgstr "Registri aksesibilitas"
+msgstr "Registri Aksesibilitas"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry Wrapper"
+msgstr "Pembungkus Regristry AT SPI"
+
