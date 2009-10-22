@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: at-spi master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
 "spi&component=general\n"
-"POT-Creation-Date: 2009-09-16 00:02+0000\n"
+"POT-Creation-Date: 2009-10-19 05:02+0000\n"
 "PO-Revision-Date: 2009-08-25 03:02+0100\n"
 "Last-Translator: Nils-Christoph Fiedler <linux@medienkompanie.de>\n"
 "Language-Team: Low German <nds-lowgerman@lists.sourceforge.net>\n"
@@ -18,13 +18,13 @@ msgstr ""
 
 #: ../at-spi.schemas.in.h:1
 msgid "GTK+ modules for accessibility support"
-msgstr "GTK+ Module för Togangelikheitsunnerstüttung"
+msgstr "GTK+ Module för Togangelikheitsunnerstütten"
 
 #: ../at-spi.schemas.in.h:2
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr ""
-"Düsser Slötel het Utwarkungen op de GTK+ Module, bi'n Laden vun de "
-"Togangelikheitsunnerstüttung."
+"Düsser Slötel het Utwarkens op de GTK+ Module bi'n Laden vun de "
+"Togangelikheitsunnerstütten."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
