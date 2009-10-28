@@ -10,7 +10,8 @@ INCLUDES = -I$(top_srcdir)          \
            -I$(top_builddir)/libspi \
            -I$(top_srcdir)/libspi   \
            $(WARN_CFLAGS)	\
-           $(REGISTRYD_CFLAGS)
+           $(REGISTRYD_CFLAGS) \
+	   -DGTK_LIBDIR=\"$(libdir)\"
 
 at_spi_registryd_SOURCES =		\
 	desktop.c		\
@@ -35,9 +36,17 @@ default_session_DATA = $(default_session_in_files:.desktop.in=.desktop)
 
 @INTLTOOL_DESKTOP_RULE@
 
+if RELOCATE
 %.desktop.in: %.desktop.in.in Makefile.am
 	sed -e "s,\@registryddir\@,$(libexecdir)," \
-		< $< > $@
+		< $< | sed -e "s,\@gconfkey\@,at-spi-corba," \
+		> $@
+else
+%.desktop.in: %.desktop.in.in Makefile.am
+	sed -e "s,\@registryddir\@,$(libexecdir)," \
+		< $< | sed -e "s,\@gconfkey\@,accessibility," \
+		> $@
+endif
 
 @INTLTOOL_SERVER_RULE@
 
@@ -47,8 +56,7 @@ CLEANFILES = 			\
 	$(server_dot_in)	\
 	$(default_session_DATA)	\
 	$(default_session_in_files)
-	
+
 DISTCLEANFILES =					\
 	$(default_session_in_in_files)
-
 
