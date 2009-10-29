@@ -36,9 +36,6 @@
 #define spi_get_display() GDK_DISPLAY()
 
 static void registry_set_ior (SpiRegistry *registry);
-#ifdef RELOCATE
-static void set_gtk_path (DBusGProxy *gsm);
-#endif
 static void set_gtk_modules (DBusGProxy *gsm);
 
 #define SM_DBUS_NAME      "org.gnome.SessionManager"
@@ -220,9 +217,6 @@ main (int argc, char **argv)
                                        "org.gnome.SessionManager",
                                        "/org/gnome/SessionManager",
                                        "org.gnome.SessionManager");
-#ifdef RELOCATE
-      set_gtk_path (gsm);
-#endif
       set_gtk_modules (gsm);
 
       registry_set_ior (registry);
@@ -273,75 +267,6 @@ registry_set_ior (SpiRegistry *registry){
 
 }
 
-#ifdef RELOCATE
-static void
-set_gtk_path (DBusGProxy *gsm)
-{
-        const char *old;
-	char       *corba_path;
-        char       *value;
-        gboolean    found;
-        GError     *error;
-        int         i, j;
-
-	corba_path = g_build_filename (GTK_LIBDIR,
-				       "gtk-2.0",
-				       "modules",
-				       "at-spi-corba",
-				       NULL);
-
-        old = g_getenv ("GTK_PATH");
-        if (old != NULL) {
-                char **old_path;
-                char **path;
-
-                old_path = g_strsplit (old, ":", -1);
-		found = FALSE;
-                for (i = 0; old_path[i]; i++) {
-                        if (!strcmp (old_path[i], corba_path)) {
-                                found = TRUE;
-		        }
-		}
-                path = g_new (char *, i + (found ? 0 : 1) + 1);
-		if (!found) {
-		      path[0] = corba_path;
-		      for (i = 0; old_path[i]; i++) {
-                              path[i + 1] = old_path[i];
-		      }
-		      path[i + 1] = NULL;
-                } else {
-		      for (i = 0; old_path[i]; i++) {
-                              path[i] = old_path[i];
-		      }
-		      path[i] = NULL;
-		}
-                value = g_strjoinv (":", path);
-                g_free (path);
-                g_strfreev (old_path);
-        } else {
-                value =  g_strdup (corba_path);
-        }
-
-	if (gsm != NULL) {
-		error = NULL;
-		if (!dbus_g_proxy_call (gsm, "Setenv", &error,
-					G_TYPE_STRING, "GTK_PATH",
-					G_TYPE_STRING, value,
-					G_TYPE_INVALID,
-					G_TYPE_INVALID)) {
-			g_warning ("Could not set GTK_PATH: %s", error->message);
-			g_error_free (error);
-		}
-	} else {
-		g_setenv ("GTK_PATH", value, TRUE);
-	}
-
-        g_free (value);
-	g_free (corba_path);
-        return;
-}
-#endif
-
 static void
 set_gtk_modules (DBusGProxy *gsm)
 {
@@ -389,19 +314,15 @@ set_gtk_modules (DBusGProxy *gsm)
                 value = g_strdup ("gail:atk-bridge");
         }
 
-	if (gsm != NULL) {
-		error = NULL;
-		if (!dbus_g_proxy_call (gsm, "Setenv", &error,
-					G_TYPE_STRING, "GTK_MODULES",
-					G_TYPE_STRING, value,
-					G_TYPE_INVALID,
-					G_TYPE_INVALID)) {
-			g_warning ("Could not set GTK_MODULES: %s", error->message);
-			g_error_free (error);
-		}
-	} else {
-		g_setenv ("GTK_MODULES", value, TRUE);
-	}
+        error = NULL;
+        if (!dbus_g_proxy_call (gsm, "Setenv", &error,
+                                G_TYPE_STRING, "GTK_MODULES",
+                                G_TYPE_STRING, value,
+                                G_TYPE_INVALID,
+                                G_TYPE_INVALID)) {
+                g_warning ("Could not set GTK_MODULES: %s", error->message);
+                g_error_free (error);
+        }
 
         g_free (value);
         return;

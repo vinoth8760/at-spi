@@ -1,11 +1,6 @@
 NULL =
 
-if RELOCATE
-    moduledir = $(libdir)/gtk-2.0/modules/at-spi-corba/modules
-else
-    moduledir = $(libdir)/gtk-2.0/modules
-endif
-
+moduledir = $(libdir)/gtk-2.0/modules
 module_LTLIBRARIES = libatk-bridge.la
 
 libatk_bridge_la_SOURCES = 	\
