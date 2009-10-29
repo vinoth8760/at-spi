@@ -13,5 +13,16 @@
 support.</long>
       </locale>
     </schema>
+    <schema>
+      <key>/schemas/desktop/gnome/interface/at-spi-corba</key>
+      <applyto>/desktop/gnome/interface/at-spi-corba</applyto>
+      <owner>gnome</owner>
+      <type>bool</type>
+      <default>false</default>
+      <locale name="C">
+        <short>Enable CORBA-based AT-SPI infrastructure</short>
+        <long>In combination with /desktop/gnome/interface/accessibility, this key is needed to enable the CORBA-based AT-SPI infrastructure.  Otherwise, the D-Bus AT-SPI infrastructure will be used.</long>
+      </locale>
+    </schema>
   </schemalist>
 </gconfschemafile>
