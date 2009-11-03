@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi.master.ta\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-spi&component=general\n"
-"POT-Creation-Date: 2009-08-22 20:09+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-03 14:41+0530\n"
 "PO-Revision-Date: 2009-08-24 13:44+0530\n"
 "Last-Translator: I. Felix <ifelix@redhat.com>\n"
 "Language-Team: Tamil <fedora-trans-ta@redhat.com>\n"
@@ -20,10 +20,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\\n\n"
 
 #: ../at-spi.schemas.in.h:1
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "கார்பா அடிப்படையிலான அட்ஸ்பி கட்டுமானத்தை செயல்படுத்துக."
+
+#: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
 msgstr "அணுகல் சேவைக்கு GTK+ தொகுதிகள்"
 
-#: ../at-spi.schemas.in.h:2
+#: ../at-spi.schemas.in.h:3
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus "
+"AT-SPI infrastructure will be used."
+msgstr "/மேல்மேசை/க்னோம்/இடைமுகம்/அணுகல் உடன்  கார்பா அடிப்படையிலான அட்-ஸ்பி கட்டுமானத்தை செயல்படுத்த இந்த விசை தேவை."
+" இல்லையானால் டிபஸ்  அட்-ஸ்பி கட்டுமானம் பயன்படுத்தப்படும்."
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr "இந்த விசை GTK+ தொகுதிகளை ஏற்றுவதற்கான அணுகல் சேவை."
 
@@ -36,7 +48,5 @@ msgid "Accessibility Registry"
 msgstr "அணுகல் பதிவேடு"
 
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
-#| msgid "AT-SPI Registry"
 msgid "AT SPI Registry Wrapper"
 msgstr "AT-SPI பதிவக ரேப்பர்"
-
