@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anjuta\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-spi&component=general\n"
-"POT-Creation-Date: 2009-09-11 07:22+0000\n"
-"PO-Revision-Date: 2009-09-12 10:04+0100\n"
+"POT-Creation-Date: 2009-11-03 09:18+0000\n"
+"PO-Revision-Date: 2009-11-04 08:04+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -23,27 +23,35 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: ../at-spi.schemas.in.h:1
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "Omogoči CORBA AT-SPI infrastrukturo"
+
+#: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
 msgstr "Moduli GTK+ za podporo dostopnosti"
 
-#: ../at-spi.schemas.in.h:2
+#: ../at-spi.schemas.in.h:3
+msgid "In combination with /desktop/gnome/interface/accessibility, this key is needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus AT-SPI infrastructure will be used."
+msgstr "V povezavi z /desktop/gnome/interface/accessibility je ključ namenjen omogočanju CORBA AT-SPI infrastrukture. V nasprotnem primeru bo uporabljena D-Bus AT-SPI infrastruktura."
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr "Ključ določa module GTK+, ki se morajo naložiti pred uporabo podpore dostopnosti."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
-msgstr "Register AT-SPI"
+msgstr "Vpisnik AT-SPI"
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
-msgstr "Register dostopnosti"
+msgstr "Vpisnik dostopnosti"
 
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
 msgid "AT SPI Registry Wrapper"
-msgstr "Zvijalec registra AT-SPI"
+msgstr "Ovijalnik vpisnika AT-SPI"
 
 #~ msgid "failure: no device event controller found.\n"
-#~ msgstr "napaka: nobenega nadzornika dogodkov ni bilo mogoče najti.\n"
+#~ msgstr "napaka: ni mogoče najti ustreznega nadzornika dogodkov.\n"
 #~ msgid "WARNING: NULL key event reported."
-#~ msgstr "OPOZORILO: sporočen dogodek tipke NULL."
+#~ msgstr "OPOZORILO: poslano sporočilo ključa NULL."
 
