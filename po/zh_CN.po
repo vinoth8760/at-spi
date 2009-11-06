@@ -4,24 +4,37 @@
 # Yi Yang <yang_yi_cn@yahoo.com>, 2003.
 # 甘露(Gan Lu) <rhythm.gan@gmail.com>, 2009.
 # Aron Xu <happyaron.xu@gmail.com>, 2009.
-#
+# Ray Wang <raywang@gnome.org>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-06 23:06+0800\n"
-"PO-Revision-Date: 2009-09-06 23:21+0800\n"
-"Last-Translator: Aron Xu <happyaron.xu@gmail.com>\n"
-"Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
+"POT-Creation-Date: 2009-11-06 10:48+0800\n"
+"PO-Revision-Date: 2009-10-30 10:26+0800\n"
+"Last-Translator: Ray Wang <raywang@gnome.org>\n"
+"Language-Team: Chinese (Simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: utf-8\n"
 
 #: ../at-spi.schemas.in.h:1
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "打开基于 CORBA 的 AT-SPI"
+
+#: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
 msgstr "提供辅助功能支持的 GTK+ 模块"
 
-#: ../at-spi.schemas.in.h:2
+#: ../at-spi.schemas.in.h:3
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus "
+"AT-SPI infrastructure will be used."
+msgstr ""
+"由于与 /desktop/gnome/interface/accessibility 键进行了绑定，要打开基于 CORBA "
+"的 AT-SPI，该键也是需要打开的。否则，基于 D-Bus 的 AT-SPI 将被使用。"
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr "该键值决定 GTK+ 模块是否载入辅助功能支持。"
 
