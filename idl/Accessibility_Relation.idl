@@ -53,8 +53,11 @@ module Accessibility {
     RELATION_MEMBER_OF,
     /** Object is a tooltip associated with another object. */
     RELATION_TOOLTIP_FOR,
-    /** Reserved for future use. */
+    /** Object is a cell in a treetable which is displayed because a cell in the same column is 
+     * expanded and identifies that cell. */
     RELATION_NODE_CHILD_OF,
+    /** Reciprocal of RELATION_NODE_CHILD_OF. */
+    RELATION_NODE_PARENT_OF,
     /** Used to indicate that a relationship exists, but its type is not specified in the enumeration
      * and must be obtained via a call to getRelationTypeName.  */
     RELATION_EXTENDED,

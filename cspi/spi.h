@@ -126,6 +126,7 @@ typedef enum
  *@SPI_RELATION_MEMBER_OF: Indicates an object is a member of a group of one or
 more target objects.
  *@SPI_RELATION_NODE_CHILD_OF: Indicates an object is a cell in a treetable which is displayed because a cell in the same column is expanded and identifies that cell.
+ *@SPI_RELATION_NODE_PARENT_OF: Indicates an object is a cell in a treetable and is expanded to display other cells in the same column.
  *@SPI_RELATION_EXTENDED: This value indicates that a relation other than those pre-specified by this version of AT-SPI
  * is present.
  *@SPI_RELATION_FLOWS_TO: Indicates that the object has content that flows logically to another
@@ -156,6 +157,7 @@ typedef enum
   SPI_RELATION_CONTROLLED_BY,
   SPI_RELATION_MEMBER_OF,
   SPI_RELATION_NODE_CHILD_OF,
+  SPI_RELATION_NODE_PARENT_OF,
   SPI_RELATION_EXTENDED,
   SPI_RELATION_FLOWS_TO,
   SPI_RELATION_FLOWS_FROM,

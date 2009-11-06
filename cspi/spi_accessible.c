@@ -1201,6 +1201,7 @@ cspi_init_relation_type_table (AccessibleRelationType *relation_type_table)
   relation_type_table [Accessibility_RELATION_MEMBER_OF] = SPI_RELATION_MEMBER_OF;
   relation_type_table [Accessibility_RELATION_TOOLTIP_FOR] = SPI_RELATION_NULL;
   relation_type_table [Accessibility_RELATION_NODE_CHILD_OF] = SPI_RELATION_NODE_CHILD_OF;
+  relation_type_table [Accessibility_RELATION_NODE_PARENT_OF] = SPI_RELATION_NODE_PARENT_OF;
   relation_type_table [Accessibility_RELATION_EXTENDED] = SPI_RELATION_EXTENDED;
   relation_type_table [Accessibility_RELATION_FLOWS_TO] = SPI_RELATION_FLOWS_TO;
   relation_type_table [Accessibility_RELATION_FLOWS_FROM] = SPI_RELATION_FLOWS_FROM;
