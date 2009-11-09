@@ -56,8 +56,6 @@ module Accessibility {
     /** Object is a cell in a treetable which is displayed because a cell in the same column is 
      * expanded and identifies that cell. */
     RELATION_NODE_CHILD_OF,
-    /** Reciprocal of RELATION_NODE_CHILD_OF. */
-    RELATION_NODE_PARENT_OF,
     /** Used to indicate that a relationship exists, but its type is not specified in the enumeration
      * and must be obtained via a call to getRelationTypeName.  */
     RELATION_EXTENDED,
@@ -91,6 +89,8 @@ module Accessibility {
     /** Indicates that another object provides descriptive information 
      * about this object; more verbose than RELATION_LABELLED_BY. */
     RELATION_DESCRIBED_BY,
+    /** Reciprocal of RELATION_NODE_CHILD_OF. */
+    RELATION_NODE_PARENT_OF,
     /** Do not use as a parameter value, used to determine the size of the enumeration. */
     RELATION_LAST_DEFINED
   };

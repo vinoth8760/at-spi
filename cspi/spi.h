@@ -126,7 +126,6 @@ typedef enum
  *@SPI_RELATION_MEMBER_OF: Indicates an object is a member of a group of one or
 more target objects.
  *@SPI_RELATION_NODE_CHILD_OF: Indicates an object is a cell in a treetable which is displayed because a cell in the same column is expanded and identifies that cell.
- *@SPI_RELATION_NODE_PARENT_OF: Indicates an object is a cell in a treetable and is expanded to display other cells in the same column.
  *@SPI_RELATION_EXTENDED: This value indicates that a relation other than those pre-specified by this version of AT-SPI
  * is present.
  *@SPI_RELATION_FLOWS_TO: Indicates that the object has content that flows logically to another
@@ -143,6 +142,7 @@ more target objects.
  *@SPI_RELATION_PARENT_WINDOW_OF: Indicates that an object is a parent window of another object.
  *@SPI_RELATION_DESCRIBED_BY: Indicates that another object provides descriptive information about this object; more verbose than %SPI_RELATION_LABELLED_BY.
  *@SPI_RELATION_DESCRIPTION_FOR: Indicates that an object provides descriptive information about another object; more verbose than %SPI_RELATION_LABEL_FOR.
+ *@SPI_RELATION_NODE_PARENT_OF: Indicates an object is a cell in a treetable and is expanded to display other cells in the same column.
  *@SPI_RELATION_LAST_DEFINED: Do not use, this is an implementation detail used
  *  to identify the size of this enumeration.
  *
@@ -157,7 +157,6 @@ typedef enum
   SPI_RELATION_CONTROLLED_BY,
   SPI_RELATION_MEMBER_OF,
   SPI_RELATION_NODE_CHILD_OF,
-  SPI_RELATION_NODE_PARENT_OF,
   SPI_RELATION_EXTENDED,
   SPI_RELATION_FLOWS_TO,
   SPI_RELATION_FLOWS_FROM,
@@ -168,6 +167,7 @@ typedef enum
   SPI_RELATION_PARENT_WINDOW_OF,
   SPI_RELATION_DESCRIPTION_FOR,
   SPI_RELATION_DESCRIBED_BY,
+  SPI_RELATION_NODE_PARENT_OF,
   SPI_RELATION_LAST_DEFINED
 } AccessibleRelationType;
 
