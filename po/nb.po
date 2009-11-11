@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AT-SPI 2.23.x\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-01 12:04+0200\n"
-"PO-Revision-Date: 2009-09-01 12:05+0200\n"
+"Project-Id-Version: AT-SPI 2.29.x\n"
+"Report-Msgid-Bugs-To:\n"
+"POT-Creation-Date: 2009-11-11 20:07+0100\n"
+"PO-Revision-Date: 2009-11-11 20:08+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@broadpark.no>\n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -17,10 +17,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../at-spi.schemas.in.h:1
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "Aktiver CORBA-basert AT-SPI-infrastruktur"
+
+#: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
 msgstr "GTK+-moduler for tilgjengelighet"
 
-#: ../at-spi.schemas.in.h:2
+#: ../at-spi.schemas.in.h:3
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus "
+"AT-SPI infrastructure will be used."
+msgstr "Denne nøkkelen kreves sammen med /desktop/gnome/interface/accessibility for å aktivere den CORBA-baserte AT-SPI-infrastrukturen. Ellers vil AT-SPI-infrastruktur basert på D-Bus bli brukt. "
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr ""
 "Denne nøkkelen bestemmer GTK+ moduler som skal lastes for tilgjengelighet."
