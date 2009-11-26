@@ -29,12 +29,15 @@
 
 #include <config.h>
 #include <libspi/listener.h>
+#include "spi-private.h"
 
 /* Our parent Gtk object type */
 #define PARENT_TYPE BONOBO_TYPE_OBJECT
 
 /* A pointer to our parent object class */
 static GObjectClass *spi_listener_parent_class;
+
+int _dbg = 0;
 
 /*
  * Implemented GObject::finalize
@@ -64,7 +67,7 @@ impl_notify_event (PortableServer_Servant     servant,
   fprintf (stderr, "source name: '%s'\n",
            Accessibility_Accessible__get_name(e->source, ev));
   if (ev->_major != CORBA_NO_EXCEPTION) {
-           DBG (2, g_warning ("Accessibility app error: exception during event notification: %s\n"),
+           DBG (2, g_warning ("Accessibility app error: exception during event notification: %s\n",
 		CORBA_exception_id(ev)));
   }
   /*
@@ -94,8 +97,16 @@ spi_listener_class_init (SpiListenerClass *klass)
 }
 
 static void
+spi_listener_set_debug (const char *debug_flag_string)
+{
+  if (debug_flag_string)
+    _dbg = (int) g_ascii_strtod (debug_flag_string, NULL);
+}
+
+static void
 spi_listener_init (SpiListener *listener)
 {
+  spi_listener_set_debug (g_getenv ("AT_SPI_DEBUG"));
 }
 
 BONOBO_TYPE_FUNC_FULL (SpiListener,
