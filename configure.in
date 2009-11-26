@@ -26,7 +26,7 @@ AC_SUBST(LT_REVISION)
 AC_SUBST(LT_AGE)
 
 dnl required versions of other tools.
-m4_define([req_ver_atk],	[1.17.0])
+m4_define([req_ver_atk],	[1.29.2])
 m4_define([req_ver_gtk],	[2.10.0])
 m4_define([req_ver_dbus],	[0.76])
 m4_define([req_ver_gail],	[1.9.0])
