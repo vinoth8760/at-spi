@@ -7,10 +7,10 @@
 # Christian Kirbach <Christian.Kirbach@googlemail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: AT-SPI 1.3.5\n"
+"Project-Id-Version: AT-SPI master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-13 12:19+0200\n"
-"PO-Revision-Date: 2009-09-13 12:28+0200\n"
+"POT-Creation-Date: 2009-11-27 13:14+0100\n"
+"PO-Revision-Date: 2009-11-26 15:50+0530\n"
 "Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,10 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../at-spi.schemas.in.h:1
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "CORBA-basierte AT-SPI-Infrastruktur aktivieren"
+
+#: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
 msgstr "GTK+-Module für Barrierefreiheits-Unterstützung"
 
-#: ../at-spi.schemas.in.h:2
+#: ../at-spi.schemas.in.h:3
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus "
+"AT-SPI infrastructure will be used."
+msgstr ""
+"Dieser Schlüssel wird in Verbindung mit /desktop/gnome/interface/"
+"accessibility zur Aktivierung der CORBA-basierten AT-SPI-Infrastruktur "
+"benötigt. Andernfalls wird die auf D-Bus basierende AT-SPI-Infrastruktur "
+"verwendet."
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr ""
 "Legt fest, welche GTK+-Module für Barrierefreiheits-Unterstützung geladen "
@@ -39,8 +54,12 @@ msgstr "Barrierefreiheits-Registrierung"
 
 # CHECK
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
-msgid "AT SPI Registry Wrapper"
-msgstr "Wrapper der AT-SPI-Registrierung"
+msgid "AT SPI Registry"
+msgstr "AT-SPI-Registrierung"
+
+# CHECK
+#~ msgid "AT SPI Registry Wrapper"
+#~ msgstr "Wrapper der AT-SPI-Registrierung"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "Fehlgeschlagen: Kein Geräteereignis-Controller gefunden.\n"
