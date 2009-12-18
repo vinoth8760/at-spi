@@ -1,14 +1,15 @@
 # Vietnamese translation for AT-SPI.
 # Copyright © 2009 Free Software Foundation, Inc.
-# Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2003.
+# Nguyn Thái Ngc Duy <pclouds@gmail.com>, 2003, 2009.
 # Clytie Siddall <clytie@riverland.net.au>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi TRUNK\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-07 00:21+0100\n"
-"PO-Revision-Date: 2009-02-07 19:09+1030\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
+"spi&component=general\n"
+"POT-Creation-Date: 2009-12-14 15:39+0000\n"
+"PO-Revision-Date: 2009-12-18 15:06+0700\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -18,17 +19,34 @@ msgstr ""
 "X-Generator: LocFactoryEditor 1.8\n"
 
 #: ../at-spi.schemas.in.h:1
-msgid "GTK+ modules for accessibility support"
-msgstr "Mô-đun GTK+ để hỗ trợ khả năng truy cập"
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "Bật hạ tầng AT-SPI dựa trên CORBA"
 
 #: ../at-spi.schemas.in.h:2
+msgid "GTK+ modules for accessibility support"
+msgstr "Mô-đun GTK+ đ h tr kh năng truy cp"
+
+#: ../at-spi.schemas.in.h:3
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus "
+"AT-SPI infrastructure will be used."
+msgstr "Kết hợp với /desktop/gnome/interface/accessibility, khoá này cho phép bật hạ tầng AT-SPI dựa trên CORBA. Nếu không, AT-SPI dựa trên D-BUS sẽ được dùng."
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
-msgstr "Khoá này quyết định những mô-đun GTK+ cần nạp để hỗ trợ khả năng truy cập."
+msgstr ""
+"Khoá này quyt đnh nhng mô-đun GTK+ cn np đ h tr kh năng truy cp."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
-msgstr "Sổ đăng ký AT-SPI"
+msgstr "S đăng ký AT-SPI"
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
-msgstr "Sổ đăng ký Khả năng Truy cập"
+msgstr "S đăng ký Kh năng Truy cp"
+
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+#| msgid "AT-SPI Registry"
+msgid "AT SPI Registry"
+msgstr "Đăng ký AT SPI"
