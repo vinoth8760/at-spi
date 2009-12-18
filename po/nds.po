@@ -1,7 +1,7 @@
 # Low German translation for at-spi.
 # Copyright (C) 2009 at-spi's COPYRIGHT HOLDER
 # This file is distributed under the same license as the at-spi package.
-# Nils-Christoph Fiedler <linux@medienkompanie.de>, 2009.
+# Nils-Christoph Fiedler <fiedler@medienkompanie.de>, 2009.
 #
 msgid ""
 msgstr ""
@@ -32,7 +32,6 @@ msgid "Accessibility Registry"
 msgstr "Togangelikheit vun de Registerdatenbank"
 
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
-#| msgid "AT-SPI Registry"
 msgid "AT SPI Registry Wrapper"
 msgstr "AT SPI Registerdatenbank"
 
