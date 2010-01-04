@@ -2,25 +2,38 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
 # Taras Boychuk <btr1@torba.com>, 2003
-# Maxim V. Dziumanenko <mvd@mylinux.com.ua>, 2005
+# Maxim V. Dziumanenko <dziumanenko@gmail.com>, 2005-2010
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-11 01:37+0300\n"
-"PO-Revision-Date: 2005-02-09 09:33+0300\n"
-"Last-Translator: Maxim V. Dziumanenko <mvd@mylinux.com.ua>\n"
+"POT-Creation-Date: 2010-01-04 15:29+0200\n"
+"PO-Revision-Date: 2010-01-04 09:33+0300\n"
+"Last-Translator: Maxim V. Dziumanenko <dziumanenko@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../at-spi.schemas.in.h:1
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "Увімкнути основану на CORBA інфраструктуру AT-SPI"
+
+#: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
 msgstr "Підтримка модулів допоміжних можливостей GTK+"
 
-#: ../at-spi.schemas.in.h:2
+#: ../at-spi.schemas.in.h:3
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus "
+"AT-SPI infrastructure will be used."
+msgstr ""
+"У комбінації з /desktop/gnome/interface/accessibility, цей ключ "
+"потрібен для вмикання основаної на CORBA інфраструктури AT-SPI. У іншому разі, використовується інфраструктура на базі D-Bus."
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr "Цей ключ визначає модулі GTK+ для підтримки допоміжних можливостей."
 
@@ -33,5 +46,7 @@ msgid "Accessibility Registry"
 msgstr "Реєстр системи спеціальних можливостей"
 
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
-msgid "AT SPI Registry Wrapper"
-msgstr "Обгортка реєстру системи AT-SPI"
+msgid "AT SPI Registry"
+msgstr "Реєстр AT SPI"
+
+
