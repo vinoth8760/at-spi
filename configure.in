@@ -272,7 +272,6 @@ cspi/Makefile
 cspi/bonobo/Makefile
 pyatspi/Makefile
 pyatspi/__init__.py
-pyatspi/pyatspi-corba.pth
 ])
 
 echo "AT-SPI setup:

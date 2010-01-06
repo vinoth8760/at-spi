@@ -7,15 +7,7 @@ pyatspi_PYTHON = \
 	utils.py
 
 if RELOCATE
-    pyatspidir=$(pyexecdir)/pyatspi-corba/pyatspi
+    pyatspidir=$(pyexecdir)/pyatspi_corba
 else
     pyatspidir=$(pyexecdir)/pyatspi
-endif
-
-if RELOCATE
-install-exec-local:
-	@$(MKDIR_P) $(DESTDIR)$(pyexecdir)
-	cp pyatspi-corba.pth $(DESTDIR)$(pyexecdir)
-uninstall-local:
-	@rm $(DESTDIR)$(pyexecdir)/pyatspi-corba.pth
 endif
