@@ -29,6 +29,7 @@ dnl required versions of other tools.
 m4_define([req_ver_atk],	[1.29.2])
 m4_define([req_ver_gtk],	[2.10.0])
 m4_define([req_ver_dbus],	[0.76])
+m4_define([req_ver_gconf],	[2.0.0])
 m4_define([req_ver_gail],	[1.9.0])
 m4_define([req_ver_libbonobo],	[1.107.0])
 
@@ -102,6 +103,7 @@ PKG_CHECK_MODULES(REGISTRYD, [
 	atk		>= req_ver_atk
 	gtk+-2.0	>= req_ver_gtk
 	dbus-glib-1     >= req_ver_dbus
+	gconf-2.0	>= req_ver_gconf
 ])
 AC_SUBST(REGISTRYD_LIBS)
 AC_SUBST(REGISTRYD_CFLAGS)

@@ -32,6 +32,8 @@
 #include <glib.h>
 #include "registry.h"
 #include <dbus/dbus-glib.h>
+#include <gconf/gconf-client.h>
+
 
 #define spi_get_display() GDK_DISPLAY()
 
@@ -40,6 +42,8 @@ static void registry_set_ior (SpiRegistry *registry);
 static void set_gtk_path (DBusGProxy *gsm);
 #endif
 static void set_gtk_modules (DBusGProxy *gsm);
+
+#define CORBA_GCONF_KEY  "/desktop/gnome/interface/at-spi-corba"
 
 #define SM_DBUS_NAME      "org.gnome.SessionManager"
 #define SM_DBUS_PATH      "/org/gnome/SessionManager"
@@ -176,6 +180,16 @@ main (int argc, char **argv)
   DBusGConnection *connection;
   DBusGProxy      *gsm;
   GError          *error;
+
+  GConfClient *gconf_client;
+  gboolean corba_set;
+
+  gconf_client = gconf_client_get_default ();
+  corba_set = gconf_client_get_bool (gconf_client, CORBA_GCONF_KEY, NULL);
+  g_object_unref (gconf_client);
+
+  if (!corba_set)
+    return 0;
 
   if (!bonobo_init (&argc, argv))
     {
