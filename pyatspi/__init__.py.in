@@ -33,41 +33,59 @@ IBM Corporation under the BSD license, available at
 U{http://www.opensource.org/licenses/bsd-license.php}
 '''
 
-__version__ = (@AT_SPI_MAJOR_VERSION@, @AT_SPI_MINOR_VERSION@, @AT_SPI_MICRO_VERSION@)
-
-REGISTRY_IID = "OAFIID:Accessibility_Registry:1.0"
-TYPELIB_NAME = "Accessibility"
-
-# import ORBit and bonobo first (required)
-import ORBit, bonobo
-# initialize the ORB
-orb = ORBit.CORBA.ORB_init()
-# get a reference to the gnome Accessibility registry
 try:
-  reg = bonobo.activation.activate_from_id(REGISTRY_IID, 0, 0)
-except Exception:
-  reg = None
-# generate Python code for the Accessibility module from the IDL
-ORBit.load_typelib(TYPELIB_NAME)
+  import gconf
+  gconfClient = gconf.client_get_default()
+  useDbus = gconfClient.get_bool("/desktop/gnome/interface/at-spi-dbus")
+except:
+  useDbus = False
+finally:
+  del gconfClient
+  del gconf
 
-# import our registry module
-import registry
-# wrap the raw registry object in our convenience singleton
-Registry = registry.Registry(reg)
-# overwrite the registry class in the module, so all other imports get our
-# singleton
-registry.Registry = Registry
-# now throw the module away immediately
-del registry
+if useDbus:
+  import sys
+  import pyatspi_dbus
+  sys.modules['pyatspi'] = pyatspi_dbus
+  del sys
+else:
+  __version__ = (@AT_SPI_MAJOR_VERSION@, @AT_SPI_MINOR_VERSION@, @AT_SPI_MICRO_VERSION@)
 
-# pull the cache level functions into this namespace, but nothing else
-from accessible import setCacheLevel, getCacheLevel, clearCache, printCache
+  REGISTRY_IID = "OAFIID:Accessibility_Registry:1.0"
+  TYPELIB_NAME = "Accessibility"
 
-# pull constants and utilities directly into this namespace; rest of code
-# never has to be touched externally
-from constants import *
-from utils import *
+  # import ORBit and bonobo first (required)
+  import ORBit, bonobo
+  # initialize the ORB
+  orb = ORBit.CORBA.ORB_init()
+  # get a reference to the gnome Accessibility registry
+  try:
+    reg = bonobo.activation.activate_from_id(REGISTRY_IID, 0, 0)
+  except Exception:
+    reg = None
+  # generate Python code for the Accessibility module from the IDL
+  ORBit.load_typelib(TYPELIB_NAME)
 
-# throw away extra references
-del reg
-del orb
+  # import our registry module
+  import registry
+  # wrap the raw registry object in our convenience singleton
+  Registry = registry.Registry(reg)
+  # overwrite the registry class in the module, so all other imports get our
+  # singleton
+  registry.Registry = Registry
+  # now throw the module away immediately
+  del registry
+
+  # pull the cache level functions into this namespace, but nothing else
+  from accessible import setCacheLevel, getCacheLevel, clearCache, printCache
+
+  # pull constants and utilities directly into this namespace; rest of code
+  # never has to be touched externally
+  from constants import *
+  from utils import *
+
+  # throw away extra references
+  del reg
+  del orb
+
+del useDbus
