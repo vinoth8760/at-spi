@@ -39,3 +39,15 @@ libatk_bridge_la_LDFLAGS =  	\
 libatk_bridge_la_LIBADD = \
 	$(top_builddir)/libspi/libspi.la	\
 	$(ATK_BRIDGE_LIBS) $(X_LIBS)
+
+if RELOCATE
+gnomeautostartdir = $(datadir)/gnome/autostart
+gnomeautostart_DATA = atk-bridge.desktop
+endif
+
+gtkpathdir = $(moduledir)/..
+EXTRA_DIST = atk-bridge.desktop.in
+CLEANFILES = atk-bridge.desktop
+%.desktop: %.desktop.in Makefile.am
+	sed -e "s,\@gtkpathdir\@,$(gtkpathdir)," \
+	< $< > $@

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=GNOME CORBA atk-bridge locator
+Comment=Sets GTK_PATH for gnome-session to pick up CORBA atk-bridge module
+Exec=dbus-send --session --dest="org.gnome.SessionManager" /org/gnome/SessionManager org.gnome.SessionManager.Setenv string:"GTK_PATH" string:"@gtkpathdir@"
+OnlyShowIn=GNOME;
+AutostartCondition=GNOME /desktop/gnome/interface/at-spi-corba
+X-GNOME-Autostart-Phase=Initialization
