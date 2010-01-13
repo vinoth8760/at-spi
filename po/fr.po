@@ -1,16 +1,17 @@
 # French translation of at-spi.
-# Copyright (C) 2003-2009 Free Software Foundation, Inc.
+# Copyright (C) 2003-2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the at-spi package.
 #
 # Christophe Merlet <redfox@redfoxcenter.org>, 2003.
-# Claude Paroz <claude@2xlibre.net>, 2008-2009.
+# Claude Paroz <claude@2xlibre.net>, 2008-2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-26 21:15+0200\n"
-"PO-Revision-Date: 2009-08-26 21:18+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
+"spi&component=general\n"
+"POT-Creation-Date: 2009-12-14 15:39+0000\n"
+"PO-Revision-Date: 2010-01-13 21:50+0100\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,10 +19,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../at-spi.schemas.in.h:1
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "Activer l'infrastructure AT-SPI basée sur CORBA"
+
+#: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
 msgstr "Modules GTK+ pour la prise en charge de l'accessibilité"
 
-#: ../at-spi.schemas.in.h:2
+#: ../at-spi.schemas.in.h:3
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus "
+"AT-SPI infrastructure will be used."
+msgstr ""
+"En lien avec /desktop/gnome/interface/accessibility, cette clé est nécessaire "
+"pour activer l'infrastructure AT-SPI basée sur CORBA. Sinon, c'est "
+"l'infrastructure AT-SPI D-Bus qui est utilisée."
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr ""
 "Cette clé indique les modules GTK+ à charger pour prendre en charge "
@@ -36,5 +51,5 @@ msgid "Accessibility Registry"
 msgstr "Registre d'accessibilité"
 
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
-msgid "AT SPI Registry Wrapper"
-msgstr "Encapsulation du registre AT-SPI"
+msgid "AT SPI Registry"
+msgstr "Registre AT SPI"
