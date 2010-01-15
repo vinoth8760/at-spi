@@ -34,6 +34,8 @@ U{http://www.opensource.org/licenses/bsd-license.php}
 '''
 
 try:
+  gconf = None
+  gconfClient = None
   import gconf
   gconfClient = gconf.client_get_default()
   useDbus = gconfClient.get_bool("/desktop/gnome/interface/at-spi-dbus")
