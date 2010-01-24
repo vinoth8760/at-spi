@@ -8,8 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-06 10:48+0800\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
+"spi&component=general\n"
+"POT-Creation-Date: 2010-01-15 17:13+0000\n"
 "PO-Revision-Date: 2009-10-30 10:26+0800\n"
 "Last-Translator: Ray Wang <raywang@gnome.org>\n"
 "Language-Team: Chinese (Simplified) <i18n-zh@googlegroups.com>\n"
@@ -47,8 +48,11 @@ msgid "Accessibility Registry"
 msgstr "辅助功能注册项"
 
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
-msgid "AT SPI Registry Wrapper"
-msgstr "AT-SPI 注册项封装器"
+msgid "AT SPI Registry"
+msgstr "AT SPI 注册项"
+
+#~ msgid "AT SPI Registry Wrapper"
+#~ msgstr "AT-SPI 注册项封装器"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "失败：找不到设备事件控制器。\n"
