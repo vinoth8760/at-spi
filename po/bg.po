@@ -1,16 +1,16 @@
 # Bulgarian translation of at-spi po-file.
-# Copyright (C) 2004, 2205, 2008, 2009 Free Software Foundation
+# Copyright (C) 2004, 2005, 2008, 2009, 2010 Free Software Foundation
 # This file is distributed under the same license as the at-spi package.
-# Vladimir Petkov <vpetkov@i-space.org>, 2004.
-# Alexander Shopov <ash@contact.bg>, 2005, 2008, 2009.
+# Vladimir Petkov <kaladan@gmail.com>, 2004.
+# Alexander Shopov <ash@contact.bg>, 2005, 2008, 2009, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-24 22:44+0300\n"
-"PO-Revision-Date: 2009-08-24 22:44+0300\n"
-"Last-Translator:  Alexander Shopov <ash@contact.bg>\n"
+"POT-Creation-Date: 2010-01-25 11:52+0200\n"
+"PO-Revision-Date: 2010-01-25 11:52+0200\n"
+"Last-Translator:  Alexander Shopov <ash@kambanaria.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,10 +18,24 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../at-spi.schemas.in.h:1
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "Включване на инфраструктурата за AT-SPI базирана на CORBA"
+
+#: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
 msgstr "Модули на GTK+ за поддръжка на достъпност"
 
-#: ../at-spi.schemas.in.h:2
+#: ../at-spi.schemas.in.h:3
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus "
+"AT-SPI infrastructure will be used."
+msgstr ""
+"В комбинация с „/desktop/gnome/interface/accessibility“ ключът е необходим "
+"за включване на инфраструктурата за AT-SPI базирана на CORBA. В противен "
+"случай се ползва инфраструктурата базирана на D-Bus."
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr "Този ключ определя кои модули на GTK+ за достъпност да бъдат заредени."
 
@@ -34,5 +48,5 @@ msgid "Accessibility Registry"
 msgstr "Регистър за достъпност"
 
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
-msgid "AT SPI Registry Wrapper"
-msgstr "Обвивка към регистъра AT-SPI"
+msgid "AT SPI Registry"
+msgstr "Регистър AT-SPI"
