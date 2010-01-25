@@ -116,6 +116,12 @@ query_end_session_cb (guint flags, gpointer data)
 static void
 end_session_cb (guint flags, gpointer data)
 {
+        Atom  AT_SPI_IOR = XInternAtom (spi_get_display (), "AT_SPI_IOR", TRUE);
+        XDeleteProperty (spi_get_display(),
+                         XDefaultRootWindow (spi_get_display ()),
+                         AT_SPI_IOR);
+        XFlush (spi_get_display());
+
         end_session_response (TRUE, NULL);
         bonobo_main_quit ();
 }
