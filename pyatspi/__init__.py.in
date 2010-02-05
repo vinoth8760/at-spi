@@ -33,23 +33,29 @@ IBM Corporation under the BSD license, available at
 U{http://www.opensource.org/licenses/bsd-license.php}
 '''
 
-try:
-  gconf = None
-  gconfClient = None
-  import gconf
-  gconfClient = gconf.client_get_default()
-  useDbus = gconfClient.get_bool("/desktop/gnome/interface/at-spi-dbus")
-except:
-  useDbus = False
-finally:
-  del gconfClient
-  del gconf
+# Do not replace yourself if you've been imported explicitly by name
+# already.
+#
+import sys
+if not sys.modules.has_key('pyatspi_corba'):
+    try:
+        gconf = None
+        gconfClient = None
+        import gconf
+        gconfClient = gconf.client_get_default()
+        useDbus = \
+            gconfClient.get_bool("/desktop/gnome/interface/at-spi-dbus")
+    except:
+        useDbus = False
+    finally:
+        del gconfClient
+        del gconf
+else:
+    useDbus = False
 
 if useDbus:
-  import sys
   import pyatspi_dbus
   sys.modules['pyatspi'] = pyatspi_dbus
-  del sys
 else:
   __version__ = (@AT_SPI_MAJOR_VERSION@, @AT_SPI_MINOR_VERSION@, @AT_SPI_MICRO_VERSION@)
 
@@ -90,4 +96,5 @@ else:
   del reg
   del orb
 
+del sys
 del useDbus

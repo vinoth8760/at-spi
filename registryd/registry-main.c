@@ -43,7 +43,11 @@ static void set_gtk_path (DBusGProxy *gsm);
 #endif
 static void set_gtk_modules (DBusGProxy *gsm);
 
+#ifdef RELOCATE
 #define CORBA_GCONF_KEY  "/desktop/gnome/interface/at-spi-corba"
+#else
+#define DBUS_GCONF_KEY  "/desktop/gnome/interface/at-spi-dbus"
+#endif
 
 #define SM_DBUS_NAME      "org.gnome.SessionManager"
 #define SM_DBUS_PATH      "/org/gnome/SessionManager"
@@ -188,13 +192,21 @@ main (int argc, char **argv)
   GError          *error;
 
   GConfClient *gconf_client;
-  gboolean corba_set;
+  gboolean need_to_quit;
 
+  /* If we've been relocated, we will only run if the at-spi-corba gconf key
+   * has been set.  If we have not been relocated, we will exit if the
+   * at-spi-dbus key has been set.
+   */
   gconf_client = gconf_client_get_default ();
-  corba_set = gconf_client_get_bool (gconf_client, CORBA_GCONF_KEY, NULL);
+#ifdef RELOCATE
+  need_to_quit = !gconf_client_get_bool (gconf_client, CORBA_GCONF_KEY, NULL);
+#else
+  need_to_quit = gconf_client_get_bool (gconf_client, DBUS_GCONF_KEY, NULL);
+#endif
   g_object_unref (gconf_client);
 
-  if (!corba_set)
+  if (need_to_quit)
     return 0;
 
   if (!bonobo_init (&argc, argv))

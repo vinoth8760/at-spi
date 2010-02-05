@@ -36,17 +36,10 @@ default_session_DATA = $(default_session_in_files:.desktop.in=.desktop)
 
 @INTLTOOL_DESKTOP_RULE@
 
-if RELOCATE
-%.desktop.in: %.desktop.in.in Makefile.am
-	sed -e "s,\@registryddir\@,$(libexecdir)," \
-		< $< | sed -e "s,\@gconfkey\@,at-spi-corba," \
-		> $@
-else
 %.desktop.in: %.desktop.in.in Makefile.am
 	sed -e "s,\@registryddir\@,$(libexecdir)," \
 		< $< | sed -e "s,\@gconfkey\@,accessibility," \
 		> $@
-endif
 
 @INTLTOOL_SERVER_RULE@
 
