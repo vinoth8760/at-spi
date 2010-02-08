@@ -1,15 +1,15 @@
 # Thai translation of at-spi.
-# Copyright (C) 2005-2009 Free Software Foundation, Inc.
+# Copyright (C) 2005-2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the at-spi package.
-# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2005-2008.
+# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2005-2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
 "spi&component=general\n"
-"POT-Creation-Date: 2009-12-14 15:39+0000\n"
-"PO-Revision-Date: 2009-12-22 23:27+0700\n"
+"POT-Creation-Date: 2010-02-05 19:10+0000\n"
+"PO-Revision-Date: 2010-02-08 11:20+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -27,12 +27,13 @@ msgstr "มอดูล GTK+ สำหรับการรองรับเท
 #: ../at-spi.schemas.in.h:3
 msgid ""
 "In combination with /desktop/gnome/interface/accessibility, this key is "
-"needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus "
-"AT-SPI infrastructure will be used."
+"needed to enable the CORBA-based AT-SPI infrastructure if the CORBA-based AT-"
+"SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-"
+"SPI infrastructure has not been relocated."
 msgstr ""
-"คีย์นี้ใช้ประกอบกับคีย์ /desktop/gnome/interface/accessibility "
-"โดยต้องระบุคีย์นี้เพื่อเปิดใช้โครงสร้างพื้นฐาน AT-SPI แบบ CORBA มิฉะนั้น ก็จะใช้โครงสร้างพื้นฐาน "
-"AT-SPI แบบ D-Bus แทน"
+"คีย์นี้ใช้ประกอบกับคีย์ /desktop/gnome/interface/accessibility โดยถ้าโครงสร้างพื้นฐาน AT-"
+"SPI แบบ CORBA มีการย้ายตำแหน่ง ก็ต้องระบุคีย์นี้เพื่อเปิดใช้โครงสร้างพื้นฐาน AT-SPI แบบ CORBA "
+"แต่ถ้าโครงสร้างพื้นฐาน AT-SPI แบบ CORBA ไม่มีการย้ายตำแหน่ง คีย์นี้ก็จะไม่มีผล"
 
 #: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
