@@ -2,14 +2,14 @@
 # Copyright © 2003, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the at-spi package.
 # Jordi Mallach <jordi@sindominio.net>, 2003.
-# Joan Duran <jodufi@gmail.com>, 2008, 2009.
+# Joan Duran <jodufi@gmail.com>, 2008-2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-14 18:30+0200\n"
-"PO-Revision-Date: 2009-09-13 23:23+0200\n"
+"POT-Creation-Date: 2010-02-13 23:45+0100\n"
+"PO-Revision-Date: 2010-02-02 22:26+0100\n"
 "Last-Translator: Joan Duran <jodufi@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,13 +18,32 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
 #: ../at-spi.schemas.in.h:1
-msgid "GTK+ modules for accessibility support"
-msgstr "Mòduls del GTK+ per a permetre l'ús de l'accessibilitat"
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr ""
+"Habilita la infraestructura del servei d'accessibilitat (AT-SPI) basada en "
+"CORBA"
 
 #: ../at-spi.schemas.in.h:2
+msgid "GTK+ modules for accessibility support"
+msgstr "Mòduls del GTK+ per permetre l'ús de l'accessibilitat"
+
+#: ../at-spi.schemas.in.h:3
+#, fuzzy
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure if the CORBA-based AT-"
+"SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-"
+"SPI infrastructure has not been relocated."
+msgstr ""
+"Aquesta clau és necessària en combinació amb /desktop/gnome/interface/"
+"accessibility per habilitar la infraestructura del servei d'accessibilitat "
+"(AT-SPI) basada en CORBA. Si no s'utilitzarà la infraestructura del servei "
+"d'accessibilitat (AT-SPI) del D-Bus."
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr ""
-"Aquesta clau determina els mòduls del GTK+ que es carregaran per a permetre "
+"Aquesta clau determina els mòduls del GTK+ que es carregaran per permetre "
 "l'ús de l'accessibilitat."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
@@ -36,8 +55,11 @@ msgid "Accessibility Registry"
 msgstr "Registre d'accessibilitat"
 
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
-msgid "AT SPI Registry Wrapper"
-msgstr "Embolcall del registre del servei d'accessibilitat (AT SPI)"
+msgid "AT SPI Registry"
+msgstr "Registre del servei d'accessibilitat (AT SPI)"
+
+#~ msgid "AT SPI Registry Wrapper"
+#~ msgstr "Embolcall del registre del servei d'accessibilitat (AT SPI)"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "falla: no s'ha trobat un controlador d'events de dispositiu\n"
