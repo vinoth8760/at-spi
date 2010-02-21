@@ -1,5 +1,5 @@
 # Swedish messages for at-spi.
-# Copyright (C) 2003, 2008, 2009 Free Software Foundation, Inc.
+# Copyright (C) 2003, 2008, 2009, 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the at-spi package.
 # Christian Rose <menthos@menthos.com>, 2003.
 # Daniel Nylander <po@danielnylander.se>, 2008, 2009, 2010.
@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-09 17:16+0100\n"
-"PO-Revision-Date: 2010-01-09 17:17+0100\n"
+"POT-Creation-Date: 2010-02-21 16:57+0100\n"
+"PO-Revision-Date: 2010-02-21 16:58+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -27,8 +27,8 @@ msgid "GTK+ modules for accessibility support"
 msgstr "GTK+-moduler för hjälpmedelsstöd"
 
 #: ../at-spi.schemas.in.h:3
-msgid "In combination with /desktop/gnome/interface/accessibility, this key is needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus AT-SPI infrastructure will be used."
-msgstr "I kombination med /desktop/gnome/interface/accessibility så behövs denna nyckel för att aktivera den CORBA-baserade AT-SPI-infrastrukturen. Om inte så kommer D-Bus AT-SPI-infrastrukturen att användas."
+msgid "In combination with /desktop/gnome/interface/accessibility, this key is needed to enable the CORBA-based AT-SPI infrastructure if the CORBA-based AT-SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-SPI infrastructure has not been relocated."
+msgstr "I kombination med /desktop/gnome/interface/accessibility så behövs denna nyckel för att aktivera den CORBA-baserade AT-SPI-infrastrukturen om den CORBA-baserade AT-SPI-infrastrukturen har flyttats. Den ignoreras om den CORBA-baserade AT-SPI-infrastrukturen inte har flyttats."
 
 #: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
