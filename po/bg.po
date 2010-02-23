@@ -2,14 +2,14 @@
 # Copyright (C) 2004, 2005, 2008, 2009, 2010 Free Software Foundation
 # This file is distributed under the same license as the at-spi package.
 # Vladimir Petkov <kaladan@gmail.com>, 2004.
-# Alexander Shopov <ash@contact.bg>, 2005, 2008, 2009, 2010.
+# Alexander Shopov <ash@kambanaria.org>, 2005, 2008, 2009, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-25 11:52+0200\n"
-"PO-Revision-Date: 2010-01-25 11:52+0200\n"
+"POT-Creation-Date: 2010-02-23 07:36+0200\n"
+"PO-Revision-Date: 2010-02-23 07:36+0200\n"
 "Last-Translator:  Alexander Shopov <ash@kambanaria.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,12 +28,13 @@ msgstr "Модули на GTK+ за поддръжка на достъпност
 #: ../at-spi.schemas.in.h:3
 msgid ""
 "In combination with /desktop/gnome/interface/accessibility, this key is "
-"needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus "
-"AT-SPI infrastructure will be used."
+"needed to enable the CORBA-based AT-SPI infrastructure if the CORBA-based AT-"
+"SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-"
+"SPI infrastructure has not been relocated."
 msgstr ""
 "В комбинация с „/desktop/gnome/interface/accessibility“ ключът е необходим "
-"за включване на инфраструктурата за AT-SPI базирана на CORBA. В противен "
-"случай се ползва инфраструктурата базирана на D-Bus."
+"за включване на инфраструктурата за AT-SPI базирана на CORBA, ако тя е била "
+"преместена. Ако не е била, ключът се пренебрегва."
 
 #: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
