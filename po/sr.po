@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
 "spi&component=general\n"
-"POT-Creation-Date: 2009-08-24 19:45+0000\n"
-"PO-Revision-Date: 2008-09-22 01:41+0100\n"
+"POT-Creation-Date: 2010-02-05 19:10+0000\n"
+"PO-Revision-Date: 2010-03-06 13:19+0100\n"
 "Last-Translator: Горан Ракић <grakic@devbase.net>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,10 +20,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../at-spi.schemas.in.h:1
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "Укључи АТ-СПИ структуру базирану на КОРБИ"
+
+#: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
 msgstr "ГТК+ модули подршке за приступачност"
 
-#: ../at-spi.schemas.in.h:2
+#: ../at-spi.schemas.in.h:3
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure if the CORBA-based AT-"
+"SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-"
+"SPI infrastructure has not been relocated."
+msgstr ""
+"У комбинацији са /desktop/gnome/interface/accessibility, овај кључ укључује "
+"АТ-СПИ структуру базирану на КОРБИ, уколико је она премештена. У супротном, "
+"ово се занемарује."
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr ""
 "Овај кључ одређује ГТК+ модуле који се учитавају ради подршке за "
@@ -31,7 +46,7 @@ msgstr ""
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
-msgstr "AT-SPI регистар"
+msgstr "АТ-СПИ регистар"
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
@@ -39,8 +54,12 @@ msgstr "Регистар за приступачност"
 
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
 #| msgid "AT-SPI Registry"
-msgid "AT SPI Registry Wrapper"
-msgstr "омотач AT-SPI регистра"
+msgid "AT SPI Registry"
+msgstr "АТ-СПИ регистар"
+
+#~| msgid "AT-SPI Registry"
+#~ msgid "AT SPI Registry Wrapper"
+#~ msgstr "омотач AT-SPI регистра"
 
 #~ msgid "failure: no device event controller found.\n"
 #~ msgstr "грешка: није нађен управљач за догађаје на уређају.\n"
