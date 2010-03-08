@@ -1,3 +1,7 @@
+What's new in at-spi-1.29.92:
+
+* Translation update.
+
 What's new in at-spi-1.29.90:
 
 * Make AT-SPI/CORBA the default and relocate AT-SPI/D-Bus.
