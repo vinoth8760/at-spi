@@ -118,7 +118,7 @@ static Window*
 test_get_raise_windows (LoginHelper *helper)
 {
         Window *winlist = g_new0 (Window, 2);
-	winlist[0] = GDK_WINDOW_XWINDOW (mainwin->window);
+	winlist[0] = GDK_WINDOW_XWINDOW (gtk_widget_get_window(mainwin));
 	winlist[1] = None;
         return winlist;
 }
@@ -136,8 +136,8 @@ test_set_wm_dock (void)
 
   atom_type[0] = gdk_x11_get_xatom_by_name ("_NET_WM_WINDOW_TYPE_DOCK");
 
-  XChangeProperty (GDK_WINDOW_XDISPLAY (mainwin->window), 
-		   GDK_WINDOW_XWINDOW (mainwin->window), 
+  XChangeProperty (GDK_WINDOW_XDISPLAY (gtk_widget_get_window(mainwin)),
+		   GDK_WINDOW_XWINDOW (gtk_widget_get_window(mainwin)),
 		   atom_window_type,
 		   XA_ATOM, 32, PropModeReplace,
 		   (guchar *) &atom_type, 1);

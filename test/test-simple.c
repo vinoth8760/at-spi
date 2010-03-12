@@ -65,7 +65,7 @@ focus_me (GtkWidget *widget)
 	/* Force a focus event - even if the WM focused
 	 * us before our at-bridge's idle handler registered
 	 * our interest */
-	if (!GTK_WIDGET_HAS_FOCUS (widget))
+	if (!gtk_widget_has_focus (widget))
 		gtk_widget_grab_focus (widget);
 /*	else: FIXME - gtk_widget_grab_focus should send a notify */
 		atk_focus_tracker_notify (aobject);

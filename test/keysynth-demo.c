@@ -305,11 +305,11 @@ keysynth_realize (GtkWidget *widget)
   wm_hints.flags = InputHint;
   wm_hints.input = False;
   
-  XSetWMHints (GDK_WINDOW_XDISPLAY (widget->window),
-	       GDK_WINDOW_XWINDOW (widget->window), &wm_hints);
+  XSetWMHints (GDK_WINDOW_XDISPLAY (gtk_widget_get_window(widget)),
+	       GDK_WINDOW_XWINDOW (gtk_widget_get_window(widget)), &wm_hints);
   
-  XSetWMProtocols (GDK_WINDOW_XDISPLAY (widget->window),
-		   GDK_WINDOW_XWINDOW (widget->window), wm_window_protocols, 2);
+  XSetWMProtocols (GDK_WINDOW_XDISPLAY (gtk_widget_get_window(widget)),
+		   GDK_WINDOW_XWINDOW (gtk_widget_get_window(widget)), wm_window_protocols, 2);
 }
 
 static void
