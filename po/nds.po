@@ -17,11 +17,11 @@ msgstr ""
 
 #: ../at-spi.schemas.in.h:1
 msgid "GTK+ modules for accessibility support"
-msgstr "GTK+ Module för Togangelikheitsunnerstüttung"
+msgstr "GTK+ Module för Togangelikheitsunnerstütten"
 
 #: ../at-spi.schemas.in.h:2
 msgid "This key determines the GTK+ modules to load for accessibility support."
-msgstr "Düsser Slötel het Utwarkungen op de GTK+ Module, bi'n Laden vun de Togangelikheitsunnerstüttung."
+msgstr "Düsser Slötel het Utwarken op de GTK+ Module, bi'm Laden vun de Togangelikheitsunnerstütten."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
