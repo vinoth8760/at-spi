@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-03-02 12:29+0100\n"
-"PO-Revision-Date: 2010-03-02 12:30+0100\n"
+"PO-Revision-Date: 2010-03-22 12:01+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Gaitu CORBAn oinarritutako AT-SPI azpiegitura"
 
 #: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
-msgstr "GTK+ moduloak erabilgarritasunaren euskarriarentzako"
+msgstr "GTK+ moduluak erabilgarritasunaren euskarriarentzako"
 
 #: ../at-spi.schemas.in.h:3
 msgid ""
