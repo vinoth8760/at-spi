@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: at-spi.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-04 15:29+0200\n"
-"PO-Revision-Date: 2010-01-04 09:33+0300\n"
+"POT-Creation-Date: 2010-03-26 11:43+0200\n"
+"PO-Revision-Date: 2010-03-26 09:33+0300\n"
 "Last-Translator: Maxim V. Dziumanenko <dziumanenko@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,11 +27,12 @@ msgstr "Підтримка модулів допоміжних можливос�
 #: ../at-spi.schemas.in.h:3
 msgid ""
 "In combination with /desktop/gnome/interface/accessibility, this key is "
-"needed to enable the CORBA-based AT-SPI infrastructure. Otherwise, the D-Bus "
-"AT-SPI infrastructure will be used."
+"needed to enable the CORBA-based AT-SPI infrastructure if the CORBA-based AT-"
+"SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-"
+"SPI infrastructure has not been relocated."
 msgstr ""
-"У комбінації з /desktop/gnome/interface/accessibility, цей ключ "
-"потрібен для вмикання основаної на CORBA інфраструктури AT-SPI. У іншому разі, використовується інфраструктура на базі D-Bus."
+"У комбінації з /desktop/gnome/interface/accessibility, цей ключ потрібен для "
+"вмикання основаної на CORBA інфраструктури AT-SPI. Він ігнорується, якщо інфраструктуру AT-SPI на основі CORBA не було переміщено."
 
 #: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
@@ -48,5 +49,3 @@ msgstr "Реєстр системи спеціальних можливосте�
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
 msgid "AT SPI Registry"
 msgstr "Реєстр AT SPI"
-
-
