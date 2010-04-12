@@ -610,7 +610,8 @@ sort_order_rev_canonical (MatchRulePrivate *mrp, GList *ls,
     if (flag && match_interfaces_lookup (obj, mrp, ev) 
                && match_states_lookup (obj, mrp, ev)     
                && match_roles_lookup (obj, mrp, ev)  
-               && match_attributes_lookup (obj, mrp, ev))
+               && match_attributes_lookup (obj, mrp, ev)
+               && (max == 0 || kount < max))
     {
          ls = g_list_append (ls, obj);
          kount++;
@@ -622,7 +623,7 @@ sort_order_rev_canonical (MatchRulePrivate *mrp, GList *ls,
     indexinparent = Accessibility_Accessible_getIndexInParent (obj, ev);
     parent = Accessibility_Accessible__get_parent (obj, ev);
 
-    if(indexinparent > 0)
+    if(indexinparent > 0 && (max == 0 || kount < max))
     {
          /* there are still some siblings to visit so get the previous sibling
             and get it's last descendant.
@@ -642,7 +643,7 @@ sort_order_rev_canonical (MatchRulePrivate *mrp, GList *ls,
          kount = sort_order_rev_canonical (mrp, ls,  kount, max, 
                                        nextobj, TRUE, pobj, ev);
     } 
-    else
+    else if (max == 0 || kount < max)
     {
          /* no more siblings so next node must be the parent */
          kount = sort_order_rev_canonical (mrp, ls,  kount, max, 
