@@ -17,6 +17,9 @@ Registry queries
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### ENUM AccessibleKeySynthType ##### -->
 <para>
 
@@ -33,6 +36,7 @@ Registry queries
 
 </para>
 
+@void: 
 @Returns: 
 
 

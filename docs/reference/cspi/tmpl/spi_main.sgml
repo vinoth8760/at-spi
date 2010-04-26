@@ -17,11 +17,15 @@ SPI main loop and initialization
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### FUNCTION SPI_init ##### -->
 <para>
 
 </para>
 
+@void: 
 @Returns: 
 
 
@@ -30,6 +34,7 @@ SPI main loop and initialization
 
 </para>
 
+@void: 
 
 
 <!-- ##### FUNCTION SPI_event_quit ##### -->
@@ -37,6 +42,7 @@ SPI main loop and initialization
 
 </para>
 
+@void: 
 
 
 <!-- ##### FUNCTION SPI_eventIsReady ##### -->
@@ -44,6 +50,7 @@ SPI main loop and initialization
 
 </para>
 
+@void: 
 @Returns: 
 
 
@@ -61,6 +68,7 @@ SPI main loop and initialization
 
 </para>
 
+@void: 
 @Returns: 
 
 
@@ -187,6 +195,7 @@ SPI main loop and initialization
 
 </para>
 
+@void: 
 @Returns: 
 
 
