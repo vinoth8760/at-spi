@@ -19,6 +19,9 @@ editor compose panes are examples of EditableText implementors.
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### FUNCTION AccessibleEditableText_ref ##### -->
 <para>
 

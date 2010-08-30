@@ -1,3 +1,7 @@
+What's new in at-spi-1.31.91:
+
+* Make AT-SPI/CORBA the default.
+
 What's new in at-spi-1.31.1:
 
 * Fixes #538680.

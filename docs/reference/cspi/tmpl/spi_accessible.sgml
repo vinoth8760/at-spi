@@ -25,6 +25,9 @@ the tree.
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### STRUCT Accessible ##### -->
 <para>
 An Accessible object is an opaque object used to refer to an accessible

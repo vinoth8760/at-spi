@@ -24,6 +24,9 @@ be programmatically set, if the implementor's state does not include READONLY.
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### FUNCTION AccessibleValue_ref ##### -->
 <para>
 

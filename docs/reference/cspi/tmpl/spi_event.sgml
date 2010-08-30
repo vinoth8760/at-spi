@@ -17,6 +17,9 @@ Event Listener Support
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### STRUCT AccessibleEvent ##### -->
 <para>
 AccessibleEvent is a struct used to encapsulate event information.

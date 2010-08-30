@@ -20,6 +20,9 @@ information, and allows objects to explicitly be told to request focus.
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### ENUM AccessibleCoordType ##### -->
 <para>
 
