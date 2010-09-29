@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Runa Bhattacharjee <runab@fedoraproject.org>, 2008.
-# Runa Bhattacharjee <runab@redhat.com>, 2009.
+# Runa Bhattacharjee <runab@redhat.com>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: bn_IN\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-spi&component=general\n"
-"POT-Creation-Date: 2009-08-24 19:45+0000\n"
-"PO-Revision-Date: 2009-08-31 17:35+0530\n"
+"POT-Creation-Date: 2010-03-22 12:06+0000\n"
+"PO-Revision-Date: 2010-09-29 13:34+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bengali INDIA <anubad@lists.ankur.org.in>\n"
 "MIME-Version: 1.0\n"
@@ -19,10 +19,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../at-spi.schemas.in.h:1
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr ""
+
+#: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
 msgstr "বিশেষ ব্যবহারের জন্য চিহ্নিত GTK+ মডিউল"
 
-#: ../at-spi.schemas.in.h:2
+#: ../at-spi.schemas.in.h:3
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure if the CORBA-based AT-"
+"SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-"
+"SPI infrastructure has not been relocated."
+msgstr ""
+
+#: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr ""
 "বিশেষ ব্যবহারের জন্য লোড করার উদ্দেশ্যে চিহ্নিত GTK+ মডিউলগুলি এই কি দ্বারা চিহ্নিত "
@@ -38,6 +50,6 @@ msgstr "বিশেষ ব্যবহার প্রণালীর রেজ
 
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
 #| msgid "AT-SPI Registry"
-msgid "AT SPI Registry Wrapper"
-msgstr "AT-SPI রেজিস্ট্রি র‍্যাপার"
+msgid "AT SPI Registry"
+msgstr "AT SPI রেজিস্ট্রি"
 
