@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: at-spi\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
 "spi&component=general\n"
-"POT-Creation-Date: 2010-04-24 17:44+0000\n"
+"POT-Creation-Date: 2010-09-29 08:05+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: GNOME Uighur Translation Project <gnome-uighur@yahoogroups."
@@ -20,11 +20,11 @@ msgstr ""
 
 #: ../at-spi.schemas.in.h:1
 msgid "Enable CORBA-based AT-SPI infrastructure"
-msgstr "CORBA ئاساسىدىكى AT-SPI infrastructure نى ئىناۋەتلىك قىلىش"
+msgstr "CORBA ئاساسىدىكى AT-SPI ئاساسىي قۇرۇلمىنى قوزغات"
 
 #: ../at-spi.schemas.in.h:2
 msgid "GTK+ modules for accessibility support"
-msgstr "accessibility نى قوللايدىغان GTK+ نىڭ مودۇللىرى"
+msgstr "قوشۇمچە ئىقتىدارى بار بولغان GTK+ بۆلەكلىرى"
 
 #: ../at-spi.schemas.in.h:3
 msgid ""
@@ -33,23 +33,24 @@ msgid ""
 "SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-"
 "SPI infrastructure has not been relocated."
 msgstr ""
+"/desktop/gnome/interface/accessibility بىلەن باغلانغانلىقتىن، CORBA "
+"ئاساسىدىكى AT-SPI نى ئېچىشتا، بۇنىمۇ ئېچىش لازىم، بولمىسا CORBA ئاساسىدىكى "
+"AT-SPI ئىشلىتىلىدۇ."
 
 #: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
 msgstr ""
-"accessibility نى قوللاش ئۈچۈن، ئىجارا قىلىنىۋاتقاندا ئوقۇپ كىرىدىغان  GTK+ "
-"مودۇلىنى بەلگىلەيدۇ."
+"بۇ كۇنۇپكا قىممىتى GTK+ بۆلىكىنىڭ قوشۇمچە ئىقتىدار قوللاشنى يۈكلەيدىغان ياكى "
+"يۈكلىمەيدىغانلىقىنى جەزملەيدۇ."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
-msgstr "AT-SPI Registry"
+msgstr "AT-SPI رويخېتى "
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
-msgstr "Accessibility Registry"
+msgstr "قوشۇمچە ئىقتىدار رويخېتى"
 
 #: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
-#, fuzzy
-#| msgid "AT-SPI Registry"
 msgid "AT SPI Registry"
-msgstr "AT-SPI Registry"
+msgstr "AT SPI رويخېتى"
