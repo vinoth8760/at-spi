@@ -1,16 +1,17 @@
 # Norwegian translations for at-spi package.
 # Copyright (C) 2003 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Kjartan Maraas <kmaraas@broadpark.no>, 2003-2010.
+# Kjartan Maraas <kmaraas@gnome.org>, 2003-2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: AT-SPI 2.29.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-10 19:51+0100\n"
-"PO-Revision-Date: 2010-02-10 19:52+0100\n"
-"Last-Translator: Kjartan Maraas <kmaraas@broadpark.no>\n"
+"POT-Creation-Date: 2010-10-16 21:32+0200\n"
+"PO-Revision-Date: 2010-10-16 21:32+0200\n"
+"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,7 +31,10 @@ msgid ""
 "needed to enable the CORBA-based AT-SPI infrastructure if the CORBA-based AT-"
 "SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-"
 "SPI infrastructure has not been relocated."
-msgstr "Denne nøkkelen kreves sammen med /desktop/gnome/interface/accessibility for å aktivere den CORBA-baserte AT-SPI-infrastrukturen hvis har blitt omplassert. Ellers vil AT-SPI-infrastruktur basert på D-Bus bli brukt. "
+msgstr ""
+"Denne nøkkelen kreves sammen med /desktop/gnome/interface/accessibility for "
+"å aktivere den CORBA-baserte AT-SPI-infrastrukturen hvis har blitt "
+"omplassert. Ellers vil AT-SPI-infrastruktur basert på D-Bus bli brukt. "
 
 #: ../at-spi.schemas.in.h:4
 msgid "This key determines the GTK+ modules to load for accessibility support."
