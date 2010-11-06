@@ -1,34 +1,53 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2003 Free Software Foundation, Inc.
 # This file is distributed under the same license as the at-spi package.
 # Ales Nyakhaychyk <nab@mail.by>, 2003.
+# Wladzimir Manulenka <wladzimir.manulenka@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: at-spi HEAD\n"
+"Project-Id-Version: at-spi.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-12 03:51+0200\n"
-"PO-Revision-Date: 2003-07-23 09:52+0300\n"
-"Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
+"POT-Creation-Date: 2010-11-06 12:42+0200\n"
+"PO-Revision-Date: 2010-11-04 13:36+0200\n"
+"Last-Translator: Wladzimir Manulenka <wladzimir.manulenka@gmail.com>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.6\n"
 
-#: atk-bridge/bridge.c:311
-msgid "failure: no device event controller found.\n"
-msgstr "памылка: не адшуканы кіраўнік падзей прылады.\n"
+#: ../at-spi.schemas.in.h:1
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "Уключыць інфраструктуру AT-SPI, заснаваную на CORBA"
 
-#: atk-bridge/bridge.c:806
-msgid "WARNING: NULL key event reported."
-msgstr "УВАГА: паведамлены NULL ключ падзеі."
+#: ../at-spi.schemas.in.h:2
+msgid "GTK+ modules for accessibility support"
+msgstr "Модулі GTK+ для падтрымкі зручнасьцяў для інвалідаў"
 
-#: registryd/Accessibility_Registry.server.in.in.h:1
+#: ../at-spi.schemas.in.h:3
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure if the CORBA-based AT-"
+"SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-"
+"SPI infrastructure has not been relocated."
+msgstr ""
+"У камбінацыі з /desktop/gnome/interface/accessibility, гэты ключ неабходны "
+"для ўключэньня AT-SPI інфраструктуры, заснаванай на CORBA, калі яна была "
+"перанесеная. Гэты ключ ігнаруецца, калі яна не была перанесеная."
+
+#: ../at-spi.schemas.in.h:4
+msgid "This key determines the GTK+ modules to load for accessibility support."
+msgstr ""
+"Гэты ключ вызначае модулі GTK+, які будуць загружацца для наданьня інвалідам "
+"пэўных зручнасьцяў."
+
+#: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
 msgstr "Рэгістар AT-SPI"
 
-#: registryd/Accessibility_Registry.server.in.in.h:2
+#: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
-msgstr "Рэгістар даступнасьці"
+msgstr "Рэгістар зручнасьцяў"
 
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
+msgid "AT SPI Registry"
+msgstr "Рэгістар AT SPI"
