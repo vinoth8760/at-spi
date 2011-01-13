@@ -51,6 +51,9 @@ dnl GConf checks
 AC_PATH_PROG(GCONFTOOL, gconftool-2)
 AM_GCONF_SOURCE_2
 
+dnl GSETTINGS checks
+GLIB_GSETTINGS
+
 # Check for Python
 
 AM_PATH_PYTHON(2.4)
@@ -274,6 +277,8 @@ cspi/Makefile
 cspi/bonobo/Makefile
 pyatspi/Makefile
 pyatspi/__init__.py
+schemas/Makefile
+schemas/org.a11y.atspi.gschema.xml
 ])
 
 echo "AT-SPI setup:
