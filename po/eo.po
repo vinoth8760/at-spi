@@ -1,22 +1,26 @@
-# Esperanto translation of at-spi.
-# Copyright (C) 2003 Free Software Foundation, Inc.
+# Esperanto translation for at-spi.
+# Copyright (C) 2003-2011 Free Software Foundation, Inc.
 # This file is distributed under the same license as the at-spi package.
 # Charles VOELGER <cvoelger@dweasel.com>, 2003.
-# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2010.
+# Michael MORONI < >, 2009.
+# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: at-spi 1.3.5\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-17 11:41+0000\n"
-"PO-Revision-Date: 2010-03-28 07:01+0000\n"
-"Last-Translator: Kristjan <kristjan.schmidt@googlemail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
+"spi&component=general\n"
+"POT-Creation-Date: 2011-01-20 09:44+0000\n"
+"PO-Revision-Date: 2011-05-25 17:28+0200\n"
+"Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
 "Language-Team: Esperanto <ubuntu-l10n-eo@lists.launchpad.net>\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-03 15:44+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-05-25 15:24+0000\n"
+"X-Generator: Launchpad (build 13085)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: ../at-spi.schemas.in.h:1
 msgid "Enable CORBA-based AT-SPI infrastructure"
@@ -33,12 +37,14 @@ msgid ""
 "SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-"
 "SPI infrastructure has not been relocated."
 msgstr ""
+"Tiu ŝlosilo kune kun /desktop/gnome/interface/accessibility estas bezonataj "
+"por enŝalti la CORBA-bazitan AT-SPI-infrastrukturon, se ĝi estas lokite "
+"alien. Tio estas ignorata se la CORBA-bazita AT-SPI-infrastrukturo ne estas "
+"lokite alien."
 
 #: ../at-spi.schemas.in.h:4
-msgid ""
-"This key determines the GTK+ modules to load for accessibility support."
-msgstr ""
-"Ĉi tiu ŝlosilo destinas lanĉi la GTK+-modulojn por alirebleco-subteno."
+msgid "This key determines the GTK+ modules to load for accessibility support."
+msgstr "Ĉi tiu ŝlosilo destinas lanĉi la GTK+-modulojn por alirebleco-subteno."
 
 #: ../registryd/Accessibility_Registry.server.in.in.h:1
 msgid "AT-SPI Registry"
