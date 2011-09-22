@@ -605,7 +605,7 @@ _festival_say (const char *text, const char *voice, SPIBoolean shutup)
 static void
 _festival_write (const gchar *command_string, int fd)
 {
-  fprintf(stderr, command_string);
+  fprintf(stderr, "%s", command_string);
   if (fd < 0) {
     perror("socket");
     return;
