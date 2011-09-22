@@ -1,0 +1,35 @@
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#"
+         xmlns="http://usefulinc.com/ns/doap#">
+
+  <name xml:lang="en">at-spi</name>
+  <shortdesc xml:lang="en">at-spi</shortdesc>
+  <download-page rdf:resource="http://download.gnome.org/sources/at-spi" />
+  <bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=at-spi" />
+
+  <category rdf:resource="http://api.gnome.org/doap-extensions#desktop" />
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Li Yuan</foaf:name>
+      <gnome:userid>liyuan</gnome:userid>
+      <foaf:mbox rdf:resource="mailto:li.yuan@sun.com"/>
+    </foaf:Person>
+  </maintainer>
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Willie Walker</foaf:name>
+      <gnome:userid>wwalker</gnome:userid>
+      <foaf:mbox rdf:resource="mailto:william.walker@sun.com"/>
+    </foaf:Person>
+  </maintainer>
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Eitan Isaacson</foaf:name>
+      <gnome:userid>eitani</gnome:userid>
+      <foaf:mbox rdf:resource="mailto:eitan@ascender.com"/>
+    </foaf:Person>
+  </maintainer>
+</Project>
