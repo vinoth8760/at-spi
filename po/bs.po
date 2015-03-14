@@ -1,31 +1,52 @@
-# translation of at-spi to Bosnian
-# This file is distributed under the same license as the at-spi package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# Kenan Hadžiavdić <kenanh@frisurf.no>, 2004.
+# Bosnian translation for bosnianuniversetranslation
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the bosnianuniversetranslation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: at-spi.HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-25 19:31+0200\n"
-"PO-Revision-Date: 2004-03-04 02:10+0000\n"
-"Last-Translator: Kenan Hadžiavdić <kenanh@frisurf.no>\n"
-"Language-Team: Bosnian <lokal@lugbih.org>\n"
+"Project-Id-Version: bosnianuniversetranslation\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=at-"
+"spi&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-02-27 03:48+0000\n"
+"PO-Revision-Date: 2013-01-30 21:59+0000\n"
+"Last-Translator: Samir Ribić <Unknown>\n"
+"Language-Team: Bosnian <bs@li.org>\n"
+"Language: bs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Launchpad-Export-Date: 2014-10-23 07:12+0000\n"
+"X-Generator: Launchpad (build 17203)\n"
 
-#: registryd/Accessibility_Registry.server.in.in.h:1
+#: ../at-spi.schemas.in.h:1
+msgid "GTK+ modules for accessibility support"
+msgstr "GTK+ modulli za pristupačnost"
+
+#: ../at-spi.schemas.in.h:2
+msgid "This key determines the GTK+ modules to load for accessibility support."
+msgstr "Ovaj ključ određuje GTK+ module za podršku pristupačnosti."
+
+#: ../at-spi.schemas.in.h:3
+msgid "Enable CORBA-based AT-SPI infrastructure"
+msgstr "Uključi AT-SPI infrastrukturu baziranu na CORBA"
+
+#: ../at-spi.schemas.in.h:4
+msgid ""
+"In combination with /desktop/gnome/interface/accessibility, this key is "
+"needed to enable the CORBA-based AT-SPI infrastructure if the CORBA-based AT-"
+"SPI infrastructure has been relocated. It is ignored if the CORBA-based AT-"
+"SPI infrastructure has not been relocated."
+msgstr ""
+"U kombinaciji sa /desktop/gnome/interface/accessibility, ovaj ključ je "
+"potreban da bi uključio AT-SPI infrastrukturu baziranu na CORBA, ukoliko je "
+"ista premještena. A ako nije premještena, ovo se zanemaruje."
+
+#: ../registryd/Accessibility_Registry.server.in.in.h:1
+#: ../registryd/at-spi-registryd.desktop.in.in.in.h:1
 msgid "AT-SPI Registry"
 msgstr "AT-SPI registar"
 
-#: registryd/Accessibility_Registry.server.in.in.h:2
+#: ../registryd/Accessibility_Registry.server.in.in.h:2
 msgid "Accessibility Registry"
 msgstr "Registar dostupnosti"
-
-#~ msgid "failure: no device event controller found.\n"
-#~ msgstr "greška: nije pronađen kontrolor događaja za uređaj.\n"
-
-#~ msgid "WARNING: NULL key event reported."
-#~ msgstr "UPOZORENJE: prijavljen je NULL događaj tipke."
